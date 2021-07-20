@@ -12,18 +12,11 @@ API_URL   = 'http://ws.audioscrobbler.com/2.0/'
 CALL_RATE = 5 # calls per second
 CALL_INT  = 1 / CALL_RATE # interval
 
-import ApiConfig
-#
-# Inside ApiConfig.py: Define KEY string
-#
-API_KEY = ApiConfig.KEY
-
-
 # Interface class for requesting data from the last.fm API
 class LastFmApi:
     # Initializes request data
-    def __init__(self, userAgent, format='json'):
-        self.key         = API_KEY
+    def __init__(self, userAgent, key, format='json'):
+        self.key         = key
         self.headers     = { 'user_agent': userAgent }
         self.format      = format
         self.lastApiCall = None
