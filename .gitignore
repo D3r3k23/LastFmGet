@@ -1,8 +1,5 @@
-
 /.vscode/
 /dist/
 /src/LastFmApi.egg-info
 
 **/__pycache__/
-
-/src/ApiConfig.py
