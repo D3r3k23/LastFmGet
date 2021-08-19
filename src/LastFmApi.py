@@ -42,7 +42,7 @@ def init(cfg_fn):
         try:
             import requests_cache
         except ImportError:
-            sys.exit('use_cache=True and requests_cache could not be imported.')
+            sys.exit('use_cache is selected and requests_cache could not be imported.')
         
         requests_cache.install_cache()
 
