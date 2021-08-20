@@ -32,11 +32,11 @@ def init(cfg_fn):
     
     API_URL    = cfg['api_url']
     API_KEY    = cfg['api_key']
-    USER_AGENT = cfg['user_agent']
+    user_agent = cfg['user_agent']
     USE_CACHE  = cfg['use_cache']
-    CALL_RATE  = cfg['call_rate']
+    call_rate  = cfg['call_rate']
 
-    HEADERS = { 'user_agent': USER_AGENT }
+    HEADERS = { 'user_agent': user_agent }
 
     if USE_CACHE:
         try:
@@ -46,7 +46,7 @@ def init(cfg_fn):
         
         requests_cache.install_cache()
 
-    CALL_INTERVAL = 1 / CALL_RATE
+    CALL_INTERVAL = 1 / call_rate
 
     ready = True
 

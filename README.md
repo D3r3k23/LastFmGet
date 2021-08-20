@@ -1,1 +1,1 @@
-# LastFmApi
+# LastFmGet
