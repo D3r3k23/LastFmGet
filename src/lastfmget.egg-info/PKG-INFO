@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: lastfmget
+Version: 0.0.3
+Summary: Last.fm API for retrieving scrobbling data.
+Home-page: https://github.com/D3r3k23/LastFmGet
+Author: Derek Henderson
+Author-email: derekhenderson818@gmail.com
+License: MIT License
+Project-URL: Bug Tracker, https://github.com/D3r3k23/LastFmApi/issues
+Platform: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# LastFmApi
+
+

@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.cfg
+src/lastfmget.egg-info/PKG-INFO
+src/lastfmget.egg-info/SOURCES.txt
+src/lastfmget.egg-info/dependency_links.txt
+src/lastfmget.egg-info/requires.txt
+src/lastfmget.egg-info/top_level.txt
+test/tests.py
