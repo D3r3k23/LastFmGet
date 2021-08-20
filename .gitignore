@@ -1,8 +1,9 @@
 /.vscode/
-/venv/
 **/__pycache__/
 
+/testvenv/
+
 /dist/
-/src/LastFmApi.egg-info/
+/src/lastfmget.egg-info/
 
 /src/api_cfg.yaml
