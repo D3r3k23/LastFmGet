@@ -6,6 +6,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - shell: bash
+        env:
+          TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -19,7 +23,7 @@ jobs:
 
       - name: Set up environment
         run: |
-          pip install --upgrade pip
+          scripts/python3 make_api_cfg_yaml.py test/api_cfg.yaml http://ws.audioscrobbler.com/2.0/ $TEST_API_KEY D3r3k23 false 5
           scripts/setuptest.sh
 
       - name: Run tests

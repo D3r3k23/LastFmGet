@@ -1,0 +1,5 @@
+api_url: www.com
+api_key: '12345'
+user_agent: D3r3k23
+use_cache: true
+call_rate: 5
