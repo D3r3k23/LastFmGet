@@ -1,6 +1,6 @@
 @echo off
 
 if exist dist\ (
-    pip install --upgrade -qqq --disable-pip-version-check twine
+    pip install --upgrade --disable-pip-version-check -qqq twine
     python -m twine upload dist/*
 )
