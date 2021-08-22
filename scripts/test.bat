@@ -2,4 +2,4 @@
 
 if not exist test\venv\ call scripts\setuptest.bat
 
-test\venv\Scripts\python test\tests.py
+test\venv\Scripts\python test\src\tests.py
