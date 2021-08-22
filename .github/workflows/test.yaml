@@ -16,11 +16,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
 
-      - name: Lint (flake8)
-        run: |
-          pip install --disable-pip-version-check -qqq flake8
-          echo "Running flake8"
-          flake8 src/lastfmget test/src scripts --select=E9,F63,F7,F82 --show-source --statistics
+      # - name: Lint (flake8)
+      #   run: |
+      #     pip install --disable-pip-version-check -qqq flake8
+      #     echo "Running flake8"
+      #     flake8 src/lastfmget test/src scripts --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Set up environment
         env:
