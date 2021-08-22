@@ -3,7 +3,7 @@ import unittest
 
 class Tests(unittest.TestCase):
     def test_print(self):
-        print('Hi')djs
+        print('Hi')
         self.assertTrue(True)
 
 if __name__ == '__main__':
