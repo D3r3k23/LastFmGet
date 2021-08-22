@@ -10,7 +10,7 @@ import argparse
 import os
 print(os.getcwd())
 parser = argparse.ArgumentParser()
-parser.add_argument('fn')
+parser.add_argument('fn')f
 parser.add_argument('api_url')
 parser.add_argument('api_key')
 parser.add_argument('user_agent')
