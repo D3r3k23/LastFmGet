@@ -20,11 +20,13 @@ jobs:
 
       - name: Lint (flake8)
         run: |
-          pip install flake8
+          pip install -qqq flake8
+          echo "Running flake8"
           flake8 src/lastfmget test/tests.py --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Set up environment
         run: |
+          pip install -qqq yaml
           python3 scripts/make_api_cfg_yaml.py test/api_cfg.yaml http://ws.audioscrobbler.com/2.0/ $TEST_API_KEY D3r3k23 false 5
           scripts/setuptest.sh
 
