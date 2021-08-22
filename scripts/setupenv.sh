@@ -6,3 +6,5 @@ call_rate=5
 
 pip install --disable-pip-version-check -qqq pyyaml
 python3 scripts/gen_api_cfg_yaml.py $cfg_fn $api_url $TEST_API_KEY $user_agent $use_cache $call_rate
+
+scripts/setuptest.sh
