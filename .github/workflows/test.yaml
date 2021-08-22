@@ -7,7 +7,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: $GITHUB_WORKSPACE
+        working-directory: $github.workspace
 
     steps:
       - name: Checkout Repository
