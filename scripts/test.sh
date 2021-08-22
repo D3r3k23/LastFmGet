@@ -1,5 +1,3 @@
-venv/bin/activate
-pip install -qqq LastFmApi
-python test/tests.py
-pip uninstall -qqq -y LastFmApi
-deactivate
+if [[ ! -d venv/test/venv ]; then scripts/setuptest.bat; fi
+
+test/venv/bin/python test/tests.py

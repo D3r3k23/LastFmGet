@@ -4,27 +4,18 @@ on: [push]
 jobs:
   Test:
     runs-on: ubuntu-latest
-    #strategy:
-    #  matrix:
-    #    python-version: [3.6, 3.7, 3.8, 3.9]
-    
+
     steps:
       - uses: actions/checkout@v2
 
-      #- name: Set up Python ${{ matrix.python-version }}
-      #  uses: actions/setup-python@v2
-      #  with:
-      #    python-version: ${{ matrix.python-version }}
       - name: Set up Python
         uses: actions/setup-python@v2
-        #with:
-        #  python-version: 
 
-      - name: Lint flake8
+      - name: Lint (flake8)
         run: |
           pip install flake8
           flake8 src test --count --select=E9,F63,F7,F82 --show-source --statistics
-      
+
       - name: Set up environment
         run: scripts/setuptest.sh
 
