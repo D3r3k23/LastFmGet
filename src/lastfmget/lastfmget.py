@@ -7,10 +7,10 @@ import sys
 #----------------| API config |----------------#
 #==============================================#
 
-API_URL       = ''
-API_KEY       = ''
-HEADERS       = {}
-USE_CACHE     = False
+API_URL = ''
+API_KEY = ''
+HEADERS = {}
+USE_CACHE = False
 CALL_INTERVAL = 1
 
 ready = False
