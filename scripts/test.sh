@@ -1,3 +1,5 @@
-if [[ ! -d venv/test/venv ]; then scripts/setuptest.bat; fi
+set -e
 
-test/venv/bin/python test/tests.py
+if [ ! -d test/venv ]; then scripts/setuptest.sh; fi
+
+test/venv/bin/python3 test/tests.py

@@ -1,4 +1,6 @@
-if [ -d dist/ ]; then rmdir -r -f dist; fi
+set -e
+
+if [ -d dist ]; then rm -r -f dist; fi
 
 pip install --upgrade -qqq build
-python -m build
+python3 -m build

@@ -1,4 +1,6 @@
-if [ -d dist ] then
+set -e
+
+if [ -d dist ]; then
     pip install --upgrade -qqq twine
-    python -m twine upload dist/*
+    python3 -m twine upload dist/*
 fi
