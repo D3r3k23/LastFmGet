@@ -54,7 +54,7 @@ def init(cfg_fn):
 #----------------| API method wrappers |----------------#
 #=======================================================#
 
-def user_info(self, user):
+def user_info(user):
     """
     user.getInfo
     """
@@ -64,7 +64,7 @@ def user_info(self, user):
     }
     return __get_response(payload)
 
-def user_recent_tracks(self, user, limit=50, page=1):
+def user_recent_tracks(user, limit=50, page=1):
     """
     user.getRecentTracks
     """
@@ -76,7 +76,7 @@ def user_recent_tracks(self, user, limit=50, page=1):
     }
     return __get_response(payload)
 
-def user_top_artists(self, user, limit=50, page=1):
+def user_top_artists(user, limit=50, page=1):
     """
     user.getTopArtists
     """
@@ -88,7 +88,7 @@ def user_top_artists(self, user, limit=50, page=1):
     }
     return __get_response(payload)
 
-def user_top_albums(self, user, limit=50, page=1):
+def user_top_albums(user, limit=50, page=1):
     """
     user.getTopAlbums
     """
@@ -100,7 +100,7 @@ def user_top_albums(self, user, limit=50, page=1):
     }
     return __get_response(payload)
 
-def user_top_tracks(self, user, limit=50, page=1):
+def user_top_tracks(user, limit=50, page=1):
     """
     user.getTopTrack
     """
@@ -112,7 +112,7 @@ def user_top_tracks(self, user, limit=50, page=1):
     }
     return __get_response(payload)
 
-def user_weekly_chart_list(self, user):
+def user_weekly_chart_list(user):
     """
     user.getWeeklyChartList
     """
@@ -122,7 +122,7 @@ def user_weekly_chart_list(self, user):
     }
     return __get_response(payload)
 
-def user_weekly_artists_chart(self, user, start=0, end=0):
+def user_weekly_artists_chart(user, start=0, end=0):
     """
     user.getWeeklyArtistChart
     """
@@ -134,7 +134,7 @@ def user_weekly_artists_chart(self, user, start=0, end=0):
     }
     return __get_response(payload)
 
-def user_weekly_albums_chart(self, user, start=0, end=0):
+def user_weekly_albums_chart(user, start=0, end=0):
     """
     user.getWeeklyAlbumChart
     """
@@ -146,7 +146,7 @@ def user_weekly_albums_chart(self, user, start=0, end=0):
     }
     return __get_response(payload)
 
-def user_weekly_tracks_chart(self, user, start=0, end=0):
+def user_weekly_tracks_chart(user, start=0, end=0):
     """
     user.getWeeklyTrackChart
     """
@@ -162,7 +162,7 @@ def user_weekly_tracks_chart(self, user, start=0, end=0):
 #----------------| Private functions |----------------#
 #=====================================================#
 
-def __get_response(self, payload):
+def __get_response(payload):
     """
     Appends API key and format to the payload and returns the formatted API Response
     """
@@ -182,7 +182,7 @@ def __get_response(self, payload):
     else:
         return { 'response error': response.text }
 
-def __rate_limiter(self):
+def __rate_limiter():
     """
     Waits until the required interval between API requests is reached
     """
