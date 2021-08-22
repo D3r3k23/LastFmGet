@@ -1,5 +1,3 @@
-set -e
-
 if [ -d dist ]; then rm -r -f dist; fi
 
 pip install --upgrade -qqq build
