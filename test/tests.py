@@ -1,4 +1,4 @@
-# import lastfmget
+import lastfmget
 import unittest
 
 class Tests(unittest.TestCase):
@@ -7,4 +7,5 @@ class Tests(unittest.TestCase):
         self.assertTrue(True)
 
 if __name__ == '__main__':
+    lastfmget.init('test/api_cfg.yaml')
     unittest.main()

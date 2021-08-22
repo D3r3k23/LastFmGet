@@ -1,5 +1,5 @@
 @echo off
 
-if not exists testvenv call scripts\setuptest.bat
+if not exist test\venv\ call scripts\setuptest.bat
 
-testvenv\Scripts\python test\tests.py
+test\venv\Scripts\python test\tests.py

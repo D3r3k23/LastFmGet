@@ -1,8 +1,8 @@
 @echo off
 
-if exist testvenv\ rmdir /s /q testvenv
+if exist test\venv\ rmdir /s /q test\venv
 
-python -m venv testvenv
-call testvenv\Scripts\activate
-pip install --upgrade -qqq lastfmget
+python -m venv test\venv
+call test\venv\Scripts\activate
+pip install --upgrade lastfmget
 deactivate
