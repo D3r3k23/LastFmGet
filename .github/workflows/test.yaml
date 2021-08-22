@@ -18,7 +18,9 @@ jobs:
           flake8 src/lastfmget test/tests.py --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Set up environment
-        run: scripts/setuptest.sh
+        run: |
+          pip install --upgrade pip
+          scripts/setuptest.sh
 
       - name: Run tests
         run: scripts/test.sh
