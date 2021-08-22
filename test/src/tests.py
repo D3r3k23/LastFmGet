@@ -9,7 +9,8 @@ class Tests(unittest.TestCase):
         self.assertFalse(False)
 
     def test_user_info(self):
-        lastfmget.user_info('D3r3k523')
+        r = lastfmget.user_info('D3r3k523')
+        print(r)
 
 if __name__ == '__main__':
     lastfmget.init('test/api_cfg.yaml')

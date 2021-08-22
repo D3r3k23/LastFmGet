@@ -9,7 +9,7 @@ jobs:
         shell: bash
         working-directory: .
     env:
-      API_KEY: ${{ secrets.TEST_API_KEY }}
+      TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
     steps:
       - name: Checkout Repository
@@ -23,7 +23,6 @@ jobs:
 
       - name: Set Up Environment
         run: |
-          echo $API_KEY
           echo "Set up environment"
           echo "Generate api_cfg.yaml"
           cfg_fn=test/api_cfg.yaml
@@ -32,7 +31,7 @@ jobs:
           use_cache=false
           call_rate=5
           pip install --disable-pip-version-check -qqq pyyaml
-          python3 scripts/gen_api_cfg_yaml.py $cfg_fn $api_url $API_KEY $user_agent $use_cache $call_rate
+          python3 scripts/gen_api_cfg_yaml.py $cfg_fn $api_url $TEST_API_KEY $user_agent $use_cache $call_rate
           echo "Run scripts/setuptest.sh"
           scripts/setuptest.sh
 
