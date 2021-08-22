@@ -25,7 +25,7 @@ jobs:
 
       - name: Set up environment
         run: |
-          scripts/python3 make_api_cfg_yaml.py test/api_cfg.yaml http://ws.audioscrobbler.com/2.0/ $TEST_API_KEY D3r3k23 false 5
+          python3 scripts/make_api_cfg_yaml.py test/api_cfg.yaml http://ws.audioscrobbler.com/2.0/ $TEST_API_KEY D3r3k23 false 5
           scripts/setuptest.sh
 
       - name: Run tests
