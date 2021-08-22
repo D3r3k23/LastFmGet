@@ -28,7 +28,7 @@ jobs:
           USE_CACHE: false
           CALL_RATE: 5
         run: |
-          "Set up environment"
+          echo "Set up environment"
           echo "Generate api_cfg.yaml"
           pip install --disable-pip-version-check -qqq pyyaml
           python3 scripts/gen_api_cfg_yaml.py $CFG_FN $API_URL $API_KEY $USER_AGENT $USE_CACHE $CALL_RATE

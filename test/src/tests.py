@@ -5,7 +5,7 @@ class Tests(unittest.TestCase):
     def test_assert(self):
         self.assertTrue(True)
 
-    def test_nothing(self):sf
+    def test_nothing(self):
         self.assertFalse(False)
 
 if __name__ == '__main__':
