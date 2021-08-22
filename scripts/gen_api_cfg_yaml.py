@@ -1,14 +1,7 @@
+from argparse import ArgumentParser
 import yaml
-import argparse
 
-#key = os.environ['TEST_API_KEY']
-
-#with open('example_api-cfg.yaml', 'r') as f:
-#    cfg = yaml.safe_load(f)
-
-#cfg['api_key'] = key
-
-parser = argparse.ArgumentParser()
+parser = ArgumentParser()
 parser.add_argument('fn')
 parser.add_argument('api_url')
 parser.add_argument('api_key')
