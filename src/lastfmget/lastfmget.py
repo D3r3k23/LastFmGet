@@ -28,7 +28,7 @@ def init(cfg_fn):
     global ready
 
     with open(cfg_fn, 'r') as f:
-        cfg = yaml.safe_load(f)
+        cfg = yaml.load(f, Loader=yaml.SafeLoader)
     
     API_URL    = cfg['api_url']
     API_KEY    = cfg['api_key']

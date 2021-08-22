@@ -8,7 +8,7 @@ import argparse
 
 #cfg['api_key'] = key
 import os
-print('cwd': os.getcwd())
+print('cwd:' + os.getcwd())
 parser = argparse.ArgumentParser()
 parser.add_argument('fn')
 parser.add_argument('api_url')
