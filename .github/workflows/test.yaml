@@ -4,11 +4,15 @@ on: [push]
 jobs:
   Test:
     runs-on: ubuntu-latest
+    defaults:
+      shell: bash
+      env:
+        TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
     steps:
-      - shell: bash
-        env:
-          TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+      # - shell: bash
+      #   env:
+      #     TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
       - name: Checkout Repository
         uses: actions/checkout@v2

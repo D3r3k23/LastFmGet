@@ -7,7 +7,8 @@ import argparse
 #    cfg = yaml.safe_load(f)
 
 #cfg['api_key'] = key
-
+import os
+print(os.getcwd())
 parser = argparse.ArgumentParser()
 parser.add_argument('fn')
 parser.add_argument('api_url')
