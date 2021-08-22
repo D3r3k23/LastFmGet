@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -14,7 +15,7 @@ jobs:
       - name: Lint (flake8)
         run: |
           pip install flake8
-          flake8 src test --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 src/lastfmget test/tests.py --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Set up environment
         run: scripts/setuptest.sh
