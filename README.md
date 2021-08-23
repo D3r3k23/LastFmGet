@@ -68,7 +68,7 @@ call_rate: 5 # Calls per second
 * Gets a response from the API in JSON and returns a Python dictionary
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Data is stored as strings
-* Errors
+* Errors:
 
 ### Last.fm API methods available
 * user.getInfo
