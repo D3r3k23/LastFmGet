@@ -1,8 +1,9 @@
 # LastFmGet
 
 [![Unit Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml)
+[![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://badge.fury.io/py/lastfmget)
 
-## [PyPi](https://pypi.org/project/lastfmget)
+### [PyPi page](https://pypi.org/project/lastfmget)
 
 Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
