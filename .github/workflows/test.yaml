@@ -1,5 +1,5 @@
 name: Unit Tests
-on: [push]
+on: push
 
 jobs:
   Test:
@@ -18,11 +18,8 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@v2
 
-      - name: flake8 Lint
-        run: scripts/lint.sh
-
       - name: Set Up Environment
-        run: scripts/setupenv.sh
+        run: scripts/actions/setupenv.sh
 
-      - name: Run tests
-        run: scripts/test.sh
+      - name: Run Tests
+        run: scripts/actions/test.sh
