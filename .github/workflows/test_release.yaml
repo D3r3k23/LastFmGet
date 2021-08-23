@@ -1,11 +1,11 @@
-name: Release Test
+name: Latest Release Tests
 on:
   release:
     types:
       - published
 
 jobs:
-  UnitTests:
+  Test:
     runs-on: ubuntu-latest
     defaults:
       run:
