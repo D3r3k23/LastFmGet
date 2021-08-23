@@ -3,7 +3,7 @@ on:
   - push
 
 jobs:
-  Unit Tests:
+  UnitTests:
     runs-on: ubuntu-latest
     defaults:
       run:
