@@ -54,8 +54,8 @@ call_rate: 5 # Calls per second
 
 #### Getting a user's top 10 artists using the user.getTopArtists method
 ```
->>> artists = lastfmget.user_top_artists('D3r3k523', 10)
->>> [ artist['name'] for artist in artists['topartists']['artist'] ]
+>>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
+>>> [ artist['name'] for artist in topartists['topartists']['artist'] ]
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 
