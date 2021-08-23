@@ -1,4 +1,6 @@
 name: Latest Release
+# Test the latest version of lastfmget from pip
+# Triggered on Github releases
 on:
   release:
     types:
