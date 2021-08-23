@@ -1,4 +1,4 @@
-name: Latest Release Tests
+name: Latest Release
 on:
   release:
     types:

@@ -1,4 +1,4 @@
-name: Current Source Tests
+name: Current Source
 on:
   - push
 
