@@ -4,7 +4,6 @@
 [![Latest Release Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml)
 [![Current Source Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
-
 Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
 
