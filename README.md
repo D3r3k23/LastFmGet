@@ -12,7 +12,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 
 ### Dependencies
 * requests
-* requests_cache (Used only if set in api_cfg.yaml)
+* requests_cache (used only if set in api_cfg.yaml)
 * pyyaml
 
 
@@ -54,8 +54,8 @@ call_rate: 5 # Calls per second
 
 #### Getting a user's top 10 artists using the user.getTopArtists method
 ```
->>> artists = lastfmget.user_top_artists('D3r3k523', 10)
->>> [ artist['name'] for artist in artists['topartists']['artist'] ]
+>>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
+>>> [ artist['name'] for artist in topartists['topartists']['artist'] ]
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 
@@ -66,6 +66,7 @@ call_rate: 5 # Calls per second
 ### Details
 * Provides functions for calling a specific Last.fm API method
 * Gets a response from the API in JSON and returns a Python dictionary
+* Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Data is stored as strings
 * Errors
 
