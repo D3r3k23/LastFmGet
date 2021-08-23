@@ -1,9 +1,7 @@
 # LastFmGet
 
 [![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://badge.fury.io/py/lastfmget)
-
 [![Latest Release Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml)
-
 [![Current Source Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
 
