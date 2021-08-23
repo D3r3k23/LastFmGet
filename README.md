@@ -9,6 +9,11 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 ## Installation
 `pip install lastfmget`
 
+### Dependencies
+* requests
+* requests_cache (Used only if set in api_cfg.yaml)
+* pyyaml
+
 
 ## Usage
 
@@ -53,26 +58,29 @@ call_rate: 5 # Calls per second
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 
-### Reference
+#### Example projects
+* [LastFmTimeline](https://github.com/D3r3k23/LastFmTimeline)
+* [PlaylistRanker](https://github.com/D3r3k23/PlaylistRanker)
+
+### Details
 * Provides functions for calling a specific Last.fm API method
 * Gets a response from the API in JSON and returns a Python dictionary
 * Data is stored as strings
 * Errors
 
 ### Last.fm API methods available
-* user.getInfo,
-* user.getRecentTracks,
-* user.getTopArtists,
-* user.getTopAlbums,
-* user.getTopTracks,
-* user.getWeeklyChartList,
-* user.getWeeklyArtistsChart,
-* user.getWeeklyAlbumsChart,
+* user.getInfo
+* user.getRecentTracks
+* user.getTopArtists
+* user.getTopAlbums
+* user.getTopTracks
+* user.getWeeklyChartList
+* user.getWeeklyArtistsChart
+* user.getWeeklyAlbumsChart
 * user.getWeeklyTracksChart
 
 ### Tips
 * Use pprint on a response to see how the data is structured
-
 
 ### Last.fm API Reference
 [Introduction](https://www.last.fm/api/intro)
