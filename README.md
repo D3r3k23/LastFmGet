@@ -11,6 +11,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 `pip install lastfmget`
 
 ### Dependencies
+* **Python3**
 * requests
 * requests_cache (used only if set in api_cfg.yaml)
 * pyyaml
