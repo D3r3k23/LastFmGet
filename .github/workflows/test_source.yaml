@@ -1,13 +1,13 @@
-name: Unit Tests
-on: push
+name: Test from Source
+on:
+  - push
 
 jobs:
-  Test:
+  Unit Tests:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-        working-directory: .
     env:
       TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-python@v2
 
       - name: Set Up Environment
-        run: scripts/actions/setupenv.sh
+        run: scripts/actions/test_source/setupenv.sh
 
       - name: Run Tests
-        run: scripts/actions/test.sh
+        run: scripts/actions/test_source/test.sh

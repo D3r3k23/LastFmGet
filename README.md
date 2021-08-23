@@ -36,7 +36,7 @@ call_rate: 5 # Calls per second
 |------------|---------------------------------------------------------------------------|
 | api_url    | API root URL, should not be changed                                       |
 | api_key    | Your private API key. See [here](https://www.last.fm/api#getting-started) |
-| user_agent | Use an identifiable user agent for requests                               |
+| user_agent | Identifiable user agent for requests                                      |
 | use_cache  | Use the functionality from requests_cache                                 |
 | call_rate  | Max API requests per second                                               |
 
@@ -54,7 +54,7 @@ call_rate: 5 # Calls per second
 #### Getting a user's top 10 artists using the user.getTopArtists method
 ```
 >>> artists = lastfmget.user_top_artists('D3r3k523', 10)
->>> artistlist = [ artist['name'] for artist in artists['topartists']['artist'] ]
+>>> [ artist['name'] for artist in artists['topartists']['artist'] ]
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 

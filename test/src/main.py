@@ -8,7 +8,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     if args.use_src:
-        # Add src to Python path to use current lastfmget source code
+        # Add src to Python path to use local lastfmget source code
         # Otherwise lastfmget should be installed with pip
         sys.path.append('src')
 

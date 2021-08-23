@@ -1,0 +1,27 @@
+name: Test Release
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  Unit Tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+
+      - name: Set Up Environment
+        run: scripts/actions/test_release/setupenv.sh
+
+      - name: Run Tests
+        run: scripts/actions/test_release/test.sh

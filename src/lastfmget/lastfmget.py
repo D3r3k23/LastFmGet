@@ -1,17 +1,21 @@
 import requests
 import yaml
 import time
-import sys
+from collections import namedtuple
 
 #=============================================-#
 #----------------| API config |----------------#
 #==============================================#
 
-API_URL = ''
-API_KEY = ''
-HEADERS = {}
-USE_CACHE = False
-CALL_INTERVAL = 1
+Config = namedtuple('Config', [
+    'API_URL',
+    'API_KEY',
+    'HEADERS',
+    'USE_CACHE',
+    'CALL_INTERVAL'
+])
+
+cfg = None
 
 ready = False
 lastrequesttime = None
@@ -20,33 +24,27 @@ def init(cfg_fn):
     """
     Set up LastFmApi using api_cfg.yaml file
     """
-    global API_URL
-    global API_KEY
-    global HEADERS
-    global USE_CACHE
-    global CALL_INTERVAL
+    global cfg
     global ready
 
     with open(cfg_fn, 'r') as f:
-        cfg = yaml.safe_load(f)
+        api_cfg_yaml = yaml.safe_load(f)
     
-    API_URL    = cfg['api_url']
-    API_KEY    = cfg['api_key']
-    user_agent = cfg['user_agent']
-    USE_CACHE  = cfg['use_cache']
-    call_rate  = cfg['call_rate']
+    headers = { 'user_agent': api_cfg_yaml['user_agent'] }
 
-    HEADERS = { 'user_agent': user_agent }
+    callinterval = 1 / api_cfg_yaml['call_rate']
 
-    if USE_CACHE:
-        try:
-            import requests_cache
-        except ImportError:
-            sys.exit('use_cache is selected and requests_cache could not be imported.')
-        
+    cfg = Config(
+        API_URL       = api_cfg_yaml['api_url'],
+        API_KEY       = api_cfg_yaml['api_key'],
+        HEADERS       = headers,
+        USE_CACHE     = api_cfg_yaml['use_cache'],
+        CALL_INTERVAL = callinterval
+    )
+
+    if cfg.USE_CACHE:
+        import requests_cache
         requests_cache.install_cache()
-
-    CALL_INTERVAL = 1 / call_rate
 
     ready = True
 
@@ -168,13 +166,13 @@ def __get_response(payload):
     """
     global lastrequesttime
 
-    payload['api_key'] = API_KEY
+    payload['api_key'] = cfg.API_KEY
     payload['format']  = 'json'
 
     __rate_limiter()
-    response = requests.get(API_URL, headers=HEADERS, params=payload)
+    response = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
 
-    if USE_CACHE and 'from_cache' not in response:
+    if cfg.USE_CACHE and 'from_cache' not in response:
         lastrequesttime = time.time() # Update time of last API call
 
     if response.status_code == requests.codes.ok:
@@ -188,5 +186,5 @@ def __rate_limiter():
     """
     if lastrequesttime is not None: # If there was a previous call to the API
         timesince = time.time() - lastrequesttime
-        if timesince < CALL_INTERVAL:
-            time.sleep(CALL_INTERVAL - timesince)
+        if timesince < cfg.CALL_INTERVAL:
+            time.sleep(cfg.CALL_INTERVAL - timesince)
