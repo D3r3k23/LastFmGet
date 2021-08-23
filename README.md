@@ -12,7 +12,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 
 ### Dependencies
 * requests
-* requests_cache (Used only if set in api_cfg.yaml)
+* requests_cache (used only if set in api_cfg.yaml)
 * pyyaml
 
 
