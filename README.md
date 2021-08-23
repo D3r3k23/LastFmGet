@@ -10,17 +10,16 @@ API wrapper for accessing scrobble data from [Last.fm](https://www.last.fm).
 
 ### Example Usage
 
+#### Import
 
-Import
-```
-import lastfmget
-```
-Config
-```
-lastfmget.init('api_cfg.yaml')
+`import lastfmget`
+
+#### Config
+
+`lastfmget.init('api_cfg.yaml')`
+
 ```
 api_cfg.yaml example
-```
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
 user_agent: <USER AGENT>
@@ -33,4 +32,4 @@ call_rate: 5 # Calls per second
 * user_cache: Use the functionality from requests_cache
 * call_rate: Max API requests per second
 
-Last.fm API Reference: [Introduction](https://www.last.fm/api/intro)
+### Last.fm API Reference: [Introduction](https://www.last.fm/api/intro)
