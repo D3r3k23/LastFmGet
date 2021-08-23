@@ -1,7 +1,7 @@
-from argparse import ArgumentParser
+import argparse
 import yaml
 
-parser = ArgumentParser()
+parser = argparse.ArgumentParser()
 parser.add_argument('fn')
 parser.add_argument('api_url')
 parser.add_argument('api_key')

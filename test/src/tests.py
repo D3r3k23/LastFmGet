@@ -1,11 +1,13 @@
 import lastfmget
 import unittest
-
-def run(cfg_fn):
-    lastfmget.init(cfg_fn)
-    unittest.main()
+import sys
 
 class Tests(unittest.TestCase):
+    @staticmethod
+    def run_all(cfg_fn):
+        lastfmget.init(cfg_fn)
+        unittest.main(argv=[sys.argv[0]])
+
     def test_assert(self):
         self.assertTrue(True)
 
