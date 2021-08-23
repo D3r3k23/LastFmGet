@@ -1,9 +1,8 @@
 # LastFmGet
 
-[![Unit Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml)
 [![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://badge.fury.io/py/lastfmget)
+[![Unit Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test.yaml)
 
-### [PyPi page](https://pypi.org/project/lastfmget)
 
 Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
@@ -15,12 +14,12 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 
 ## Example Usage
 
-#### Import
+### Import
 
 `import lastfmget`
 
 
-#### Config
+### Config
 
 `lastfmget.init('api_cfg.yaml')`
 
@@ -42,4 +41,6 @@ call_rate: 5 # Calls per second
 | call_rate  | Max API requests per second                                               |
 
 
-### Last.fm API Reference: [Introduction](https://www.last.fm/api/intro)
+## Last.fm API Reference
+
+[Introduction](https://www.last.fm/api/intro)
