@@ -1,6 +1,6 @@
 @echo off
 
-scripts\test.bat
+@REM scripts\test.bat
 
 if exist dist\ rmdir /s /q dist\
 
