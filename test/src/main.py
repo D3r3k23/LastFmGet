@@ -14,4 +14,4 @@ if __name__ == '__main__':
         sys.path.append('src')
 
     from Tests import Tests
-    Tests.run_all(args.cfg_fn)
+    Tests.run(args.cfg_fn)

@@ -70,12 +70,11 @@ call_rate: 5 # Calls per second
 * Gets a response from the API in JSON and returns a Python dictionary
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Data is stored as strings
+* Tip: use pprint on a response to see how the data is structured
 * Errors:
-  * Raises exception for invalid key
-  * Raises exception for other errors
-
-### Tips
-* Use pprint on a response to see how the data is structured
+  * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
+  * lastfmget.ApiKeyError: Last.fm API key is invalid
+  * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate
 
 ### Last.fm API methods available
 | Function                           | Last.fm API method        |
@@ -91,4 +90,6 @@ call_rate: 5 # Calls per second
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
 
 ### Last.fm API Reference
-[Introduction](https://www.last.fm/api/intro)
+
+* [Introduction](https://www.last.fm/api/intro)
+* [Terms of Service](https://www.last.fm/api/tos)

@@ -96,3 +96,44 @@ def user_weekly_track_chart(user, start=0, end=0):
         'end'    : end
     }
     return __get_response(payload)
+
+def library_artists(user, limit=50, page=1):
+    """ library.getArtists """
+
+    payload = {
+        'method' : 'library.getArtists',
+        'user'   : user,
+        'limit'  : limit,
+        'page'   : page
+    }
+    return __get_response(payload)
+
+def chart_top_artists(limit=50, page=1):
+    """ chart.getTopArtists """
+
+    payload = {
+        'method' : 'chart.getTopArtists',
+        'limit'  : limit,
+        'page'   : page
+    }
+    return __get_response(payload)
+
+def chart_top_tags(limit=50, page=1):
+    """ chart.getTopTags """
+
+    payload = {
+        'method' : 'chart.getTopTags',
+        'limit'  : limit,
+        'page'   : page
+    }
+    return __get_response(payload)
+
+def chart_top_tracks(limit=50, page=1):
+    """ chart.getTopTracks """
+
+    payload = {
+        'method' : 'chart.getTopTracks',
+        'limit'  : limit,
+        'page'   : page
+    }
+    return __get_response(payload)

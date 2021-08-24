@@ -1,3 +1,4 @@
+from .exceptions import *
 import requests
 import yaml
 import time
@@ -50,19 +51,30 @@ def __get_response(payload):
     """
     global lastrequesttime
 
+    if not ready:
+        raise NotConfiguredError
+
     payload['api_key'] = cfg.API_KEY
     payload['format']  = 'json'
 
     __rate_limiter()
-    response = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
+    r = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
+    response = r.json()
 
     if cfg.USE_CACHE and 'from_cache' not in response:
         lastrequesttime = time.time() # Update time of last API call
-
-    if response.status_code == requests.codes.ok:
-        return response.json()
+    
+    if 'error' in response:
+        if response['error'] == LastFmErrorCodes.InvalidApiKey.value:
+            raise ApiKeyError
+        elif response['error'] == LastFmErrorCodes.Offline.value:
+            raise OfflineError
+        elif response['error'] == LastFmErrorCodes.RateLimit.value:
+            raise RateLimitError
+        else:
+            raise LastFmError(response['message'])
     else:
-        return { 'response error': response.text }
+        return response
 
 def __rate_limiter():
     """

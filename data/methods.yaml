@@ -45,3 +45,27 @@ categories:
       - function: weekly_track_chart
         method: getWeeklyTrackChart
         params: [start, end]
+
+  library:
+    common_params: []
+    
+    methods:
+      - function: artists
+        method: getArtists
+        params: [user, limit, page]
+
+  chart:
+    common_params: [limit, page]
+
+    methods:
+      - function: top_artists
+        method: getTopArtists
+        params: []
+
+      - function: top_tags
+        method: getTopTags
+        params: []
+
+      - function: top_tracks
+        method: getTopTracks
+        params: []
