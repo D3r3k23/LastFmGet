@@ -25,7 +25,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 ### Config
 `lastfmget.init('api_cfg.yaml')`
 
-#### api_cfg.yaml example (data/example_api_cfg.yaml)
+#### api_cfg.yaml example ([data/example_api_cfg.yaml](https://github.com/D3r3k23/LastFmGet/blob/master/test/src/Tests.py))
 ```
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
