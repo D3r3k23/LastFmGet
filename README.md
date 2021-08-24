@@ -74,7 +74,7 @@ call_rate: 5 # Calls per second
 * Errors:
   * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
   * lastfmget.ApiKeyError: Last.fm API key is invalid
-  * ;astfmget.OfflineError: Last.fm is offline
+  * lastfmget.OfflineError: Last.fm is offline
   * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate
 
 ### Last.fm API methods available
@@ -89,6 +89,10 @@ call_rate: 5 # Calls per second
 | lastfmget.user_weekly_artist_chart | user.getWeeklyArtistChart |
 | lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
+| lastfmget.library_artists          | library.getArtists        |
+| lastfmget.chart_top_artists        | chart.getTopArtists       |
+| lastfmget.chart_top_albums         | chart.getTopAlbums        |
+| lastfmget.chart_top_tracks         | chart.getTopTracks        |
 
 ### Last.fm API Reference
 
