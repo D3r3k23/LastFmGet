@@ -74,6 +74,7 @@ call_rate: 5 # Calls per second
 * Errors:
   * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
   * lastfmget.ApiKeyError: Last.fm API key is invalid
+  * ;astfmget.OfflineError: Last.fm is offline
   * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate
 
 ### Last.fm API methods available
