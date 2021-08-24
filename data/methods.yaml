@@ -1,0 +1,47 @@
+param_defaults:
+  user:
+  limit: 50
+  page: 1
+  start: 0
+  end: 0
+
+categories:
+  user:
+    common_params: [user]
+
+    methods:
+      - function: info
+        method: getInfo
+        params: []
+
+      - function: recent_tracks
+        method: getRecentTracks
+        params: [limit, page]
+      
+      - function: top_artists
+        method: getTopArtists
+        params: [limit, page]
+
+      - function: top_albums
+        method: getTopAlbums
+        params: [limit, page]
+
+      - function: top_tracks
+        method: getTopTracks
+        params: [limit, page]
+
+      - function: weekly_chart_list
+        method: getWeeklyChartLIst
+        params: []
+
+      - function: weekly_artist_chart
+        method: getWeeklyArtistChart
+        params: [start, end]
+
+      - function: weekly_album_chart
+        method: getWeeklyAlbumChart
+        params: [start, end]
+
+      - function: weekly_track_chart
+        method: getWeeklyTrackChart
+        params: [start, end]

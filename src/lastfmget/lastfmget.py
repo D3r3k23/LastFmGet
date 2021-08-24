@@ -3,10 +3,6 @@ import yaml
 import time
 from collections import namedtuple
 
-#=============================================-#
-#----------------| API config |----------------#
-#==============================================#
-
 Config = namedtuple('Config', [
     'API_URL',
     'API_KEY',
@@ -47,118 +43,6 @@ def init(cfg_fn):
         requests_cache.install_cache()
 
     ready = True
-
-#======================================================-#
-#----------------| API method wrappers |----------------#
-#=======================================================#
-
-def user_info(user):
-    """
-    user.getInfo
-    """
-    payload = {
-        'method' : 'user.getInfo',
-        'user'   : user
-    }
-    return __get_response(payload)
-
-def user_recent_tracks(user, limit=50, page=1):
-    """
-    user.getRecentTracks
-    """
-    payload = {
-        'method' : 'user.getRecentTracks',
-        'user'   : user,
-        'limit'  : limit,
-        'page'   : page
-    }
-    return __get_response(payload)
-
-def user_top_artists(user, limit=50, page=1):
-    """
-    user.getTopArtists
-    """
-    payload = {
-        'method' : 'user.getTopArtists',
-        'user'   : user,
-        'limit'  : limit,
-        'page'   : page
-    }
-    return __get_response(payload)
-
-def user_top_albums(user, limit=50, page=1):
-    """
-    user.getTopAlbums
-    """
-    payload = {
-        'method' : 'user.getTopAlbums',
-        'user'   : user,
-        'limit'  : limit,
-        'page'   : page
-    }
-    return __get_response(payload)
-
-def user_top_tracks(user, limit=50, page=1):
-    """
-    user.getTopTrack
-    """
-    payload = {
-        'method' : 'user.getTopTracks',
-        'user'   : user,
-        'limit'  : limit,
-        'page'   : page
-    }
-    return __get_response(payload)
-
-def user_weekly_chart_list(user):
-    """
-    user.getWeeklyChartList
-    """
-    payload = {
-        'method' : 'user.getWeeklyChartList',
-        'user'   : user
-    }
-    return __get_response(payload)
-
-def user_weekly_artists_chart(user, start=0, end=0):
-    """
-    user.getWeeklyArtistChart
-    """
-    payload = {
-        'method' : 'user.getWeeklyArtistChart',
-        'user'   : user,
-        'from'   : start,
-        'to'     : end
-    }
-    return __get_response(payload)
-
-def user_weekly_albums_chart(user, start=0, end=0):
-    """
-    user.getWeeklyAlbumChart
-    """
-    payload = {
-        'method' : 'user.getWeeklyAlbumChart',
-        'user'   : user,
-        'from'   : start,
-        'to'     : end
-    }
-    return __get_response(payload)
-
-def user_weekly_tracks_chart(user, start=0, end=0):
-    """
-    user.getWeeklyTrackChart
-    """
-    payload = {
-        'method' : 'user.getWeeklyTrackChart',
-        'user'   : user,
-        'from'   : start,
-        'to'     : end
-    }
-    return __get_response(payload)
-
-#=====================================================#
-#----------------| Private functions |----------------#
-#=====================================================#
 
 def __get_response(payload):
     """
