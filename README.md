@@ -63,6 +63,7 @@ call_rate: 5 # Calls per second
 #### Example projects
 * [LastFmTimeline](https://github.com/D3r3k23/LastFmTimeline)
 * [PlaylistRanker](https://github.com/D3r3k23/PlaylistRanker)
+* [Tests](https://github.com/D3r3k23/LastFmGet/blob/master/test/src/Tests.py)
 
 ### Details
 * Provides functions for calling a specific Last.fm API method
