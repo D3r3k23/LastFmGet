@@ -39,8 +39,8 @@ def get_methods_list(methodsyaml):
         categorymethods = categorydata['methods']
 
         for method in categorymethods:
-            functionname = f"{category}_{method['function']}"
-            methodname   = f"{category}.{method['method']}"
+            functionname = f'{category}_{method["function"]}'
+            methodname   = f'{category}.{method["method"]}'
 
             paramnames = categoryparams + method['params']
             params = [ Param(name, paramdefaults[name]) for name in paramnames ]
@@ -51,7 +51,7 @@ def get_methods_list(methodsyaml):
             
 def write_methods_module_lines(methods):
     lines = []
-    lines.append('from lastfmget import __get_response')
+    lines.append('from .core import __get_response')
     lines.append('')
 
     for method in methods:
@@ -68,17 +68,21 @@ def write_methods_module_lines(methods):
         lines.append('')
         lines.append('    payload = {')
 
-        params = [("'method'", f"'{method.meth_name}'")] + [ (f"'{param.name}'", param.name) for param in method.params ]
+        params = [(wrap_str('method'), wrap_str(method.meth_name))]
+        params += [ (wrap_str(param.name), param.name) for param in method.params ]
         alignwidth = max(len(param[0]) + 1 for param in params)
 
         for i, param in enumerate(params):
-            lines.append(f"        {param[0]:<{alignwidth}}: {param[1]}{',' if i < len(params)-1 else ''}")
+            lines.append(f'        {param[0]:<{alignwidth}}: {param[1]}{"," if i < len(params)-1 else ""}')
 
         lines.append('    }')
         lines.append('    return __get_response(payload)')
         lines.append('')
     
     return lines
+
+def wrap_str(s):
+    return "'" + s + "'"
 
 if __name__ == '__main__':
     main()

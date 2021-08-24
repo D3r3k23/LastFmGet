@@ -1,4 +1,4 @@
-from .lastfmget import __get_response
+from .core import __get_response
 
 def user_info(user):
     """ user.getInfo """
