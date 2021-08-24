@@ -71,12 +71,13 @@ call_rate: 5 # Calls per second
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Data is stored as strings
 * Tip: use pprint on a response to see how the data is structured
-* Errors:
+* Exceptions:
   * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
   * lastfmget.ParamError: Invalid parameters provideded - example: user not found
   * lastfmget.ApiKeyError: Last.fm API key is invalid
   * lastfmget.OfflineError: Last.fm is offline
   * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate
+  * requests.RequestException: Other errors
 
 ### Last.fm API methods available
 | Function                           | Last.fm API method        |
