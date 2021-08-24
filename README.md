@@ -73,6 +73,7 @@ call_rate: 5 # Calls per second
 * Tip: use pprint on a response to see how the data is structured
 * Errors:
   * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
+  * lastfmget.ParamError: Invalid parameters provideded - example: user not found
   * lastfmget.ApiKeyError: Last.fm API key is invalid
   * lastfmget.OfflineError: Last.fm is offline
   * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate

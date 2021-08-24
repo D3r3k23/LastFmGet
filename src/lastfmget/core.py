@@ -58,23 +58,27 @@ def __get_response(payload):
     payload['format']  = 'json'
 
     __rate_limiter()
-    r = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
-    response = r.json()
+    response = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
+    responsejson = response.json()
 
     if cfg.USE_CACHE and 'from_cache' not in response:
         lastrequesttime = time.time() # Update time of last API call
     
-    if 'error' in response:
-        if response['error'] == LastFmErrorCodes.InvalidApiKey.value:
+    if 'error' in responsejson:
+        if responsejson['error'] == LastFmErrorCodes.InvalidParams.value:
+            raise ParamError(responsejson['message'])
+        elif responsejson['error'] == LastFmErrorCodes.InvalidApiKey.value:
             raise ApiKeyError
-        elif response['error'] == LastFmErrorCodes.Offline.value:
+        elif responsejson['error'] == LastFmErrorCodes.Offline.value:
             raise OfflineError
-        elif response['error'] == LastFmErrorCodes.RateLimit.value:
+        elif responsejson['error'] == LastFmErrorCodes.RateLimit.value:
             raise RateLimitError
         else:
-            raise LastFmError(response['message'])
+            raise LastFmError(responsejson['message'])
+    elif not response.ok:
+        response.raise_for_status()
     else:
-        return response
+        return responsejson
 
 def __rate_limiter():
     """

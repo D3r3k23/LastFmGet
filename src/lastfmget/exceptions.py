@@ -1,6 +1,7 @@
 from enum import Enum
 
 class LastFmErrorCodes(Enum):
+    InvalidParams = 6
     InvalidApiKey = 10
     Offline = 11
     RateLimit = 29
@@ -18,6 +19,10 @@ class NotConfiguredError(LastFmGetError):
 class LastFmError(LastFmGetError):
     def __init__(self, msg='Generic Last.fm error'):
         super().__init__(msg)
+
+class ParamError(LastFmError):
+    def __init__(self, msg):
+        super().__init__('Invalid parameters provided:' + msg)
 
 class ApiKeyError(LastFmError):
     def __init__(self):

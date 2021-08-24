@@ -13,5 +13,5 @@ if __name__ == '__main__':
         # Otherwise lastfmget should be installed with pip
         sys.path.append('src')
 
-    from Tests import Tests
+    from Tests import Tests # Import after potentially adding 'src/' to path
     Tests.run(args.cfg_fn)
