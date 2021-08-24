@@ -73,19 +73,21 @@ call_rate: 5 # Calls per second
   * Raises exception for invalid key
   * Raises exception for other errors
 
-### Last.fm API methods available
-* user.getInfo
-* user.getRecentTracks
-* user.getTopArtists
-* user.getTopAlbums
-* user.getTopTracks
-* user.getWeeklyChartList
-* user.getWeeklyArtistsChart
-* user.getWeeklyAlbumsChart
-* user.getWeeklyTracksChart
-
 ### Tips
 * Use pprint on a response to see how the data is structured
+
+### Last.fm API methods available
+| Function                           | Last.fm API method        |
+|------------------------------------|---------------------------|
+| lastfmget.user_info                | user.getInfo              |
+| lastfmget.user_recent_tracks       | user.getRecentTracks      |
+| lastfmget.user_top_artists         | user.getTopArtists        |
+| lastfmget.user_top_albums          | user.getTopAlbums         |
+| lastfmget.user_top_tracks          | user.getTopTracks         |
+| lastfmget.user_weekly_chart_list   | user.getWeeklyChartList   |
+| lastfmget.user_weekly_artist_chart | user.getWeeklyArtistChart |
+| lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
+| lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
 
 ### Last.fm API Reference
 [Introduction](https://www.last.fm/api/intro)
