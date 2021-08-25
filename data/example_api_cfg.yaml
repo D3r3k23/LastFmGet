@@ -10,6 +10,6 @@ cache:
 # or (defaults)
 cache:
   enable: true
-# or
+# or (disable)
 cache:
   enable: false

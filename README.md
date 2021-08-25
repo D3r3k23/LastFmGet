@@ -1,6 +1,6 @@
 # LastFmGet
 
-[![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://pypi.org/project/lastfmget/)
+[![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://pypi.org/project/lastfmget)
 [![Latest Release](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml)
 [![Current Source](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
@@ -43,7 +43,7 @@ cache:
 # or (defaults)
 cache:
   enable: true
-# or
+# or (disable)
 cache:
   enable: false
 ```
