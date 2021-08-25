@@ -17,6 +17,10 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 * pyyaml
 
 
+### Documentation
+[Docs](https://htmlpreview.github.io/?https://github.com/D3r3k23/LastFmGet/blob/master/docs/pdoc/index.html)
+
+
 ## Usage
 
 ### Import
@@ -37,7 +41,7 @@ call_rate: 5 # Calls per second
 | Field      | Description                                                               |
 |------------|---------------------------------------------------------------------------|
 | api_url    | API root URL, should not be changed                                       |
-| api_key    | Your private API key. See [here](https://www.last.fm/api#getting-started) |
+| api_key    | Your private API key. See [here](https://www.last.fm/api)                 |
 | user_agent | Identifiable user agent for requests                                      |
 | use_cache  | Use the functionality from requests_cache                                 |
 | call_rate  | Max API requests per second                                               |
@@ -48,7 +52,7 @@ call_rate: 5 # Calls per second
 ```
 >>> info = lastfmget.user_info('D3r3k523')
 >>> info['playcount']
-'159635'
+159635
 >>> info['user']['url']
 'https://www.last.fm/user/D3r3k523'
 ```
@@ -70,8 +74,6 @@ call_rate: 5 # Calls per second
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Gets a response from the API in JSON and returns a Python dictionary
 * Use _raw method verions for more direct access to the Last.fm API
-
-### [Documentation](https://github.com/D3r3k23/LastFmGet/blob/master/docs/index.html)
 
 ### Last.fm API methods available
 | Function                           | Last.fm API method        |
