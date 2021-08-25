@@ -2,10 +2,11 @@ param_defaults:
   user:
   limit: 50
   page: 1
-  start: 0
-  end: 0
+  period: None
+  start: None
+  end: None
 
-categories:
+groups:
   user:
     common_params: [user]
 
@@ -20,15 +21,15 @@ categories:
       
       - function: top_artists
         method: getTopArtists
-        params: [limit, page]
+        params: [limit, page, period] # Maybe not period?
 
       - function: top_albums
         method: getTopAlbums
-        params: [limit, page]
+        params: [limit, page, period]
 
       - function: top_tracks
         method: getTopTracks
-        params: [limit, page]
+        params: [limit, page, period]
 
       - function: weekly_chart_list
         method: getWeeklyChartLIst
@@ -45,27 +46,3 @@ categories:
       - function: weekly_track_chart
         method: getWeeklyTrackChart
         params: [start, end]
-
-  library:
-    common_params: []
-    
-    methods:
-      - function: artists
-        method: getArtists
-        params: [user, limit, page]
-
-  chart:
-    common_params: [limit, page]
-
-    methods:
-      - function: top_artists
-        method: getTopArtists
-        params: []
-
-      - function: top_tags
-        method: getTopTags
-        params: []
-
-      - function: top_tracks
-        method: getTopTracks
-        params: []

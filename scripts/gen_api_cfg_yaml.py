@@ -1,7 +1,7 @@
 import argparse
 import yaml
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('fn')
     parser.add_argument('api_url')
@@ -16,3 +16,6 @@ if __name__ == '__main__':
 
     with open(fn, 'w') as f:
         yaml.dump(cfg, f, sort_keys=False)
+
+if __name__ == '__main__':
+    main()

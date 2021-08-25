@@ -1,0 +1,27 @@
+{% extends "default/module.html.jinja2" %}
+
+{% macro is_public(doc) %}
+    {% if module.name == "core" %}
+        {% if doc.name == "Config" %}
+            {{ "" }} {# Disable core.Config doc #}
+        {% else %}
+            {{ default_is_public(doc) }}
+        {% endif %}
+    {% elif module.name == "errors" %}
+        {% if doc.name == "LastFmErrorCodes" %}
+            {{ "" }} {# Disable errors.LastFmErrorCodes doc #}
+        {% else %}
+            {{ default_is_public(doc) }}
+        {% endif %}
+    {% else %}
+        {{ default_is_public(doc) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro inherited(doc) %}
+    {% if module.name == "errors" %}
+        {{ "" }} {# Disable inherited members #}
+    {% else %}
+        {{ default_inherited(doc) }}
+    {% endif %}
+{% endmacro %}

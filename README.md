@@ -1,6 +1,6 @@
 # LastFmGet
 
-[![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://badge.fury.io/py/lastfmget)
+[![PyPI version](https://badge.fury.io/py/lastfmget.svg)](https://pypi.org/project/lastfmget/)
 [![Latest Release](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_release.yaml)
 [![Current Source](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
@@ -47,7 +47,7 @@ call_rate: 5 # Calls per second
 #### Getting user information using the user.getInfo method
 ```
 >>> info = lastfmget.user_info('D3r3k523')
->>> info['user']['playcount']
+>>> info['playcount']
 '159635'
 >>> info['user']['url']
 'https://www.last.fm/user/D3r3k523'
@@ -56,7 +56,7 @@ call_rate: 5 # Calls per second
 #### Getting a user's top 10 artists using the user.getTopArtists method
 ```
 >>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
->>> [ artist['name'] for artist in topartists['topartists']['artist'] ]
+>>> [ artist['name'] for artist in topartists ]
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 
@@ -66,18 +66,12 @@ call_rate: 5 # Calls per second
 * [Tests](https://github.com/D3r3k23/LastFmGet/blob/master/test/src/Tests.py)
 
 ### Details
-* Provides functions for calling a specific Last.fm API method
-* Gets a response from the API in JSON and returns a Python dictionary
+* Provides functions for calling specific Last.fm API methods
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
-* Data is stored as strings
-* Tip: use pprint on a response to see how the data is structured
-* Exceptions:
-  * lastfmget.NotConfiguredError: lastfmget not configured - call lastfmget.init() first
-  * lastfmget.ParamError: Invalid parameters provideded - example: user not found
-  * lastfmget.ApiKeyError: Last.fm API key is invalid
-  * lastfmget.OfflineError: Last.fm is offline
-  * lastfmget.RateLimitError: Last.fm API rate limit exceeded - try decreasing api_cfg.call_rate
-  * requests.RequestException: Other errors
+* Gets a response from the API in JSON and returns a Python dictionary
+* Use _raw method verions for more direct access to the Last.fm API
+
+### [Documentation](https://github.com/D3r3k23/LastFmGet/blob/master/docs/index.html)
 
 ### Last.fm API methods available
 | Function                           | Last.fm API method        |
@@ -91,10 +85,6 @@ call_rate: 5 # Calls per second
 | lastfmget.user_weekly_artist_chart | user.getWeeklyArtistChart |
 | lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
-| lastfmget.library_artists          | library.getArtists        |
-| lastfmget.chart_top_artists        | chart.getTopArtists       |
-| lastfmget.chart_top_albums         | chart.getTopAlbums        |
-| lastfmget.chart_top_tracks         | chart.getTopTracks        |
 
 ### Last.fm API Reference
 
