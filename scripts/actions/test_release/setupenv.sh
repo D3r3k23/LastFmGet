@@ -1,7 +1,7 @@
 cfg_fn=test/api_cfg.yaml
 api_url=http://ws.audioscrobbler.com/2.0/
 user_agent=D3r3k23
-call_rate=5
+call_rate=10
 enable_cache=false
 
 pip install --disable-pip-version-check -qqq pyyaml
