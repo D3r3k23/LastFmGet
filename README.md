@@ -98,7 +98,7 @@ cache:
 | lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
 
-### Last.fm API Reference
+## Last.fm API Reference
 
-* #### [Introduction](https://www.last.fm/api/intro)
-* #### [Terms of Service](https://www.last.fm/api/tos)
+* ### [Introduction](https://www.last.fm/api/intro)
+* ### [Terms of Service](https://www.last.fm/api/tos)
