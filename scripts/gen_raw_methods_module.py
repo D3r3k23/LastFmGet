@@ -1,6 +1,5 @@
 import argparse
 import yaml
-import os.path
 from collections import namedtuple
 
 Param = namedtuple('Param', [
@@ -16,8 +15,8 @@ Method = namedtuple('Method', [
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--methods_yaml_fn',   '-y', default=os.path.join('data', 'methods.yaml'))
-    parser.add_argument('--methods_module_fn', '-m', default=os.path.join('src', 'lastfmget', 'raw_methods.py'))
+    parser.add_argument('--methods_yaml_fn',   '-y', default='data/methods.yaml')
+    parser.add_argument('--methods_module_fn', '-m', default='src/lastfmget/raw_methods.py')
     args = parser.parse_args()
 
     with open(args.methods_yaml_fn, 'r') as f:

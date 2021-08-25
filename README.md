@@ -34,17 +34,21 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
 user_agent: <USER AGENT>
-use_cache: true # true, false
 call_rate: 5 # Calls per second
+cache:
+  enable: true
+  dir: .cache
+  backend: sqlite
+  lifetime: 120 # Seconds
 ```
 
-| Field      | Description                                                               |
-|------------|---------------------------------------------------------------------------|
-| api_url    | API root URL, should not be changed                                       |
-| api_key    | Your private API key. See [here](https://www.last.fm/api)                 |
-| user_agent | Identifiable user agent for requests                                      |
-| use_cache  | Use the functionality from requests_cache                                 |
-| call_rate  | Max API requests per second                                               |
+| Field      | Description                                               |
+|------------|-----------------------------------------------------------|
+| api_url    | API root URL, should be http://ws.audioscrobbler.com/2.0/ |
+| api_key    | Your private API key. See [here](https://www.last.fm/api) |
+| user_agent | Identifiable user agent for requests                      |
+| call_rate  | Max API requests per second                               |
+| cache      | enable: use requests_cache<br>dir: cache location<br>backend: sqlite recommended<br>lifetime: expire_after time in seconds |
 
 ### Examples
 

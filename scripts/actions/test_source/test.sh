@@ -1,1 +1,1 @@
-python3 test/src/main.py --use_src
+python3 test/src/run.py --use_src

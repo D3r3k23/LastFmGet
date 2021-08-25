@@ -1,4 +1,5 @@
 scripts/test.sh
+# scripts/gen_docs.sh
 
 if [ -d dist ]; then rm -r -f dist; fi
 

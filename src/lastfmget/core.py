@@ -1,19 +1,19 @@
 from .errors import *
 import requests
 import yaml
-import os.path
 import time
+import os.path
 from collections import namedtuple
 
 Config = namedtuple('Config', [
-    'API_URL',
-    'API_KEY',
-    'HEADERS',
-    'USE_CACHE',
-    'CALL_INTERVAL'
+    'api_url',
+    'api_key',
+    'headers',
+    'call_interval',
+    'cache_enabled'
 ])
 
-cfg = None
+CFG = None
 
 ready = False
 lastrequesttime = None
@@ -27,7 +27,7 @@ def init(cfg_fn):
     Arguments:
       * cfg_fn (str) -- path to api_cfg YAML file
     """
-    global cfg
+    global CFG
     global ready
 
     with open(cfg_fn, 'r') as f:
@@ -37,23 +37,40 @@ def init(cfg_fn):
 
     callinterval = 1 / api_cfg_yaml['call_rate']
 
-    cfg = Config(
-        API_URL       = api_cfg_yaml['api_url'],
-        API_KEY       = api_cfg_yaml['api_key'],
-        HEADERS       = headers,
-        USE_CACHE     = api_cfg_yaml['use_cache'],
-        CALL_INTERVAL = callinterval
+    cache = api_cfg_yaml['cache']
+
+    CFG = Config(
+        api_url       = api_cfg_yaml['api_url'],
+        api_key       = api_cfg_yaml['api_key'],
+        headers       = headers,
+        call_interval = callinterval,
+        cache_enabled = cache['enable']
     )
 
-    if cfg.USE_CACHE:
-        import requests_cache
-        requests_cache.install_cache(
-            cache_name=os.path.join('.cache', 'lastfmget_cache'),
-            backend='sqlite',
-            expire_after=120
-        )
+    if CFG.cache_enabled:
+        dir      = cache.get('dir',      default='.cache'),
+        backend  = cache.get('backend',  default='sqlite'),
+        lifetime = cache.get('lifetime', default=60)
+
+        __setup_cache(dir, backend, lifetime)
 
     ready = True
+
+def __setup_cache(dir, backend, lifetime):
+    """
+    Imports requests_cache and installs with configuration.
+
+    Arguments:
+      * dir (str) -- Cache location
+      * backend (str) -- cache backend
+      * lifetime (int) -- expire_after time in seconds
+    """
+    import requests_cache
+    requests_cache.install_cache(
+        cache_name=os.path.join(dir, 'lastfmget_cache'),
+        backend=backend,
+        expire_after=lifetime
+    )
 
 def __get_response(payload):
     """
@@ -77,14 +94,14 @@ def __get_response(payload):
     if not ready:
         raise NotConfiguredError
 
-    payload['api_key'] = cfg.API_KEY
+    payload['api_key'] = CFG.api_key
     payload['format']  = 'json'
 
     __rate_limiter()
-    response = requests.get(cfg.API_URL, headers=cfg.HEADERS, params=payload)
+    response = requests.get(CFG.api_url, headers=CFG.headers, params=payload)
     responsejson = response.json()
 
-    if not cfg.USE_CACHE or not response.from_cache:
+    if not CFG.cache_enabled or not response.from_cache:
         lastrequesttime = time.time() # Update time of last API call
     
     if 'error' in responsejson:
@@ -109,5 +126,5 @@ def __rate_limiter():
     """
     if lastrequesttime is not None: # If there was a previous call to the API
         timesince = time.time() - lastrequesttime
-        if timesince < cfg.CALL_INTERVAL:
-            time.sleep(cfg.CALL_INTERVAL - timesince)
+        if timesince < CFG.call_interval:
+            time.sleep(CFG.call_interval - timesince)

@@ -1,1 +1,1 @@
-python3 test/src/main.py
+python3 test/src/run.py

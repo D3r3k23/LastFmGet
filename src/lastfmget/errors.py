@@ -7,7 +7,6 @@ class LastFmErrorCodes(Enum):
     Offline = 11
     RateLimit = 29
 
-
 class LastFmGetError(Exception):
     """Generic lastfmget error."""
     def __init__(self, msg='Generic lastfmget error'):

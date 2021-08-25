@@ -57,19 +57,19 @@ lastfmget<wbr>.core    </h1>
             <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
-<span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 <span class="n">Config</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Config&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;API_URL&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;API_KEY&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;HEADERS&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;USE_CACHE&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;CALL_INTERVAL&#39;</span>
+    <span class="s1">&#39;api_url&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;api_key&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;headers&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;call_interval&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cache_enabled&#39;</span>
 <span class="p">])</span>
 
-<span class="n">cfg</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">CFG</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">ready</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">lastrequesttime</span> <span class="o">=</span> <span class="kc">None</span>
@@ -83,7 +83,7 @@ lastfmget<wbr>.core    </h1>
 <span class="sd">    Arguments:</span>
 <span class="sd">      * cfg_fn (str) -- path to api_cfg YAML file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">cfg</span>
+    <span class="k">global</span> <span class="n">CFG</span>
     <span class="k">global</span> <span class="n">ready</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cfg_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -93,23 +93,34 @@ lastfmget<wbr>.core    </h1>
 
     <span class="n">callinterval</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;call_rate&#39;</span><span class="p">]</span>
 
-    <span class="n">cfg</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
-        <span class="n">API_URL</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_url&#39;</span><span class="p">],</span>
-        <span class="n">API_KEY</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
-        <span class="n">HEADERS</span>       <span class="o">=</span> <span class="n">headers</span><span class="p">,</span>
-        <span class="n">USE_CACHE</span>     <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;use_cache&#39;</span><span class="p">],</span>
-        <span class="n">CALL_INTERVAL</span> <span class="o">=</span> <span class="n">callinterval</span>
+    <span class="k">if</span> <span class="s1">&#39;cache&#39;</span> <span class="ow">in</span> <span class="n">api_cfg_yaml</span> <span class="ow">and</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">][</span><span class="s1">&#39;enable&#39;</span><span class="p">]:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">CFG</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+        <span class="n">api_url</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_url&#39;</span><span class="p">],</span>
+        <span class="n">api_key</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
+        <span class="n">headers</span>       <span class="o">=</span> <span class="n">headers</span><span class="p">,</span>
+        <span class="n">call_interval</span> <span class="o">=</span> <span class="n">callinterval</span><span class="p">,</span>
+        <span class="n">cache_enabled</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">USE_CACHE</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">requests_cache</span>
-        <span class="n">requests_cache</span><span class="o">.</span><span class="n">install_cache</span><span class="p">(</span>
-            <span class="n">cache_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.cache&#39;</span><span class="p">,</span> <span class="s1">&#39;lastfmget_cache&#39;</span><span class="p">),</span>
-            <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
-            <span class="n">expire_after</span><span class="o">=</span><span class="mi">120</span>
-        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span><span class="p">:</span>
+        <span class="n">__setup_cache</span><span class="p">(</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">],</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">],</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;lifetime&#39;</span><span class="p">])</span>
 
     <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">__setup_cache</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Imports requests_cache and installs with configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">requests_cache</span>
+    <span class="n">requests_cache</span><span class="o">.</span><span class="n">install_cache</span><span class="p">(</span>
+        <span class="n">cache_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s1">&#39;lastfmget_cache&#39;</span><span class="p">),</span>
+        <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
+        <span class="n">expire_after</span><span class="o">=</span><span class="n">lifetime</span>
+    <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -133,14 +144,14 @@ lastfmget<wbr>.core    </h1>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ready</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">NotConfiguredError</span>
 
-    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">API_KEY</span>
+    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CFG</span><span class="o">.</span><span class="n">api_key</span>
     <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 
     <span class="n">__rate_limiter</span><span class="p">()</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">HEADERS</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
     <span class="n">responsejson</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg</span><span class="o">.</span><span class="n">USE_CACHE</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
         <span class="n">lastrequesttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1"># Update time of last API call</span>
     
     <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">responsejson</span><span class="p">:</span>
@@ -165,8 +176,8 @@ lastfmget<wbr>.core    </h1>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">lastrequesttime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># If there was a previous call to the API</span>
         <span class="n">timesince</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">lastrequesttime</span>
-        <span class="k">if</span> <span class="n">timesince</span> <span class="o">&lt;</span> <span class="n">cfg</span><span class="o">.</span><span class="n">CALL_INTERVAL</span><span class="p">:</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">CALL_INTERVAL</span> <span class="o">-</span> <span class="n">timesince</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">timesince</span> <span class="o">&lt;</span> <span class="n">CFG</span><span class="o">.</span><span class="n">call_interval</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">call_interval</span> <span class="o">-</span> <span class="n">timesince</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -191,7 +202,7 @@ lastfmget<wbr>.core    </h1>
 <span class="sd">    Arguments:</span>
 <span class="sd">      * cfg_fn (str) -- path to api_cfg YAML file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">cfg</span>
+    <span class="k">global</span> <span class="n">CFG</span>
     <span class="k">global</span> <span class="n">ready</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cfg_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -201,21 +212,21 @@ lastfmget<wbr>.core    </h1>
 
     <span class="n">callinterval</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;call_rate&#39;</span><span class="p">]</span>
 
-    <span class="n">cfg</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
-        <span class="n">API_URL</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_url&#39;</span><span class="p">],</span>
-        <span class="n">API_KEY</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
-        <span class="n">HEADERS</span>       <span class="o">=</span> <span class="n">headers</span><span class="p">,</span>
-        <span class="n">USE_CACHE</span>     <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;use_cache&#39;</span><span class="p">],</span>
-        <span class="n">CALL_INTERVAL</span> <span class="o">=</span> <span class="n">callinterval</span>
+    <span class="k">if</span> <span class="s1">&#39;cache&#39;</span> <span class="ow">in</span> <span class="n">api_cfg_yaml</span> <span class="ow">and</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">][</span><span class="s1">&#39;enable&#39;</span><span class="p">]:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">CFG</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+        <span class="n">api_url</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_url&#39;</span><span class="p">],</span>
+        <span class="n">api_key</span>       <span class="o">=</span> <span class="n">api_cfg_yaml</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
+        <span class="n">headers</span>       <span class="o">=</span> <span class="n">headers</span><span class="p">,</span>
+        <span class="n">call_interval</span> <span class="o">=</span> <span class="n">callinterval</span><span class="p">,</span>
+        <span class="n">cache_enabled</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">USE_CACHE</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">requests_cache</span>
-        <span class="n">requests_cache</span><span class="o">.</span><span class="n">install_cache</span><span class="p">(</span>
-            <span class="n">cache_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.cache&#39;</span><span class="p">,</span> <span class="s1">&#39;lastfmget_cache&#39;</span><span class="p">),</span>
-            <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
-            <span class="n">expire_after</span><span class="o">=</span><span class="mi">120</span>
-        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span><span class="p">:</span>
+        <span class="n">__setup_cache</span><span class="p">(</span><span class="n">cache</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">],</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">],</span> <span class="n">cache</span><span class="p">[</span><span class="s1">&#39;lifetime&#39;</span><span class="p">])</span>
 
     <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>

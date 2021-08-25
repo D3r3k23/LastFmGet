@@ -3,7 +3,6 @@ from .methods import *
 from .raw_methods import *
 
 from .errors import (
-    LastFmErrorCodes,
     LastFmGetError,
     NotConfiguredError,
     LastFmError,
