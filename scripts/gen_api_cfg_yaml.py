@@ -11,9 +11,6 @@ def main():
     parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
     args = parser.parse_args()
 
-    fn = args.fn
-    cfg = { key: val for key, val in list(vars(args).items())[1:] }
-
     cfg = {
         'api_url'    : args.api_url,
         'api_key'    : args.api_key,
@@ -22,7 +19,7 @@ def main():
         'cache': {'enable': args.enable_cache}
     }
 
-    with open(fn, 'w') as f:
+    with open(args.fn, 'w') as f:
         yaml.dump(cfg, f, sort_keys=False)
 
 if __name__ == '__main__':
