@@ -53,7 +53,7 @@ def user_top_tracks_raw(user, limit=50, page=1, period=None):
         'page'   : page,
         'period' : period
     }
-    return  __get_response(payload)
+    return __get_response(payload)
 
 def user_weekly_chart_list_raw(user):
     """user.getWeeklyChartLIst"""

@@ -7,10 +7,10 @@ def main():
     parser.add_argument('api_url')
     parser.add_argument('api_key')
     parser.add_argument('user_agent')
-    parser.add_argument('call_rate', type=int)
+    parser.add_argument('call_rate')#, type=int)
     parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
     args = parser.parse_args()
-
+    print(args)
     cfg = {
         'api_url'    : args.api_url,
         'api_key'    : args.api_key,
