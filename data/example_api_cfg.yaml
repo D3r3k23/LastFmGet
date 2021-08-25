@@ -7,6 +7,9 @@ cache:
   dir: .cache
   backend: sqlite
   lifetime: 120 # Seconds
+# or (defaults)
+cache:
+  enable: true
 # or
 cache:
   enable: false

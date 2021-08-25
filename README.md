@@ -40,18 +40,21 @@ cache:
   dir: .cache
   backend: sqlite
   lifetime: 120 # Seconds
+# or (defaults)
+cache:
+  enable: true
 # or
 cache:
   enable: false
 ```
 
-| Field      | Description                                               |
-|------------|-----------------------------------------------------------|
-| api_url    | API root URL, should be http://ws.audioscrobbler.com/2.0/ |
-| api_key    | Your private API key. See [here](https://www.last.fm/api) |
-| user_agent | Identifiable user agent for requests                      |
-| call_rate  | Max API requests per second                               |
-| cache      | enable: use requests_cache<br>dir: cache location<br>backend: sqlite recommended<br>lifetime: expire_after time in seconds |
+| Field      | Description                                                 |
+|------------|-------------------------------------------------------------|
+| api_url    | API root URL, should be 'http://ws.audioscrobbler.com/2.0/' |
+| api_key    | Your private API key. See [here](https://www.last.fm/api)   |
+| user_agent | Identifiable user agent for requests                        |
+| call_rate  | Max API requests per second                                 |
+| cache      | enable: use requests_cache<br>dir: (optional) cache location<br>backend: (optional) sqlite recommended<br>lifetime: (optional) expire_after time in seconds |
 
 ### Examples
 

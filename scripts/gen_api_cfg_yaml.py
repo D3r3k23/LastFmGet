@@ -7,12 +7,20 @@ def main():
     parser.add_argument('api_url')
     parser.add_argument('api_key')
     parser.add_argument('user_agent')
-    parser.add_argument('use_cache', type=lambda s: s.lower() == 'true')
     parser.add_argument('call_rate', type=int)
+    parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
     args = parser.parse_args()
 
     fn = args.fn
     cfg = { key: val for key, val in list(vars(args).items())[1:] }
+
+    cfg = {
+        'api_url'    : args.api_url,
+        'api_key'    : args.api_key,
+        'user_agent' : args.user_agent,
+        'call_rate'  : args.call_rate,
+        'cache': {'enable': args.enable_cache}
+    }
 
     with open(fn, 'w') as f:
         yaml.dump(cfg, f, sort_keys=False)
