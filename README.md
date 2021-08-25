@@ -40,6 +40,9 @@ cache:
   dir: .cache
   backend: sqlite
   lifetime: 120 # Seconds
+# or
+cache:
+  enable: false
 ```
 
 | Field      | Description                                               |
