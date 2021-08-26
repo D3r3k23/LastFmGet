@@ -4,6 +4,8 @@
     {% if module.name == "core" %}
         {% if doc.name == "Config" %}
             {{ "" }} {# Disable core.Config doc #}
+        {% elif doc.name == "__get_response" %}
+            true {# Enable core.__get_response doc #}
         {% else %}
             {{ default_is_public(doc) }}
         {% endif %}

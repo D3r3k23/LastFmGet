@@ -140,7 +140,7 @@
             <span class="p">})</span>
     <span class="k">return</span> <span class="n">tracks</span>
 
-<span class="k">def</span> <span class="nf">user_top_artists</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_top_artists</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top artists.</span>
 
@@ -178,7 +178,7 @@
             <span class="p">})</span>
     <span class="k">return</span> <span class="n">artists</span>
 
-<span class="k">def</span> <span class="nf">user_top_albums</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_top_albums</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top albums.</span>
 
@@ -218,7 +218,7 @@
             <span class="p">})</span>
     <span class="k">return</span> <span class="n">albums</span>
 
-<span class="k">def</span> <span class="nf">user_top_tracks</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_top_tracks</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top tracks.</span>
 
@@ -290,7 +290,7 @@
         <span class="k">for</span> <span class="n">chart</span> <span class="ow">in</span> <span class="n">charts</span>
     <span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">user_weekly_artist_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_weekly_artist_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s artist chart for the given date range.</span>
 
@@ -327,7 +327,7 @@
         <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artistchart</span>
     <span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">user_weekly_album_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_weekly_album_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s album chart for the given date range.</span>
 
@@ -366,7 +366,7 @@
         <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albumchart</span>
     <span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">user_weekly_track_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_weekly_track_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s track chart for the given date range.</span>
 
@@ -550,7 +550,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_artists</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_artists</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top artists.</span>
 
@@ -625,7 +625,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_albums</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_albums</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top albums.</span>
 
@@ -703,7 +703,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_tracks</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_top_tracks</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s top tracks.</span>
 
@@ -853,7 +853,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_artist_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_artist_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s artist chart for the given date range.</span>
 
@@ -933,7 +933,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_album_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_album_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s album chart for the given date range.</span>
 
@@ -1016,7 +1016,7 @@
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_track_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_weekly_track_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s track chart for the given date range.</span>
 

@@ -22,7 +22,7 @@ def init(cfg_fn):
     """
     Set up LastFmApi using api_cfg.yaml file.
 
-    * Should only be called once at start of program.
+    * Should only be called once at start of program
 
     Arguments:
       * cfg_fn (str) -- path to api_cfg YAML file

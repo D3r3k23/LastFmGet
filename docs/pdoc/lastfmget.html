@@ -28,6 +28,15 @@
                         <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                                pattern=".+" required>
 
+                    <h2>Contents</h2>
+                    <ul>
+  <li><a href="#github">Github</a></li>
+  <li><a href="#install">Install</a></li>
+  <li><a href="#import">Import</a></li>
+  <li><a href="#configure">Configure</a></li>
+  <li><a href="#methods">Methods</a></li>
+</ul>
+
 
                     <h2>Submodules</h2>
                     <ul>
@@ -51,10 +60,50 @@
                     <h1 class="modulename">
 lastfmget    </h1>
 
-                
+                        <div class="docstring"><p>Python package for accessing Last.fm scrobble data using the public API.</p>
+
+<h3 id="github">Github</h3>
+
+<p><code>https://github.com/D3r3k23/LastFmGet/</code></p>
+
+<h3 id="install">Install</h3>
+
+<p><code>pip install lastfmget</code></p>
+
+<h3 id="import">Import</h3>
+
+<p><code>import lastfmget</code></p>
+
+<h3 id="configure">Configure</h3>
+
+<p><code>init('api_cfg.yaml')</code></p>
+
+<h3 id="methods">Methods</h3>
+
+<p><code><a href="lastfmget/methods.html">lastfmget.methods</a></code></p>
+</div>
+
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">init</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Python package for accessing Last.fm scrobble data using the public API.</span>
+
+<span class="sd">### Github</span>
+<span class="sd">`https://github.com/D3r3k23/LastFmGet/`</span>
+
+<span class="sd">### Install</span>
+<span class="sd">`pip install lastfmget`</span>
+
+<span class="sd">### Import</span>
+<span class="sd">`import lastfmget`</span>
+
+<span class="sd">### Configure</span>
+<span class="sd">`init(&#39;api_cfg.yaml&#39;)`</span>
+
+<span class="sd">### Methods</span>
+<span class="sd">`lastfmget.methods`</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">init</span>
 <span class="kn">from</span> <span class="nn">.methods</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">.raw_methods</span> <span class="kn">import</span> <span class="o">*</span>
 
