@@ -15,11 +15,14 @@ Python package for accessing Last.fm scrobble data using the public API.
 
 ### Configure
 `init('api_cfg.yaml')`
-
-`lastfmget.core.init`
+```
+lastfmget.core.init
+```
 
 ### Methods
-`lastfmget.methods`
+```
+lastfmget.methods
+```
 """
 from .core import init
 from .methods import *
