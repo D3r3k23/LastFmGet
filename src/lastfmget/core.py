@@ -59,6 +59,8 @@ def __setup_cache(dir, backend, lifetime):
     """
     Imports requests_cache and installs with configuration.
 
+    * Private function
+
     Arguments:
       * dir (str) -- Cache location
       * backend (str) -- cache backend
@@ -75,6 +77,7 @@ def __get_response(payload):
     """
     Gets a response from requests.
 
+    * Private function
     * Appends API key and format to the payload
     * Formats response with JSON
     * Called by raw_methods
@@ -122,6 +125,8 @@ def __get_response(payload):
 def __rate_limiter():
     """
     Waits until the required interval between API requests is reached.
+    
+    * Private function
     """
     if lastrequesttime is not None: # If there was a previous call to the API
         timesince = time.time() - lastrequesttime
