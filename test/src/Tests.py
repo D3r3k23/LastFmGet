@@ -10,6 +10,7 @@ class Tests:
 
         testcases = [ Tests.RawMethodTests, Tests.MethodTests ]
         suites = [ unittest.defaultTestLoader.loadTestsFromTestCase(case) for case in testcases ]
+        
         for case, suite in zip(testcases, suites):
             print(f'Running {case.__name__}')
             unittest.TextTestRunner().run(suite)

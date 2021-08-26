@@ -16,7 +16,7 @@ def main():
         'api_key'    : args.api_key,
         'user_agent' : args.user_agent,
         'call_rate'  : args.call_rate,
-        'cache': {'enable': args.enable_cache}
+        'cache': { 'enable': args.enable_cache }
     }
 
     with open(args.fn, 'w') as f:

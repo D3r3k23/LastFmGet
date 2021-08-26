@@ -27,7 +27,6 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 ### [lastfmget](https://raw.githack.com/D3r3k23/LastFmGet/master/docs/pdoc/lastfmget.html)
 
 
-***
 ## Usage
 
 ### Import
@@ -63,7 +62,6 @@ cache:
 | call_rate  | Max API requests per second                                 |
 | cache      | enable: use requests_cache<br>dir: (optional) cache location<br>backend: (optional) sqlite recommended<br>lifetime: (optional) expire_after time in seconds |
 
-***
 ### Code Examples
 
 #### Getting user information using the user.getInfo method
@@ -88,7 +86,6 @@ cache:
 * [Tests](https://github.com/D3r3k23/LastFmGet/blob/master/test/src/Tests.py)
 
 
-***
 ## Last.fm API Methods Available
 | Function                           | Last.fm API method        |
 |------------------------------------|---------------------------|
@@ -103,7 +100,6 @@ cache:
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
 
 
-***
 ## Last.fm API Reference
 * ### [Introduction](https://www.last.fm/api/intro)
 * ### [Terms of Service](https://www.last.fm/api/tos)

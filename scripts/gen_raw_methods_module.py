@@ -23,36 +23,37 @@ def main():
         methodsyaml = yaml.safe_load(f)
 
     methods = get_methods_list(methodsyaml)
-    lines   = write_methods_module_lines(methods, args.methods_yaml_fn)
+    methodsmoduletext = get_methods_module_str(methods, args.methods_yaml_fn)
 
     with open(args.methods_module_fn, 'w') as f:
-        f.writelines('\n'.join(lines))
+        f.write(methodsmoduletext)
 
 def get_methods_list(methodsyaml):
     methods = []
 
-    paramdefaults = methodsyaml['param_defaults']
-    methodgroups  = methodsyaml['groups']
+    paramdefaults = methodsyaml['param_defaults'] # dict
+    methodgroups  = methodsyaml['groups'] # dict
 
-    for group, groupdata in methodgroups.items():
-        groupparams  = groupdata['common_params']
-        groupmethods = groupdata['methods']
+    for group, groupdata in methodgroups.items(): # str, dict
+        groupparams  = groupdata['common_params'] # list
+        groupmethods = groupdata['methods'] # list
 
-        for method in groupmethods:
+        for method in groupmethods: # dict
             functionname = f'{group}_{method["function"]}'
             methodname   = f'{group}.{method["method"]}'
+            methodparams = method['params'] # list
 
-            paramnames = groupparams + method['params']
+            paramnames = groupparams + methodparams
             params = [ Param(name, paramdefaults[name]) for name in paramnames ]
 
             methods.append(Method(functionname, methodname, params))
 
     return methods
             
-def write_methods_module_lines(methods, methodsyamlfn):
+def get_methods_module_str(methods, srcfn):
     lines = []
 
-    src = methodsyamlfn.replace("\\", "/")
+    src = srcfn.replace("\\", "/")
     lines.append('"""')
     lines.append('Thin wrappers around Last.fm API methods.')
     lines.append('')
@@ -62,30 +63,38 @@ def write_methods_module_lines(methods, methodsyamlfn):
     lines.append('')
 
     for method in methods:
-        argstring = ''
-        for i, param in enumerate(method.params):
-            argstring += param.name
-            if param.default is not None:
-                argstring += f'={param.default}'
-            if i < len(method.params) - 1:
-                argstring += ', '
-
-        lines.append(f'def {method.function_name}_raw({argstring}):')
-        lines.append(f'    """{method.method_name}"""')
-        lines.append('    payload = {')
-
-        params  = [ (wrap_str('method'), wrap_str(method.method_name)) ]
-        params += [ (wrap_str(param.name), param.name) for param in method.params ]
-        alignwidth = max(len(param[0]) + 1 for param in params)
-
-        for i, param in enumerate(params):
-            lines.append(f'        {param[0]:<{alignwidth}}: {param[1]}{"," if i < len(params)-1 else ""}')
-
-        lines.append('    }')
-        lines.append('    return __get_response(payload)')
+        methodstr = get_method_str(method)
+        lines.append(methodstr)
         lines.append('')
     
-    return lines
+    return '\n'.join(lines)
+
+def get_method_str(method):
+    lines = []
+
+    methodargs = [
+        f'{param.name}={param.default}' if param.default is not None else param.name
+        for param in method.params
+    ]
+    argstring = ', '.join(methodargs)
+
+    payload = { wrap_str('method'): wrap_str(method.method_name) }
+    for param in method.params:
+        payload[wrap_str(param.name)] = param.name
+
+    alignwidth = max(len(key) + 1 for key in payload.keys())
+
+    lines.append(f'def {method.function_name}_raw({argstring}):')
+    lines.append(f'    """{method.method_name}"""')
+    lines.append('    payload = {')
+
+    for i, (key, val) in enumerate(payload.items()):
+        lines.append(f'        {key:<{alignwidth}}: {val}{"," if i < len(payload)-1 else ""}')
+
+    lines.append('    }')
+    lines.append('    return __get_response(payload)')
+
+    return '\n'.join(lines)
 
 def wrap_str(s):
     return "'" + s + "'"
