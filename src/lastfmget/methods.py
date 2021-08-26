@@ -1,3 +1,6 @@
+"""
+Methods for getting formatted data from Last.fm.
+"""
 from .raw_methods import *
 
 def user_info(user):

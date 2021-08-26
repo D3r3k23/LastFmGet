@@ -23,37 +23,48 @@ def init(cfg_fn):
 
     * Should only be called once at start of program
 
+    Globals:
+      * CFG
+      * ready
+
     Arguments:
       * cfg_fn (str) -- path to api_cfg YAML file
     """
     global CFG
     global ready
 
-    with open(cfg_fn, 'r') as f:
-        api_cfg_yaml = yaml.safe_load(f)
+    api_cfg_yaml = __load_yaml(cfg_fn)
     
     headers = { 'user_agent': api_cfg_yaml['user_agent'] }
-
     callinterval = 1 / api_cfg_yaml['call_rate']
-
-    cache = api_cfg_yaml['cache']
+    cacheoptions = api_cfg_yaml['cache']
 
     CFG = Config(
         api_url       = api_cfg_yaml['api_url'],
         api_key       = api_cfg_yaml['api_key'],
         headers       = headers,
         call_interval = callinterval,
-        cache_enabled = cache['enable']
+        cache_enabled = cacheoptions['enable']
     )
 
     if CFG.cache_enabled:
-        dir      = cache.get('dir',      default='.cache'),
-        backend  = cache.get('backend',  default='sqlite'),
-        lifetime = cache.get('lifetime', default=60)
+        dir      = cacheoptions.get('dir',      default='.cache'),
+        backend  = cacheoptions.get('backend',  default='sqlite'),
+        lifetime = cacheoptions.get('lifetime', default=60)
 
         __setup_cache(dir, backend, lifetime)
 
     ready = True
+
+def __load_yaml(yaml_fn):
+    """
+    Loads the contents of a YAML file.
+
+    Arguments:
+      * yaml_fn (str) -- YAML filename
+    """
+    with open(yaml_fn, 'r') as f:
+        return yaml.safe_load(f)
 
 def __setup_cache(dir, backend, lifetime):
     """
@@ -82,7 +93,7 @@ def __get_response(payload):
     * Formats response with JSON
     * Called by raw_methods
     * Raises exceptions for known Last.fm errors and requests exceptions otherwise
-    
+
     Arguments:
       * payload (dict) -- Data for specific request
         * method (str) -- Last.fm API method name
@@ -91,8 +102,6 @@ def __get_response(payload):
     Returns:
       Dict with response data
     """
-    global lastrequesttime
-
     if not ready:
         raise NotConfiguredError
 
@@ -104,28 +113,35 @@ def __get_response(payload):
     responsejson = response.json()
 
     if not CFG.cache_enabled or not response.from_cache:
-        lastrequesttime = time.time() # Update time of last API call
+        __update_last_request_time()
     
+    # Check for Last.fm errors
     if 'error' in responsejson:
-        if responsejson['error'] == LastFmErrorCodes.InvalidParams.value:
-            raise ParamError(responsejson['message'])
-        elif responsejson['error'] == LastFmErrorCodes.InvalidApiKey.value:
-            raise ApiKeyError
-        elif responsejson['error'] == LastFmErrorCodes.Offline.value:
-            raise OfflineError
-        elif responsejson['error'] == LastFmErrorCodes.RateLimit.value:
-            raise RateLimitError
-        else:
-            raise LastFmError(responsejson['message'])
+        raise_lastfm_error(responsejson['error'], responsejson['message'])
+    
+    # Check for requests errors
     elif not response.ok:
         response.raise_for_status()
+    
+    # Response OK
     else:
         return responsejson
+
+def __update_last_request_time():
+    """
+    Sets lastrequesttime to the current time.
+
+    Globals:
+      * lastrequesttime
+    """
+    global lastrequesttime
+
+    lastrequesttime = time.time()
 
 def __rate_limiter():
     """
     Waits until the required interval between API requests is reached.
-    
+
     * Private function
     """
     if lastrequesttime is not None: # If there was a previous call to the API

@@ -1,11 +1,30 @@
 from enum import Enum
 
-class LastFmErrorCodes(Enum):
+class __LastFmErrorCodes(Enum):
     """Last.fm response error codes."""
     InvalidParams = 6
     InvalidApiKey = 10
     Offline = 11
     RateLimit = 29
+
+def raise_lastfm_error(code, msg):
+    """
+    Raises a LastFmError exception.
+
+    Arguments:
+      * code (int) -- Error code
+      * msg (str) -- Error message
+    """
+    if code == __LastFmErrorCodes.InvalidParams.value:
+        raise ParamError(msg)
+    elif code == __LastFmErrorCodes.InvalidApiKey.value:
+        raise ApiKeyError
+    elif code == __LastFmErrorCodes.Offline.value:
+        raise OfflineError
+    elif code == __LastFmErrorCodes.RateLimit.value:
+        raise RateLimitError
+    else:
+        raise LastFmError(msg)
 
 class LastFmGetError(Exception):
     """Generic lastfmget error."""

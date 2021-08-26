@@ -6,6 +6,11 @@
 
 Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
+* Provides functions for calling specific Last.fm API methods
+* Must use a cfg YAML file and call lastfmget.init() before any API calls
+* Gets a response from the API in JSON and returns a Python dictionary
+* Use _raw method verions for more direct access to the Last.fm API
+
 
 ## Installation
 `pip install lastfmget`
@@ -13,7 +18,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 ### Dependencies
 * **Python3**
 * requests
-* requests_cache (used only if set in api_cfg.yaml)
+* requests_cache (used only if configured in api_cfg.yaml)
 * pyyaml
 
 
@@ -56,7 +61,7 @@ cache:
 | call_rate  | Max API requests per second                                 |
 | cache      | enable: use requests_cache<br>dir: (optional) cache location<br>backend: (optional) sqlite recommended<br>lifetime: (optional) expire_after time in seconds |
 
-### Examples
+### Code Examples
 
 #### Getting user information using the user.getInfo method
 ```
@@ -74,18 +79,13 @@ cache:
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Mastodon', 'Beach House']
 ```
 
-#### Example projects
+### Example Projects
 * [LastFmTimeline](https://github.com/D3r3k23/LastFmTimeline)
 * [PlaylistRanker](https://github.com/D3r3k23/PlaylistRanker)
 * [Tests](https://github.com/D3r3k23/LastFmGet/blob/master/test/src/Tests.py)
 
-### Details
-* Provides functions for calling specific Last.fm API methods
-* Must use a cfg YAML file and call lastfmget.init() before any API calls
-* Gets a response from the API in JSON and returns a Python dictionary
-* Use _raw method verions for more direct access to the Last.fm API
 
-### Last.fm API methods available
+## Last.fm API Methods Available
 | Function                           | Last.fm API method        |
 |------------------------------------|---------------------------|
 | lastfmget.user_info                | user.getInfo              |
@@ -97,6 +97,7 @@ cache:
 | lastfmget.user_weekly_artist_chart | user.getWeeklyArtistChart |
 | lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
 | lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
+
 
 ## Last.fm API Reference
 
