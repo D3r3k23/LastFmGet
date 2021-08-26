@@ -48,11 +48,11 @@ def init(cfg_fn):
     )
 
     if CFG.cache_enabled:
-        dir      = cacheoptions.get('dir',      default='.cache'),
+        dirname  = cacheoptions.get('dir',      default='.cache'),
         backend  = cacheoptions.get('backend',  default='sqlite'),
         lifetime = cacheoptions.get('lifetime', default=60)
 
-        __setup_cache(dir, backend, lifetime)
+        __setup_cache(dirname, backend, lifetime)
 
     ready = True
 
@@ -66,22 +66,22 @@ def __load_yaml(yaml_fn):
     with open(yaml_fn, 'r') as f:
         return yaml.safe_load(f)
 
-def __setup_cache(dir, backend, lifetime):
+def __setup_cache(dirname, backend, lifetime):
     """
     Imports requests_cache and installs with configuration.
 
     * Private function
 
     Arguments:
-      * dir (str) -- Cache location
+      * dirname (str) -- Cache location
       * backend (str) -- cache backend
       * lifetime (int) -- expire_after time in seconds
     """
     import requests_cache
     requests_cache.install_cache(
-        cache_name=os.path.join(dir, 'lastfmget_cache'),
-        backend=backend,
-        expire_after=lifetime
+        cache_name   = os.path.join(dirname, 'lastfmget_cache'),
+        backend      = backend,
+        expire_after = lifetime
     )
 
 def __get_response(payload):

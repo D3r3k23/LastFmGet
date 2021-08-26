@@ -15,16 +15,11 @@ def raise_lastfm_error(code, msg):
       * code (int) -- Error code
       * msg (str) -- Error message
     """
-    if code == __LastFmErrorCodes.InvalidParams.value:
-        raise ParamError(msg)
-    elif code == __LastFmErrorCodes.InvalidApiKey.value:
-        raise ApiKeyError
-    elif code == __LastFmErrorCodes.Offline.value:
-        raise OfflineError
-    elif code == __LastFmErrorCodes.RateLimit.value:
-        raise RateLimitError
-    else:
-        raise LastFmError(msg)
+    if   code == __LastFmErrorCodes.InvalidParams.value: raise ParamError(msg)
+    elif code == __LastFmErrorCodes.InvalidApiKey.value: raise ApiKeyError
+    elif code == __LastFmErrorCodes.Offline.value      : raise OfflineError
+    elif code == __LastFmErrorCodes.RateLimit.value    : raise RateLimitError
+    else: raise LastFmError(msg)
 
 class LastFmGetError(Exception):
     """Generic lastfmget error."""
