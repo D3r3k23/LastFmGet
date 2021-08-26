@@ -14,7 +14,8 @@ Python package for accessing Last.fm scrobble data using the public API.
 `import lastfmget`
 
 ### Configure
-`init('api_cfg.yaml')`  
+`init('api_cfg.yaml')`
+
 `lastfmget.core.init`
 
 ### Methods
