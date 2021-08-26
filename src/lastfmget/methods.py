@@ -205,7 +205,8 @@ def user_weekly_chart_list(user):
     raw = user_weekly_chart_list_raw(user)
     charts = raw['weeklychartlist']['chart']
 
-    return [{
+    return [
+        {
             'start' : int(chart['from']),
             'end'   : int(chart['to'])
         }
@@ -227,27 +228,36 @@ def user_weekly_artist_chart(user, start=None, end=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- artist name
-          'rank' (int) -- chart rank
-          'playcount' (int) -- number of scrobbles in chart
-        }
-      ]
+      {
+        'start' (int) -- chart start Unix timestamp
+        'end' (int) -- chart end Unix timestamp
+        'chart': [
+          {
+            'name' (str) -- artist name
+            'rank' (int) -- chart rank
+            'playcount' (int) -- number of scrobbles in chart
+          }
+        ]
+      }
     ```
     """
     raw = user_weekly_artist_chart_raw(user, start=start, end=end)
-    # start = raw['weeklyartistchart']['@attr']['from']
-    # end   = raw['weeklyartistchart']['@attr']['to']
+    start = raw['weeklyartistchart']['@attr']['from']
+    end   = raw['weeklyartistchart']['@attr']['to']
     artistchart = raw['weeklyartistchart']['artist']
 
-    return [{
-            'name'      : str(artist['name']),
-            'rank'      : int(artist['@attr']['rank']),
-            'playcount' : int(artist['playcount'])
-        }
-        for artist in artistchart
-    ]
+    return {
+        'start' : start,
+        'end'   : end,
+        'chart' : [
+            {
+                'name'      : str(artist['name']),
+                'rank'      : int(artist['@attr']['rank']),
+                'playcount' : int(artist['playcount'])
+            }
+            for artist in artistchart
+        ]
+    }
 
 def user_weekly_album_chart(user, start=None, end=None):
     """
@@ -264,29 +274,38 @@ def user_weekly_album_chart(user, start=None, end=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- album name
-          'artist' (str) -- artist name
-          'rank' (int) -- chart rank
-          'playcount' (int) -- number of scrobbles in chart
-        }
-      ]
+      {
+        'start' (int) -- chart start Unix timestamp
+        'end' (int) -- chart end Unix timestamp
+        'chart': [
+          {
+            'name' (str) -- album name
+            'artist' (str) -- artist name
+            'rank' (int) -- chart rank
+            'playcount' (int) -- number of scrobbles in chart
+          }
+        ]
+      }
     ```
     """
     raw = user_weekly_album_chart_raw(user, start=start, end=end)
-    # start = raw['weeklyalbumchart']['@attr']['from']
-    # end   = raw['weeklyalbumchart']['@attr']['to']
+    start = raw['weeklyalbumchart']['@attr']['from']
+    end   = raw['weeklyalbumchart']['@attr']['to']
     albumchart = raw['weeklyalbumchart']['album']
 
-    return [{
-            'name'      : str(album['name']),
-            'artist'    : str(album['artist']['#text']),
-            'rank'      : int(album['@attr']['rank']),
-            'playcount' : int(album['playcount'])
-        }
-        for album in albumchart
-    ]
+    return {
+        'start' : start,
+        'end'   : end,
+        'chart' : [
+            {
+                'name'      : str(album['name']),
+                'artist'    : str(album['artist']['#text']),
+                'rank'      : int(album['@attr']['rank']),
+                'playcount' : int(album['playcount'])
+            }
+            for album in albumchart
+        ]
+    }
 
 def user_weekly_track_chart(user, start=None, end=None):
     """
@@ -303,26 +322,35 @@ def user_weekly_track_chart(user, start=None, end=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- track name
-          'artist' (str) -- artist name
-          'rank' (int) -- chart rank
-          'playcount' (int) -- number of scrobbles in chart
-        }
-      ]
+      {
+        'start' (int) -- chart start Unix timestamp
+        'end' (int) -- chart end Unix timestamp
+        'chart': [
+          {
+            'name' (str) -- track name
+            'artist' (str) -- artist name
+            'rank' (int) -- chart rank
+            'playcount' (int) -- number of scrobbles in chart
+          }
+        ]
+      }
     ```
     """
     raw = user_weekly_track_chart_raw(user, start=start, end=end)
-    # start = raw['weeklyalbumchart']['@attr']['from']
-    # end   = raw['weeklyalbumchart']['@attr']['to']
+    start = raw['weeklyalbumchart']['@attr']['from']
+    end   = raw['weeklyalbumchart']['@attr']['to']
     trackchart = raw['weeklytrackchart']['track']
 
-    return [{
-            'name'      : str(trackchart['name']),
-            'artist'    : str(trackchart['artist']['#text']),
-            'rank'      : int(trackchart['@attr']['rank']),
-            'playcount' : int(trackchart['playcount'])
-        }
-        for trackchart in trackchart
-    ]
+    return {
+        'start' : start,
+        'end'   : end,
+        'chart' : [
+            {
+                'name'      : str(trackchart['name']),
+                'artist'    : str(trackchart['artist']['#text']),
+                'rank'      : int(trackchart['@attr']['rank']),
+                'playcount' : int(trackchart['playcount'])
+            }
+            for trackchart in trackchart
+        ]
+    }

@@ -283,7 +283,8 @@
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_chart_list_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">charts</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklychartlist&#39;</span><span class="p">][</span><span class="s1">&#39;chart&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
             <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">])</span>
         <span class="p">}</span>
@@ -305,27 +306,36 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_artist_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyartistchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyartistchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">artistchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;artist&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artistchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artistchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">user_weekly_album_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -342,29 +352,38 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- album name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- album name</span>
+<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_album_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">albumchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;album&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albumchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albumchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">user_weekly_track_chart</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -381,29 +400,38 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- track name</span>
+<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_track_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">trackchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklytrackchart&#39;</span><span class="p">][</span><span class="s1">&#39;track&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">trackchart</span> <span class="ow">in</span> <span class="n">trackchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">trackchart</span> <span class="ow">in</span> <span class="n">trackchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 </pre></div>
 
         </details>
@@ -807,7 +835,8 @@
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_chart_list_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">charts</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklychartlist&#39;</span><span class="p">][</span><span class="s1">&#39;chart&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
             <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">])</span>
         <span class="p">}</span>
@@ -868,27 +897,36 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_artist_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyartistchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyartistchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">artistchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyartistchart&#39;</span><span class="p">][</span><span class="s1">&#39;artist&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artistchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">artist</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artistchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 </pre></div>
 
         </details>
@@ -911,13 +949,17 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- artist name
-      'rank' (int) -- chart rank
-      'playcount' (int) -- number of scrobbles in chart
-    }
-  ]
+<pre><code>  {
+    'start' (int) -- chart start Unix timestamp
+    'end' (int) -- chart end Unix timestamp
+    'chart': [
+      {
+        'name' (str) -- artist name
+        'rank' (int) -- chart rank
+        'playcount' (int) -- number of scrobbles in chart
+      }
+    ]
+  }
 </code></pre>
 </div>
 
@@ -948,29 +990,38 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- album name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- album name</span>
+<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_album_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">albumchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;album&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albumchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">album</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">albumchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 </pre></div>
 
         </details>
@@ -993,14 +1044,18 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- album name
-      'artist' (str) -- artist name
-      'rank' (int) -- chart rank
-      'playcount' (int) -- number of scrobbles in chart
-    }
-  ]
+<pre><code>  {
+    'start' (int) -- chart start Unix timestamp
+    'end' (int) -- chart end Unix timestamp
+    'chart': [
+      {
+        'name' (str) -- album name
+        'artist' (str) -- artist name
+        'rank' (int) -- chart rank
+        'playcount' (int) -- number of scrobbles in chart
+      }
+    ]
+  }
 </code></pre>
 </div>
 
@@ -1031,29 +1086,38 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">        &#39;chart&#39;: [</span>
+<span class="sd">          {</span>
+<span class="sd">            &#39;name&#39; (str) -- track name</span>
+<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">          }</span>
+<span class="sd">        ]</span>
+<span class="sd">      }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_track_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-    <span class="c1"># start = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;from&#39;]</span>
-    <span class="c1"># end   = raw[&#39;weeklyalbumchart&#39;][&#39;@attr&#39;][&#39;to&#39;]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklyalbumchart&#39;</span><span class="p">][</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
     <span class="n">trackchart</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;weeklytrackchart&#39;</span><span class="p">][</span><span class="s1">&#39;track&#39;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[{</span>
-            <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
-            <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">trackchart</span> <span class="ow">in</span> <span class="n">trackchart</span>
-    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;start&#39;</span> <span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+        <span class="s1">&#39;end&#39;</span>   <span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+        <span class="s1">&#39;chart&#39;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span>      <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;artist&#39;</span>    <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">][</span><span class="s1">&#39;#text&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;rank&#39;</span>      <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;@attr&#39;</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;playcount&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">trackchart</span><span class="p">[</span><span class="s1">&#39;playcount&#39;</span><span class="p">])</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">trackchart</span> <span class="ow">in</span> <span class="n">trackchart</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 </pre></div>
 
         </details>
@@ -1076,14 +1140,18 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- track name
-      'artist' (str) -- artist name
-      'rank' (int) -- chart rank
-      'playcount' (int) -- number of scrobbles in chart
-    }
-  ]
+<pre><code>  {
+    'start' (int) -- chart start Unix timestamp
+    'end' (int) -- chart end Unix timestamp
+    'chart': [
+      {
+        'name' (str) -- track name
+        'artist' (str) -- artist name
+        'rank' (int) -- chart rank
+        'playcount' (int) -- number of scrobbles in chart
+      }
+    ]
+  }
 </code></pre>
 </div>
 

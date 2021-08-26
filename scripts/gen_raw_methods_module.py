@@ -31,8 +31,8 @@ def main():
 def get_methods_list(methodsyaml):
     methods = []
 
-    paramdefaults    = methodsyaml['param_defaults']
-    methodgroups = methodsyaml['categories']
+    paramdefaults = methodsyaml['param_defaults']
+    methodgroups  = methodsyaml['categories']
 
     for group, groupdata in methodgroups.items():
         groupparams  = groupdata['common_params']
@@ -73,7 +73,7 @@ def write_methods_module_lines(methods, methodsyamlfn):
         lines.append(f'    """{method.method_name}"""')
         lines.append('    payload = {')
 
-        params = [ (wrap_str('method'), wrap_str(method.method_name)) ]
+        params  = [ (wrap_str('method'), wrap_str(method.method_name)) ]
         params += [ (wrap_str(param.name), param.name) for param in method.params ]
         alignwidth = max(len(param[0]) + 1 for param in params)
 
