@@ -100,5 +100,5 @@ cache:
 
 
 ## Last.fm API Reference
-* #### [Introduction](https://www.last.fm/api/intro)
-* #### [Terms of Service](https://www.last.fm/api/tos)
+* ### [Introduction](https://www.last.fm/api/intro)
+* ### [Terms of Service](https://www.last.fm/api/tos)
