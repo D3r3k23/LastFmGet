@@ -18,7 +18,7 @@ Python package for accessing [Last.fm](https://www.last.fm) scrobble data using 
 
 
 ## Documentation
-### [lastfmget](https://htmlpreview.github.io/?https://github.com/D3r3k23/LastFmGet/blob/master/docs/pdoc/lastfmget.html)
+### [lastfmget](https://rawcdn.githack.com/D3r3k23/LastFmGet/c5ecb5c2af5adf2373d303ed0e66eda3938242ac/docs/pdoc/lastfmget.html)
 
 
 ## Usage
