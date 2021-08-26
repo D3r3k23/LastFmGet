@@ -14,7 +14,6 @@ Config = namedtuple('Config', [
 ])
 
 CFG = None
-
 ready = False
 lastrequesttime = None
 
