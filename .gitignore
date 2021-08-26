@@ -1,6 +1,7 @@
 /.vscode/
-**/__pycache__/
+/.VSCodeCounter/
 
+**/__pycache__/
 /.cache/
 
 /test/venv/
