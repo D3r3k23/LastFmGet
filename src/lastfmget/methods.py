@@ -43,6 +43,7 @@ def user_recent_tracks(user, count=50):
           'name' (str) -- track name
           'artist' (str) -- artist name
           'album' (str) -- album name
+          'now_playing' (bool) -- track is currently playing
         }
       ]
     ```
@@ -54,14 +55,15 @@ def user_recent_tracks(user, count=50):
     tracks = []
     for i in range(1, numpages + 1):
         numtracksinpage = numtracksinlastpage if i == numpages else MAX_PER_PAGE
-        raw = user_recent_tracks_raw(user, limit=numtracksinpage, page=i)
+        raw = user_recent_tracks_raw(user, limit=numtracksinpage-1, page=i)
         page = raw['recenttracks']['track']
 
         for track in page:
             tracks.append({
-                'name'   : str(track['name']),
-                'artist' : str(track['artist']['#text']),
-                'album'  : str(track['album']['#text'])
+                'name'        :  str(track['name']),
+                'artist'      :  str(track['artist']['#text']),
+                'album'       :  str(track['album']['#text']),
+                'now_playing' : bool('@attr' in track and track['@attr']['nowplaying'] == 'true')
             })
     return tracks
 

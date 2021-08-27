@@ -53,17 +53,17 @@ class RawMethodTests(unittest.TestCase):
         trackchart = lastfmget.user_weekly_track_chart_raw(user)
         self.assertEqual(trackchart['weeklytrackchart']['@attr']['user'], user)
 
-    # def test_user_recent_tracks_count(self):
-    #     countvals = [ 0, 50, 200, 300 ] + random.choices(range(0, 501), k=6)
-    #     for count in countvals:
-    #         recenttracks = lastfmget.user_recent_tracks(user, count=count)
-    #         self.assertEqual(len(recenttracks), count)
-
 class MethodTests(unittest.TestCase):
     def test_user_info_compare_to_raw(self):
         userinforaw = lastfmget.user_info_raw(user)
         userinfo    = lastfmget.user_info(user)
         self.assertEqual(userinfo['name'], userinforaw['user']['name'])
+
+    def test_user_recent_tracks_count(self):
+        countvals = [ 0, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
+        for count in countvals:
+            recenttracks = lastfmget.user_recent_tracks(user, count=count)
+            self.assertEqual(len(recenttracks), count)
 
     # def test_user_recent_tracks_basic(self):
     #     recenttracksraw = lastfmget.user_recent_tracks_raw(user)
