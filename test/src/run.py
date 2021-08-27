@@ -12,8 +12,8 @@ def main():
         # Otherwise lastfmget should be installed with pip
         add_src_to_path()
 
-    import Tests # Import after potentially adding src dir to path
-    Tests.run(args.cfg_fn)
+    import tests # Import after potentially adding src dir to path
+    tests.run(args.cfg_fn)
 
 def add_src_to_path():
     sys.path.append('src')
