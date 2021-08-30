@@ -56,11 +56,12 @@
                         <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="o">*</span>
+
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="kn">import</span> <span class="nn">yaml</span>
 
 <span class="n">Config</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Config&#39;</span><span class="p">,</span> <span class="p">[</span>
     <span class="s1">&#39;api_url&#39;</span><span class="p">,</span>
@@ -105,41 +106,12 @@
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span><span class="p">:</span>
-        <span class="nb">dir</span>      <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span>      <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.cache&#39;</span><span class="p">),</span>
-        <span class="n">backend</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span>  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">),</span>
-        <span class="n">lifetime</span> <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-
-        <span class="n">__setup_cache</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">)</span>
+        <span class="n">dirname</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span>     <span class="s1">&#39;.cache&#39;</span><span class="p">),</span>
+        <span class="n">backend</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="s1">&#39;sqlite&#39;</span><span class="p">),</span>
+        <span class="n">lifetime</span> <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">__setup_cache</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">)</span>
 
     <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="k">def</span> <span class="nf">__load_yaml</span><span class="p">(</span><span class="n">yaml_fn</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Loads the contents of a YAML file.</span>
-
-<span class="sd">    Arguments:</span>
-<span class="sd">      * yaml_fn (str) -- YAML filename</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">__setup_cache</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Imports requests_cache and installs with configuration.</span>
-
-<span class="sd">    * Private function</span>
-
-<span class="sd">    Arguments:</span>
-<span class="sd">      * dir (str) -- Cache location</span>
-<span class="sd">      * backend (str) -- cache backend</span>
-<span class="sd">      * lifetime (int) -- expire_after time in seconds</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">requests_cache</span>
-    <span class="n">requests_cache</span><span class="o">.</span><span class="n">install_cache</span><span class="p">(</span>
-        <span class="n">cache_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s1">&#39;lastfmget_cache&#39;</span><span class="p">),</span>
-        <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-        <span class="n">expire_after</span><span class="o">=</span><span class="n">lifetime</span>
-    <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -169,7 +141,7 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
     <span class="n">responsejson</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">__response_from_cache</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
         <span class="n">__update_last_request_time</span><span class="p">()</span>
     
     <span class="c1"># Check for Last.fm errors</span>
@@ -183,6 +155,40 @@
     <span class="c1"># Response OK</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">responsejson</span>
+
+<span class="k">def</span> <span class="nf">__load_yaml</span><span class="p">(</span><span class="n">yaml_fn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads the contents of a YAML file.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">      * yaml_fn (str) -- YAML filename</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_fn</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">__setup_cache</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Imports requests_cache and installs with configuration.</span>
+
+<span class="sd">    * Private function</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">      * dirname (str) -- Cache location</span>
+<span class="sd">      * backend (str) -- cache backend</span>
+<span class="sd">      * lifetime (int) -- expire_after time in seconds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">requests_cache</span>
+    <span class="n">requests_cache</span><span class="o">.</span><span class="n">install_cache</span><span class="p">(</span>
+        <span class="n">cache_name</span>   <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dirname</span><span class="si">}</span><span class="s1">/lastfmget_cache.sqlite&#39;</span><span class="p">,</span>
+        <span class="n">backend</span>      <span class="o">=</span> <span class="n">backend</span><span class="p">,</span>
+        <span class="n">expire_after</span> <span class="o">=</span> <span class="n">lifetime</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">__response_from_cache</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns true if the reponse was from the cache</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span>
 
 <span class="k">def</span> <span class="nf">__update_last_request_time</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -251,11 +257,10 @@
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span><span class="p">:</span>
-        <span class="nb">dir</span>      <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span>      <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.cache&#39;</span><span class="p">),</span>
-        <span class="n">backend</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span>  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">),</span>
-        <span class="n">lifetime</span> <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-
-        <span class="n">__setup_cache</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">)</span>
+        <span class="n">dirname</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span>     <span class="s1">&#39;.cache&#39;</span><span class="p">),</span>
+        <span class="n">backend</span>  <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="s1">&#39;sqlite&#39;</span><span class="p">),</span>
+        <span class="n">lifetime</span> <span class="o">=</span> <span class="n">cacheoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="n">__setup_cache</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">)</span>
 
     <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
@@ -322,7 +327,7 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
     <span class="n">responsejson</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">CFG</span><span class="o">.</span><span class="n">cache_enabled</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">__response_from_cache</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
         <span class="n">__update_last_request_time</span><span class="p">()</span>
     
     <span class="c1"># Check for Last.fm errors</span>
