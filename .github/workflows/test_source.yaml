@@ -10,7 +10,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: test
+        working-directory: .
     env:
       TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
