@@ -10,7 +10,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: .
     env:
       TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
@@ -25,5 +24,4 @@ jobs:
         run: scripts/actions/test_source/setup_env.sh
 
       - name: Run Tests
-        working-directory: test
         run: scripts/actions/test_source/test.sh
