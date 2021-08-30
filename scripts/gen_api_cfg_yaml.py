@@ -1,4 +1,5 @@
 import argparse
+
 import yaml
 
 def main():

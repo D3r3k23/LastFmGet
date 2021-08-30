@@ -1,9 +1,10 @@
 from .errors import *
+
 import requests
-import yaml
 import time
-import os.path
 from collections import namedtuple
+
+import yaml
 
 Config = namedtuple('Config', [
     'api_url',
@@ -48,41 +49,12 @@ def init(cfg_fn):
     )
 
     if CFG.cache_enabled:
-        dirname  = cacheoptions.get('dir',      default='.cache'),
-        backend  = cacheoptions.get('backend',  default='sqlite'),
-        lifetime = cacheoptions.get('lifetime', default=60)
-
+        dirname  = cacheoptions.get('dir',     '.cache'),
+        backend  = cacheoptions.get('backend', 'sqlite'),
+        lifetime = cacheoptions.get('lifetime', 60)
         __setup_cache(dirname, backend, lifetime)
 
     ready = True
-
-def __load_yaml(yaml_fn):
-    """
-    Loads the contents of a YAML file.
-
-    Arguments:
-      * yaml_fn (str) -- YAML filename
-    """
-    with open(yaml_fn, 'r') as f:
-        return yaml.safe_load(f)
-
-def __setup_cache(dirname, backend, lifetime):
-    """
-    Imports requests_cache and installs with configuration.
-
-    * Private function
-
-    Arguments:
-      * dirname (str) -- Cache location
-      * backend (str) -- cache backend
-      * lifetime (int) -- expire_after time in seconds
-    """
-    import requests_cache
-    requests_cache.install_cache(
-        cache_name   = os.path.join(dirname, 'lastfmget_cache'),
-        backend      = backend,
-        expire_after = lifetime
-    )
 
 def __get_response(payload):
     """
@@ -112,7 +84,7 @@ def __get_response(payload):
     response = requests.get(CFG.api_url, headers=CFG.headers, params=payload)
     responsejson = response.json()
 
-    if not CFG.cache_enabled or not response.from_cache:
+    if not __response_from_cache(response):
         __update_last_request_time()
     
     # Check for Last.fm errors
@@ -126,6 +98,40 @@ def __get_response(payload):
     # Response OK
     else:
         return responsejson
+
+def __load_yaml(yaml_fn):
+    """
+    Loads the contents of a YAML file.
+
+    Arguments:
+      * yaml_fn (str) -- YAML filename
+    """
+    with open(yaml_fn, 'r') as f:
+        return yaml.safe_load(f)
+
+def __setup_cache(dirname, backend, lifetime):
+    """
+    Imports requests_cache and installs with configuration.
+
+    * Private function
+
+    Arguments:
+      * dirname (str) -- Cache location
+      * backend (str) -- cache backend
+      * lifetime (int) -- expire_after time in seconds
+    """
+    import requests_cache
+    requests_cache.install_cache(
+        cache_name   = f'{dirname}/lastfmget_cache.sqlite',
+        backend      = backend,
+        expire_after = lifetime
+    )
+
+def __response_from_cache(response):
+    """
+    Returns true if the reponse was from the cache
+    """
+    return CFG.cache_enabled and response.from_cache
 
 def __update_last_request_time():
     """

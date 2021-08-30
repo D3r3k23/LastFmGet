@@ -16,6 +16,7 @@ def user_info(user):
         'name' (str) -- username
         'playcount' (int) -- number of scrobbles
         'registered' (int) -- registration date Unix timestamp
+        'url' (str) -- user's Last.fm URL
       }
     ```
     """
@@ -25,16 +26,47 @@ def user_info(user):
     return {
         'name'       : str(userinfo['name']),
         'playcount'  : int(userinfo['playcount']),
-        'registered' : int(userinfo['registered']['unixtime'])
+        'registered' : int(userinfo['registered']['unixtime']),
+        'url'        : str(userinfo['url'])
     }
 
-def user_recent_tracks(user, count=50):
+def user_currently_playing(user, count=50):
+    """
+    Gets the user's currently playing track.
+
+    Arguments:
+      * user (str) -- username
+
+    Returns:
+    ```
+      None if no track playing, else:
+      {
+        'name' (str) -- track name
+        'artist' (str) -- artist name
+        'album' (str) -- album name
+      }
+    ```
+    """
+    track = user_recent_tracks_raw(user, limit=10)['recenttracks']['track'][0]
+    if __is_now_playing(track):
+        return {
+            'name'   : str(track['name']),
+            'artist' : str(track['artist']['#text']),
+            'album'  : str(track['album']['#text'])
+        }
+    else:
+        return None
+
+def user_recent_tracks(user, count=50, includenowplaying=True):
     """
     Gets the user's recent tracks.
+
+    * Excludes currently playing tracks
 
     Arguments:
       * user (str) -- username
       * count (int) -- number of tracks
+      * includenowplaying (bool) -- whether to include currently playing tracks in result
 
     Returns:
     ```
@@ -43,28 +75,30 @@ def user_recent_tracks(user, count=50):
           'name' (str) -- track name
           'artist' (str) -- artist name
           'album' (str) -- album name
-          'now_playing' (bool) -- track is currently playing
+          'date' (int or None) -- date Unix timestamp - None if track is now playing
         }
       ]
     ```
     """
     MAX_PER_PAGE = 200
+    
     numpages = (count + MAX_PER_PAGE - 1) // MAX_PER_PAGE
     numtracksinlastpage = count - (numpages - 1) * MAX_PER_PAGE
 
     tracks = []
-    for i in range(1, numpages + 1):
-        numtracksinpage = numtracksinlastpage if i == numpages else MAX_PER_PAGE
-        raw = user_recent_tracks_raw(user, limit=numtracksinpage-1, page=i)
+    for pagenum in range(1, numpages + 1):
+        numtracksinpage = (MAX_PER_PAGE if pagenum < numpages else numtracksinlastpage)
+        raw = user_recent_tracks_raw(user, limit=numtracksinpage, page=pagenum)
         page = raw['recenttracks']['track']
 
         for track in page:
-            tracks.append({
-                'name'        :  str(track['name']),
-                'artist'      :  str(track['artist']['#text']),
-                'album'       :  str(track['album']['#text']),
-                'now_playing' : bool('@attr' in track and track['@attr']['nowplaying'] == 'true')
-            })
+            if not __is_now_playing(track):
+                tracks.append({
+                    'name'   : str(track['name']),
+                    'artist' : str(track['artist']['#text']),
+                    'album'  : str(track['album']['#text']),
+                    'date'   : int(track['date']['uts'])
+                })
     return tracks
 
 def user_top_artists(user, count=50, period=None):
@@ -248,13 +282,13 @@ def user_weekly_artist_chart(user, start=None, end=None):
     ```
     """
     raw = user_weekly_artist_chart_raw(user, start=start, end=end)
-    start = raw['weeklyartistchart']['@attr']['from']
-    end   = raw['weeklyartistchart']['@attr']['to']
+    start       = raw['weeklyartistchart']['@attr']['from']
+    end         = raw['weeklyartistchart']['@attr']['to']
     artistchart = raw['weeklyartistchart']['artist']
 
     return {
-        'start' : start,
-        'end'   : end,
+        'start' : int(start),
+        'end'   : int(end),
         'chart' : [
             {
                 'name'      : str(artist['name']),
@@ -296,13 +330,13 @@ def user_weekly_album_chart(user, start=None, end=None):
     ```
     """
     raw = user_weekly_album_chart_raw(user, start=start, end=end)
-    start = raw['weeklyalbumchart']['@attr']['from']
-    end   = raw['weeklyalbumchart']['@attr']['to']
+    start      = raw['weeklyalbumchart']['@attr']['from']
+    end        = raw['weeklyalbumchart']['@attr']['to']
     albumchart = raw['weeklyalbumchart']['album']
 
     return {
-        'start' : start,
-        'end'   : end,
+        'start' : int(start),
+        'end'   : int(end),
         'chart' : [
             {
                 'name'      : str(album['name']),
@@ -345,13 +379,13 @@ def user_weekly_track_chart(user, start=None, end=None):
     ```
     """
     raw = user_weekly_track_chart_raw(user, start=start, end=end)
-    start = raw['weeklyalbumchart']['@attr']['from']
-    end   = raw['weeklyalbumchart']['@attr']['to']
+    start      = raw['weeklyalbumchart']['@attr']['from']
+    end        = raw['weeklyalbumchart']['@attr']['to']
     trackchart = raw['weeklytrackchart']['track']
 
     return {
-        'start' : start,
-        'end'   : end,
+        'start' : int(start),
+        'end'   : int(end),
         'chart' : [
             {
                 'name'      : str(trackchart['name']),
@@ -362,3 +396,9 @@ def user_weekly_track_chart(user, start=None, end=None):
             for trackchart in trackchart
         ]
     }
+
+def __is_now_playing(track):
+    """
+    Returns True if the track is now playing.
+    """
+    return '@attr' in track and track['@attr']['nowplaying'] == 'true'

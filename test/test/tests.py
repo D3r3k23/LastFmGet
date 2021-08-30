@@ -1,6 +1,8 @@
 import lastfmget
 import unittest
 import random
+import inspect
+import sys
 
 random.seed()
 
@@ -8,9 +10,11 @@ user = 'D3r3k523'
 
 def run(cfg_fn):
     lastfmget.init(cfg_fn)
-
-    testcases = [ RawMethodTests, MethodTests ]
     
+    testcases = [ cls for _, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)
+        if issubclass(cls, unittest.TestCase)
+    ]
+
     for testcase in testcases:
         print(f'Running: {testcase.__name__}')
         suite = unittest.defaultTestLoader.loadTestsFromTestCase(testcase)
@@ -59,10 +63,10 @@ class MethodTests(unittest.TestCase):
         userinfo    = lastfmget.user_info(user)
         self.assertEqual(userinfo['name'], userinforaw['user']['name'])
 
-    def test_user_recent_tracks_count(self):
-        countvals = [ 0, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
+    def test_user_recent_tracks_count_with_now_playing(self):
+        countvals = [ 1, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
         for count in countvals:
-            recenttracks = lastfmget.user_recent_tracks(user, count=count)
+            recenttracks = lastfmget.user_recent_tracks(user, count=count, includenowplaying=True)
             self.assertEqual(len(recenttracks), count)
 
     # def test_user_recent_tracks_basic(self):

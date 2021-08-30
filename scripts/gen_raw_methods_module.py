@@ -1,11 +1,13 @@
 import argparse
-import yaml
 import os.path
 from collections import namedtuple
 
+import yaml
+
 Param = namedtuple('Param', [
     'name',
-    'default'
+    'default',
+    'alias'
 ])
 
 Method = namedtuple('Method', [
@@ -32,7 +34,8 @@ def main():
 def get_methods_list(methodsyaml):
     methods = []
 
-    paramdefaults = methodsyaml['param_defaults'] # dict
+    paramdefaults = methodsyaml['params']['defaults'] # dict
+    paramaliases  = methodsyaml['params']['aliases'] # dict
     methodgroups  = methodsyaml['groups'] # dict
 
     for group, groupdata in methodgroups.items(): # str, dict
@@ -45,7 +48,10 @@ def get_methods_list(methodsyaml):
             methodparams = method['params'] # list
 
             paramnames = groupparams + methodparams
-            params = [ Param(name, paramdefaults[name]) for name in paramnames ]
+            params = [
+                Param(name, paramdefaults[name], paramaliases.get(name, name))
+                for name in paramnames
+            ]
 
             methods.append(Method(functionname, methodname, params))
 
@@ -73,14 +79,14 @@ def get_method_str(method):
     lines = []
 
     methodargs = [
-        f'{param.name}={param.default}' if param.default is not None else param.name
+        f'{param.alias}={param.default}' if param.default is not None else param.alias
         for param in method.params
     ]
     argstring = ', '.join(methodargs)
 
     payload = { wrap_str('method'): wrap_str(method.method_name) }
     for param in method.params:
-        payload[wrap_str(param.name)] = param.name
+        payload[wrap_str(param.name)] = param.alias
 
     alignwidth = max(len(key) + 1 for key in payload.keys())
 

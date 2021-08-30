@@ -1,9 +1,10 @@
 import argparse
 import sys
+import os.path
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg_fn',  '-cfg', default='test/api_cfg.yaml')
+    parser.add_argument('--cfg_fn',  '-cfg', default='api_cfg.yaml')
     parser.add_argument('--use_src', '-src', action='store_true')
     args = parser.parse_args()
     
@@ -16,7 +17,7 @@ def main():
     tests.run(args.cfg_fn)
 
 def add_src_to_path():
-    sys.path.append('src')
+    sys.path.append(os.path.join('..', 'src'))
     
 if __name__ == '__main__':
     main()

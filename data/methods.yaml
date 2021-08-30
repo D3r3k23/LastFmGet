@@ -1,10 +1,14 @@
-param_defaults:
-  user:
-  limit: 50
-  page: 1
-  period: None
-  start: None
-  end: None
+params:
+  defaults:
+    user:
+    limit: 50
+    page: 1
+    period: None
+    from: None
+    to: None
+  aliases:
+    from: start
+    to: end
 
 groups:
   user:
@@ -37,12 +41,12 @@ groups:
 
       - function: weekly_artist_chart
         method: getWeeklyArtistChart
-        params: [start, end]
+        params: [from, to]
 
       - function: weekly_album_chart
         method: getWeeklyAlbumChart
-        params: [start, end]
+        params: [from, to]
 
       - function: weekly_track_chart
         method: getWeeklyTrackChart
-        params: [start, end]
+        params: [from, to]
