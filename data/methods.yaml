@@ -13,7 +13,6 @@ params:
 groups:
   user:
     common_params: [user]
-
     methods:
       - function: info
         method: getInfo
