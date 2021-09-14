@@ -35,7 +35,7 @@ def init(cfg_fn):
     global ready
 
     api_cfg_yaml = __load_yaml(cfg_fn)
-    
+
     headers = { 'user_agent': api_cfg_yaml['user_agent'] }
     callinterval = 1 / api_cfg_yaml['call_rate']
     cacheoptions = api_cfg_yaml['cache']
@@ -49,10 +49,7 @@ def init(cfg_fn):
     )
 
     if CFG.cache_enabled:
-        dirname  = cacheoptions.get('dir',     '.cache'),
-        backend  = cacheoptions.get('backend', 'sqlite'),
-        lifetime = cacheoptions.get('lifetime', 60)
-        __setup_cache(dirname, backend, lifetime)
+        __setup_cache(cacheoptions)
 
     ready = True
 
@@ -86,15 +83,15 @@ def __get_response(payload):
 
     if not __response_from_cache(response):
         __update_last_request_time()
-    
+
     # Check for Last.fm errors
     if 'error' in responsejson:
         raise_lastfm_error(responsejson['error'], responsejson['message'])
-    
+
     # Check for requests errors
     elif not response.ok:
         response.raise_for_status()
-    
+
     # Response OK
     else:
         return responsejson
@@ -109,7 +106,7 @@ def __load_yaml(yaml_fn):
     with open(yaml_fn, 'r') as f:
         return yaml.safe_load(f)
 
-def __setup_cache(dirname, backend, lifetime):
+def __setup_cache(options):
     """
     Imports requests_cache and installs with configuration.
 
@@ -121,8 +118,13 @@ def __setup_cache(dirname, backend, lifetime):
       * lifetime (int) -- expire_after time in seconds
     """
     import requests_cache
+
+    dirname  = options.get('dir',     '.cache'),
+    backend  = options.get('backend', 'sqlite'),
+    lifetime = options.get('lifetime', 60)
+
     requests_cache.install_cache(
-        cache_name   = f'{dirname}/lastfmget_cache.sqlite',
+        cache_name   = f'{dirname}/lastfmget_cache', ### lastfmget_cache.sqlite?
         backend      = backend,
         expire_after = lifetime
     )
