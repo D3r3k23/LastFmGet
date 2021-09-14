@@ -5,6 +5,8 @@
 [![Current Source](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
 
+**NOTE: This package is still in early development and is not fully tested. I made this just to use in a few of my own projects, so the interface may change according to my needs. If anyone wants to use the package, please let me know in the Discussions page.**
+
 LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
 * Provides functions for calling specific Last.fm API methods
