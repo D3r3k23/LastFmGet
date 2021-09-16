@@ -85,7 +85,7 @@ cache:
 ### Example Projects
 * [LastFmTimeline](https://github.com/D3r3k23/LastFmTimeline)
 * [PlaylistRanker](https://github.com/D3r3k23/PlaylistRanker)
-* [Tests](/test/src/Tests.py)
+* [Tests](/test/test/tests.py)
 
 
 ## Last.fm API Methods Available
