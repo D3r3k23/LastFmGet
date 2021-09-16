@@ -9,11 +9,9 @@ def main():
     parser.add_argument('user_agent')
     parser.add_argument('call_rate', type=int)
     parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
-    ##########################
     parser.add_argument('cache_dir',      default=None)
     parser.add_argument('cache_backend',  default=None)
     parser.add_argument('cache_lifetime', default=None, type=int)
-    ##########################
     args = parser.parse_args()
 
     cfg = {
@@ -21,7 +19,12 @@ def main():
         'api_key'    : args.api_key,
         'user_agent' : args.user_agent,
         'call_rate'  : args.call_rate,
-        'cache': { 'enable': args.enable_cache }
+        'cache': {
+            'enable'   : args.enable_cache,
+            'dir'      : args.cache_dir,
+            'backend'  : args.cache_backend,
+            'lifetime' : args.cache_lifetime
+        }
     }
 
     with open(args.fn, 'w') as f:
