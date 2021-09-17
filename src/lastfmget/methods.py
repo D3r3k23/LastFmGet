@@ -57,7 +57,7 @@ def user_currently_playing(user, count=50):
     else:
         return None
 
-def user_recent_tracks(user, count=50, includenowplaying=True):
+def user_recent_tracks(user, count=50):
     """
     Gets the user's recent tracks.
 
@@ -66,7 +66,6 @@ def user_recent_tracks(user, count=50, includenowplaying=True):
     Arguments:
       * user (str) -- username
       * count (int) -- number of tracks
-      * includenowplaying (bool) -- whether to include currently playing tracks in result
 
     Returns:
     ```
@@ -81,7 +80,7 @@ def user_recent_tracks(user, count=50, includenowplaying=True):
     ```
     """
     MAX_PER_PAGE = 200
-    
+
     numpages = (count + MAX_PER_PAGE - 1) // MAX_PER_PAGE
     numtracksinlastpage = count - (numpages - 1) * MAX_PER_PAGE
 
