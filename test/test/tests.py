@@ -4,6 +4,7 @@ import inspect
 import sys
 
 import lastfmget
+from lastfmget.raw_methods import user_recent_tracks_raw
 
 random.seed()
 
@@ -68,7 +69,19 @@ class MethodTests(unittest.TestCase):
         userinfo    = lastfmget.user_info(USER)
         self.assertEqual(userinfo['name'], userinforaw['user']['name'])
 
-    def test_user_recent_tracks_count_with_now_playing(self):
+    def test_user_currently_playing(self):
+        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
+        nowplaying       = lastfmget.user_now_playing(USER)
+        firsttrack = recenttracks_raw['recenttracks']['track'][0]
+        if nowplaying is None:
+            self.assertFalse('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+        else:
+            self.assertTrue('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+            self.assertEqual(nowplaying['name'],   firsttrack['name'])
+            self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
+            self.assertEqual(nowplaying['album'],  firsttrack['album']['#text'])
+
+    def test_user_recent_tracks_count(self):
         countvals = [ 1, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
         for count in countvals:
             recenttracks = lastfmget.user_recent_tracks(USER, count=count)

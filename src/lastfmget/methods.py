@@ -30,7 +30,7 @@ def user_info(user):
         'url'        : str(userinfo['url'])
     }
 
-def user_currently_playing(user, count=50):
+def user_now_playing(user):
     """
     Gets the user's currently playing track.
 

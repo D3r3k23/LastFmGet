@@ -34,7 +34,7 @@
                     <a class="function" href="#user_info">user_info</a>
             </li>
             <li>
-                    <a class="function" href="#user_currently_playing">user_currently_playing</a>
+                    <a class="function" href="#user_now_playing">user_now_playing</a>
             </li>
             <li>
                     <a class="function" href="#user_recent_tracks">user_recent_tracks</a>
@@ -113,7 +113,7 @@
         <span class="s1">&#39;url&#39;</span>        <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">userinfo</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span>
     <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">user_currently_playing</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_now_playing</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s currently playing track.</span>
 
@@ -550,17 +550,17 @@
 
 
                 </section>
-                <section id="user_currently_playing">
-                            <div class="attr function"><a class="headerlink" href="#user_currently_playing">#&nbsp;&nbsp</a>
+                <section id="user_now_playing">
+                            <div class="attr function"><a class="headerlink" href="#user_now_playing">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">user_currently_playing</span><span class="signature">(user, count=50)</span>:
+            <span class="name">user_now_playing</span><span class="signature">(user)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_currently_playing</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">user_now_playing</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets the user&#39;s currently playing track.</span>
 
