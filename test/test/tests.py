@@ -4,13 +4,14 @@ import inspect
 import sys
 
 import lastfmget
-lastfmget.init(cfg_fn)
 
 random.seed()
 
 USER = 'D3r3k523'
 
 def run(cfg_fn):
+    lastfmget.init(cfg_fn)
+
     testcases = [ cls for _, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)
         if issubclass(cls, unittest.TestCase)
     ]

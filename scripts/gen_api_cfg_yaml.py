@@ -21,9 +21,10 @@ def main():
         'call_rate'  : args.call_rate,
         'cache': { 'enable': args.enable_cache }
     }
-    if args.cache_dir      : cfg['cache']['dir']      = args.cache_dir
-    if args.cache_backend  : cfg['cache']['backend']  = args.cache_backend
-    if args.cache_lifetime : cfg['cache']['lifetime'] = args.cache_lifetime
+    if cfg['cache']['enable']:
+        if args.cache_dir      : cfg['cache']['dir']      = args.cache_dir
+        if args.cache_backend  : cfg['cache']['backend']  = args.cache_backend
+        if args.cache_lifetime : cfg['cache']['lifetime'] = args.cache_lifetime
 
     with open(args.fn, 'w') as f:
         yaml.dump(cfg, f, sort_keys=False)
