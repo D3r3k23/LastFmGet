@@ -37,7 +37,7 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 ### Config
 `lastfmget.init('api_cfg.yaml')`
 
-#### api_cfg.yaml example ([data/example_api_cfg.yaml](/data/example_api_cfg.yaml))
+#### api_cfg.yaml example ([data/example_api_cfg.yaml](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml))
 ```
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
@@ -85,7 +85,7 @@ cache:
 ### Example Projects
 * [LastFmTimeline](https://github.com/D3r3k23/LastFmTimeline)
 * [PlaylistRanker](https://github.com/D3r3k23/PlaylistRanker)
-* [Tests](/test/test/tests.py)
+* [Tests](https://github.com/D3r3k23/LastFmGet/blob/master/test/test/tests.py)
 
 
 ## Last.fm API Methods Available

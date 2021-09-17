@@ -47,12 +47,13 @@ def user_currently_playing(user, count=50):
       }
     ```
     """
-    track = user_recent_tracks_raw(user, limit=10)['recenttracks']['track'][0]
-    if __is_now_playing(track):
+    recenttracks_raw = user_recent_tracks_raw(user, limit=10)
+    firsttrack = recenttracks_raw['recenttracks']['track'][0]
+    if __is_now_playing(firsttrack):
         return {
-            'name'   : str(track['name']),
-            'artist' : str(track['artist']['#text']),
-            'album'  : str(track['album']['#text'])
+            'name'   : str(firsttrack['name']),
+            'artist' : str(firsttrack['artist']['#text']),
+            'album'  : str(firsttrack['album']['#text'])
         }
     else:
         return None
@@ -80,7 +81,6 @@ def user_recent_tracks(user, count=50):
     ```
     """
     MAX_PER_PAGE = 200
-
     numpages = (count + MAX_PER_PAGE - 1) // MAX_PER_PAGE
     numtracksinlastpage = count - (numpages - 1) * MAX_PER_PAGE
 

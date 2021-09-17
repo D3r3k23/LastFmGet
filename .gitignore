@@ -2,7 +2,7 @@
 /.VSCodeCounter/
 
 **/__pycache__/
-/.cache/
+**/.cache/
 
 /test/venv/
 /test/api_cfg.yaml

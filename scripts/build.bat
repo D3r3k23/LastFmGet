@@ -1,7 +1,12 @@
 @echo off
 
-@REM scripts\test.bat
-@REM scripts\gen_docs.bat
+call scripts\test.bat
+if %errorlevel% neq 0 (
+    echo Error: tests failed
+    exit /b %errorlevel%
+)
+
+call scripts\gen_docs.bat
 
 if exist dist\ rmdir /s /q dist\
 
