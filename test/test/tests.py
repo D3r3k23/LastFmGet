@@ -28,7 +28,6 @@ def run(cfg_fn):
 class RawMethodTests(unittest.TestCase):
     def test_user_info_basic(self):
         userinfo = lastfmget.user_info_raw(USER)
-        self.assertTrue(False)
         self.assertEqual(userinfo['user']['name'], USER)
 
     def test_user_recent_tracks_basic(self):
