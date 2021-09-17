@@ -1,4 +1,4 @@
-if [ -d test/venv ]; then rm -r -f test/venv; fi
+if [ -d test/venv ]; then rm -rf test/venv; fi
 
 python3 -m venv test/venv
 source test/venv/bin/activate
