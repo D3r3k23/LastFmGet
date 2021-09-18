@@ -1,7 +1,7 @@
 """
 Methods for getting formatted data from Last.fm.
 
-* Example responses shown in LastFmGet/test/dump
+* Example responses shown in LastFmGet/data/dump
 """
 from .raw_methods import *
 
