@@ -32,7 +32,7 @@
   {
     "name": "Alix Perez",
     "rank": 7,
-    "playcount": 647
+    "playcount": 639
   },
   {
     "name": "Radiohead",
@@ -42,7 +42,7 @@
   {
     "name": "Thou",
     "rank": 9,
-    "playcount": 421
+    "playcount": 418
   },
   {
     "name": "Darkside",
@@ -125,14 +125,14 @@
     "playcount": 253
   },
   {
-    "name": "Deftones",
+    "name": "Chelsea Wolfe",
     "rank": 26,
-    "playcount": 251
+    "playcount": 250
   },
   {
-    "name": "Chelsea Wolfe",
+    "name": "Deftones",
     "rank": 27,
-    "playcount": 250
+    "playcount": 248
   },
   {
     "name": "DIIV",
@@ -145,54 +145,54 @@
     "playcount": 245
   },
   {
-    "name": "Spiritualized",
-    "rank": 30,
-    "playcount": 234
-  },
-  {
     "name": "DJ Metatron",
-    "rank": 31,
+    "rank": 30,
     "playcount": 233
   },
   {
-    "name": "Osees",
-    "rank": 32,
-    "playcount": 224
+    "name": "Spiritualized",
+    "rank": 31,
+    "playcount": 227
   },
   {
     "name": "Daughters",
-    "rank": 33,
+    "rank": 32,
     "playcount": 218
   },
   {
     "name": "Bon Iver",
-    "rank": 34,
+    "rank": 33,
     "playcount": 217
   },
   {
     "name": "My Bloody Valentine",
-    "rank": 35,
+    "rank": 34,
     "playcount": 215
   },
   {
     "name": "Sonic Youth",
-    "rank": 36,
+    "rank": 35,
     "playcount": 214
   },
   {
     "name": "Ty Segall",
-    "rank": 37,
+    "rank": 36,
     "playcount": 210
   },
   {
     "name": "Daft Punk",
-    "rank": 38,
+    "rank": 37,
     "playcount": 203
   },
   {
     "name": "Jon Hopkins",
-    "rank": 39,
+    "rank": 38,
     "playcount": 203
+  },
+  {
+    "name": "Osees",
+    "rank": 39,
+    "playcount": 198
   },
   {
     "name": "Slowdive",
@@ -362,7 +362,7 @@
   {
     "name": "Alice in Chains",
     "rank": 73,
-    "playcount": 111
+    "playcount": 110
   },
   {
     "name": "Emancipator",
@@ -370,42 +370,42 @@
     "playcount": 107
   },
   {
-    "name": "Animal Collective",
+    "name": "Visages",
     "rank": 75,
-    "playcount": 104
+    "playcount": 105
   },
   {
-    "name": "Black Sabbath",
+    "name": "Animal Collective",
     "rank": 76,
     "playcount": 104
   },
   {
-    "name": "Arcade Fire",
+    "name": "Black Sabbath",
     "rank": 77,
+    "playcount": 104
+  },
+  {
+    "name": "Arcade Fire",
+    "rank": 78,
     "playcount": 103
   },
   {
     "name": "Bicep",
-    "rank": 78,
-    "playcount": 102
-  },
-  {
-    "name": "Calibre",
     "rank": 79,
     "playcount": 102
   },
   {
-    "name": "MF DOOM",
+    "name": "Calibre",
     "rank": 80,
+    "playcount": 102
+  },
+  {
+    "name": "MF DOOM",
+    "rank": 81,
     "playcount": 100
   },
   {
     "name": "Four Tet",
-    "rank": 81,
-    "playcount": 99
-  },
-  {
-    "name": "Visages",
     "rank": 82,
     "playcount": 99
   },
@@ -435,12 +435,12 @@
     "playcount": 92
   },
   {
-    "name": "Soundgarden",
+    "name": "Kiasmos",
     "rank": 88,
-    "playcount": 92
+    "playcount": 91
   },
   {
-    "name": "Kiasmos",
+    "name": "Soundgarden",
     "rank": 89,
     "playcount": 91
   },
