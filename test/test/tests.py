@@ -9,7 +9,7 @@ random.seed()
 
 USER = 'D3r3k523'
 
-def run(cfg_fn):
+def run(cfg_fn, failfast):
     lastfmget.init(cfg_fn)
 
     testcases = [ cls for _, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)
@@ -20,7 +20,7 @@ def run(cfg_fn):
     for testcase in testcases:
         print(f'Running TestCase: {testcase.__name__}')
         suite  = unittest.defaultTestLoader.loadTestsFromTestCase(testcase)
-        result = unittest.TextTestRunner().run(suite)
+        result = unittest.TextTestRunner(failfast=failfast).run(suite)
         results.append(result)
 
     return all(r.wasSuccessful() for r in results)

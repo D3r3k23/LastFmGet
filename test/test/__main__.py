@@ -6,6 +6,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--use_src',   action='store_true')
     parser.add_argument('--use_cache', action='store_true')
+    parser.add_argument('--failfast',  action='store_true')
     args = parser.parse_args()
 
     if args.use_src:
@@ -21,8 +22,8 @@ def main():
     else:
         cfg_fn = 'cfg/api_cfg_no_cache.yaml'
 
-    success = tests.run(cfg_fn)
-    return 0 if success else 1
+    passed = tests.run(cfg_fn, args.failfast)
+    return 0 if passed else 1
 
 def add_src_to_path():
     sys.path.append(os.path.join('..', 'src'))
