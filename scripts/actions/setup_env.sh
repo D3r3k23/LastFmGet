@@ -1,4 +1,4 @@
-scripts/actions/gen_api_cfg_yaml.sh
+scripts/actions/gen_cfg.sh
 
 if [ "$1" == "-src" ]; then
     pip install --upgrade --disable-pip-version-check -q -r requirements.txt
