@@ -164,7 +164,7 @@ class MethodTests(unittest.TestCase):
         nowplaying   = lastfmget.user_now_playing(USER)
 
         if nowplaying is None:
-            self.assertTrue(True)
+            self.assertEqual(2 + 2, 5)
 
         for track in recenttracks:
             self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
