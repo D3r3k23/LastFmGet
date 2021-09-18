@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Swans",
+    "rank": 1,
+    "playcount": 1566
+  },
+  {
+    "name": "Thee Oh Sees",
+    "rank": 2,
+    "playcount": 1121
+  },
+  {
+    "name": "Isis",
+    "rank": 3,
+    "playcount": 1062
+  },
+  {
+    "name": "Cult of Luna",
+    "rank": 4,
+    "playcount": 1019
+  },
+  {
+    "name": "Converge",
+    "rank": 5,
+    "playcount": 891
+  },
+  {
+    "name": "Neurosis",
+    "rank": 6,
+    "playcount": 880
+  },
+  {
+    "name": "Alix Perez",
+    "rank": 7,
+    "playcount": 647
+  },
+  {
+    "name": "Radiohead",
+    "rank": 8,
+    "playcount": 450
+  },
+  {
+    "name": "Thou",
+    "rank": 9,
+    "playcount": 421
+  },
+  {
+    "name": "Darkside",
+    "rank": 10,
+    "playcount": 401
+  },
+  {
+    "name": "Oathbreaker",
+    "rank": 11,
+    "playcount": 387
+  },
+  {
+    "name": "Daniel Avery",
+    "rank": 12,
+    "playcount": 379
+  },
+  {
+    "name": "Gojira",
+    "rank": 13,
+    "playcount": 371
+  },
+  {
+    "name": "King Gizzard & The Lizard Wizard",
+    "rank": 14,
+    "playcount": 357
+  },
+  {
+    "name": "Death Grips",
+    "rank": 15,
+    "playcount": 329
+  },
+  {
+    "name": "Mastodon",
+    "rank": 16,
+    "playcount": 300
+  },
+  {
+    "name": "The Dillinger Escape Plan",
+    "rank": 17,
+    "playcount": 281
+  },
+  {
+    "name": "Whirr",
+    "rank": 18,
+    "playcount": 280
+  },
+  {
+    "name": "Holy Fawn",
+    "rank": 19,
+    "playcount": 270
+  },
+  {
+    "name": "Nothing",
+    "rank": 20,
+    "playcount": 259
+  },
+  {
+    "name": "James Blake",
+    "rank": 21,
+    "playcount": 258
+  },
+  {
+    "name": "Nine Inch Nails",
+    "rank": 22,
+    "playcount": 255
+  },
+  {
+    "name": "Burial",
+    "rank": 23,
+    "playcount": 254
+  },
+  {
+    "name": "Beach House",
+    "rank": 24,
+    "playcount": 253
+  },
+  {
+    "name": "Deftones",
+    "rank": 25,
+    "playcount": 251
+  },
+  {
+    "name": "Chelsea Wolfe",
+    "rank": 26,
+    "playcount": 250
+  },
+  {
+    "name": "DIIV",
+    "rank": 27,
+    "playcount": 248
+  },
+  {
+    "name": "Monty",
+    "rank": 28,
+    "playcount": 247
+  },
+  {
+    "name": "Bonobo",
+    "rank": 29,
+    "playcount": 245
+  },
+  {
+    "name": "Spiritualized",
+    "rank": 30,
+    "playcount": 245
+  },
+  {
+    "name": "DJ Metatron",
+    "rank": 31,
+    "playcount": 233
+  },
+  {
+    "name": "Osees",
+    "rank": 32,
+    "playcount": 224
+  },
+  {
+    "name": "Daughters",
+    "rank": 33,
+    "playcount": 218
+  },
+  {
+    "name": "Bon Iver",
+    "rank": 34,
+    "playcount": 217
+  },
+  {
+    "name": "My Bloody Valentine",
+    "rank": 35,
+    "playcount": 215
+  },
+  {
+    "name": "Sonic Youth",
+    "rank": 36,
+    "playcount": 214
+  },
+  {
+    "name": "Ty Segall",
+    "rank": 37,
+    "playcount": 210
+  },
+  {
+    "name": "Daft Punk",
+    "rank": 38,
+    "playcount": 203
+  },
+  {
+    "name": "Jon Hopkins",
+    "rank": 39,
+    "playcount": 203
+  },
+  {
+    "name": "Slowdive",
+    "rank": 40,
+    "playcount": 198
+  },
+  {
+    "name": "Beach Fossils",
+    "rank": 41,
+    "playcount": 190
+  },
+  {
+    "name": "the spirit of the beehive",
+    "rank": 42,
+    "playcount": 185
+  },
+  {
+    "name": "Full of Hell",
+    "rank": 43,
+    "playcount": 181
+  },
+  {
+    "name": "Mogwai",
+    "rank": 44,
+    "playcount": 179
+  },
+  {
+    "name": "Pink Floyd",
+    "rank": 45,
+    "playcount": 179
+  },
+  {
+    "name": "True Widow",
+    "rank": 46,
+    "playcount": 177
+  },
+  {
+    "name": "Jesu",
+    "rank": 47,
+    "playcount": 174
+  },
+  {
+    "name": "Planning for Burial",
+    "rank": 48,
+    "playcount": 170
+  },
+  {
+    "name": "Ovlov",
+    "rank": 49,
+    "playcount": 167
+  },
+  {
+    "name": "Duster",
+    "rank": 50,
+    "playcount": 163
+  },
+  {
+    "name": "Tame Impala",
+    "rank": 51,
+    "playcount": 163
+  },
+  {
+    "name": "Electric Wizard",
+    "rank": 52,
+    "playcount": 154
+  },
+  {
+    "name": "Spacemen 3",
+    "rank": 53,
+    "playcount": 148
+  },
+  {
+    "name": "Noisia",
+    "rank": 54,
+    "playcount": 146
+  },
+  {
+    "name": "Emma Ruth Rundle",
+    "rank": 55,
+    "playcount": 142
+  },
+  {
+    "name": "Tim Hecker",
+    "rank": 56,
+    "playcount": 138
+  },
+  {
+    "name": "Primitive Man",
+    "rank": 57,
+    "playcount": 135
+  },
+  {
+    "name": "Oneohtrix Point Never",
+    "rank": 58,
+    "playcount": 134
+  },
+  {
+    "name": "Fucked Up",
+    "rank": 59,
+    "playcount": 133
+  },
+  {
+    "name": "Built to Spill",
+    "rank": 60,
+    "playcount": 131
+  },
+  {
+    "name": "Iceage",
+    "rank": 61,
+    "playcount": 131
+  },
+  {
+    "name": "Deafheaven",
+    "rank": 62,
+    "playcount": 130
+  },
+  {
+    "name": "M83",
+    "rank": 63,
+    "playcount": 130
+  },
+  {
+    "name": "Vein",
+    "rank": 64,
+    "playcount": 130
+  },
+  {
+    "name": "Southpacific",
+    "rank": 65,
+    "playcount": 129
+  },
+  {
+    "name": "Squid",
+    "rank": 66,
+    "playcount": 129
+  },
+  {
+    "name": "Kanye West",
+    "rank": 67,
+    "playcount": 126
+  },
+  {
+    "name": "Boards of Canada",
+    "rank": 68,
+    "playcount": 118
+  },
+  {
+    "name": "Skeptical",
+    "rank": 69,
+    "playcount": 118
+  },
+  {
+    "name": "Elder",
+    "rank": 70,
+    "playcount": 115
+  },
+  {
+    "name": "Greet Death",
+    "rank": 71,
+    "playcount": 113
+  },
+  {
+    "name": "Loathe",
+    "rank": 72,
+    "playcount": 113
+  },
+  {
+    "name": "Alice in Chains",
+    "rank": 73,
+    "playcount": 111
+  },
+  {
+    "name": "Emancipator",
+    "rank": 74,
+    "playcount": 107
+  },
+  {
+    "name": "Animal Collective",
+    "rank": 75,
+    "playcount": 104
+  },
+  {
+    "name": "Black Sabbath",
+    "rank": 76,
+    "playcount": 104
+  },
+  {
+    "name": "Arcade Fire",
+    "rank": 77,
+    "playcount": 103
+  },
+  {
+    "name": "Bicep",
+    "rank": 78,
+    "playcount": 102
+  },
+  {
+    "name": "Calibre",
+    "rank": 79,
+    "playcount": 102
+  },
+  {
+    "name": "MF DOOM",
+    "rank": 80,
+    "playcount": 100
+  },
+  {
+    "name": "Four Tet",
+    "rank": 81,
+    "playcount": 99
+  },
+  {
+    "name": "Big Red Machine",
+    "rank": 82,
+    "playcount": 98
+  },
+  {
+    "name": "The Field",
+    "rank": 83,
+    "playcount": 98
+  },
+  {
+    "name": "Nails",
+    "rank": 84,
+    "playcount": 96
+  },
+  {
+    "name": "The Avalanches",
+    "rank": 85,
+    "playcount": 94
+  },
+  {
+    "name": "Visages",
+    "rank": 86,
+    "playcount": 93
+  },
+  {
+    "name": "Ringo Deathstarr",
+    "rank": 87,
+    "playcount": 92
+  },
+  {
+    "name": "Soundgarden",
+    "rank": 88,
+    "playcount": 92
+  },
+  {
+    "name": "Kiasmos",
+    "rank": 89,
+    "playcount": 91
+  },
+  {
+    "name": "M-zine",
+    "rank": 90,
+    "playcount": 90
+  },
+  {
+    "name": "Freddie Gibbs",
+    "rank": 91,
+    "playcount": 89
+  },
+  {
+    "name": "Current Value",
+    "rank": 92,
+    "playcount": 86
+  },
+  {
+    "name": "Cloud Nothings",
+    "rank": 93,
+    "playcount": 85
+  },
+  {
+    "name": "Girl Band",
+    "rank": 94,
+    "playcount": 85
+  },
+  {
+    "name": "meth.",
+    "rank": 95,
+    "playcount": 84
+  },
+  {
+    "name": "Rolo Tomassi",
+    "rank": 96,
+    "playcount": 83
+  },
+  {
+    "name": "Queens of the Stone Age",
+    "rank": 97,
+    "playcount": 82
+  },
+  {
+    "name": "Madvillain",
+    "rank": 98,
+    "playcount": 81
+  },
+  {
+    "name": "No Joy",
+    "rank": 99,
+    "playcount": 81
+  },
+  {
+    "name": "Kyuss",
+    "rank": 100,
+    "playcount": 80
+  }
+]
