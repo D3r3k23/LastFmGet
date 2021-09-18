@@ -1,3 +1,4 @@
+mkdir test/cfg
 cfg_fn_no_cache=test/cfg/api_cfg_no_cache.yaml
 cfg_fn_with_cache=test/cfg/api_cfg_with_cache.yaml
 api_url=http://ws.audioscrobbler.com/2.0/
