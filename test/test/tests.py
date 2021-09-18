@@ -1,9 +1,9 @@
+import lastfmget
+
 import unittest
 import random
 import inspect
 import sys
-
-import lastfmget
 
 random.seed()
 
