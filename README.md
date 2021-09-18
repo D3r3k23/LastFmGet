@@ -8,7 +8,7 @@
 LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
 * Provides functions for calling specific Last.fm API methods
-* Must use a cfg YAML file and call lastfmget.init() before any API calls
+* Must use a cfg YAML file and call lastfmget.init() before use
 * Gets a response from the API in JSON and returns a Python dictionary
 * Examples of the response for each method shown in [test/dump](https://github.com/D3r3k23/LastFmGet/blob/master/data/dump/)
 * Use _raw method verions for more direct access to the Last.fm API
