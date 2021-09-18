@@ -10,7 +10,7 @@ fi
 cd test
 
 echo Running tests without cache
-python3 test --failfast
+python3 test $use_src --failfast
 if [ $? -ne 0 ]; then
     echo Tests failed without cache
     cd ..
@@ -18,7 +18,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo Running tests with cache
-python3 test --failtest --use_cache
+python3 test $use_src --failtest --use_cache
 if [ $? -ne 0 ]; then
     echo Tests failed with cache
     cd ..
