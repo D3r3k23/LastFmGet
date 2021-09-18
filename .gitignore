@@ -5,7 +5,7 @@
 **/.cache/
 
 /test/venv/
-/test/api_cfg.yaml
+/test/cfg/
 
 /dist/
 /src/lastfmget.egg-info/

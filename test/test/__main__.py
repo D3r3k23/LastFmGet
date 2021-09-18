@@ -4,8 +4,8 @@ import os.path
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg_fn',  '-cfg', default='api_cfg.yaml')
-    parser.add_argument('--use_src', '-src', action='store_true')
+    parser.add_argument('--use_src',   action='store_true')
+    parser.add_argument('--use_cache', action='store_true')
     args = parser.parse_args()
 
     if args.use_src:
@@ -13,8 +13,13 @@ def main():
         # Otherwise lastfmget should be installed with pip
         add_src_to_path()
 
+    if args.use_cache:
+        cfg_fn = 'cfg/api_cfg_with_cache.yaml'
+    else:
+        cfg_fn = 'cfg/api_cfg_no_cache.yaml'
+
     import tests # Import after potentially adding src dir to path
-    success = tests.run(args.cfg_fn)
+    success = tests.run(cfg_fn)
     return 0 if success else 1
 
 def add_src_to_path():

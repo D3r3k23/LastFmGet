@@ -114,17 +114,17 @@ def __setup_cache(options):
 
     Arguments:
       * dirname (str) -- Cache location
-      * backend (str) -- cache backend
+      * backend (str) -- Cache backend
       * lifetime (int) -- expire_after time in seconds
     """
     import requests_cache
 
-    dirname  = options.get('dir',     '.cache'),
-    backend  = options.get('backend', 'sqlite'),
+    dirname  = options.get('dir',     '.cache')
+    backend  = options.get('backend', 'sqlite')
     lifetime = options.get('lifetime', 60)
 
     requests_cache.install_cache(
-        cache_name   = f'{dirname}/lastfmget_cache', ### lastfmget_cache.sqlite?
+        cache_name   = f'{dirname}/lastfmget_cache',
         backend      = backend,
         expire_after = lifetime
     )
