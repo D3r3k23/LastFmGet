@@ -21,10 +21,10 @@ groups:
       - function: recent_tracks
         method: getRecentTracks
         params: [limit, page]
-      
+
       - function: top_artists
         method: getTopArtists
-        params: [limit, page, period] # Maybe not period?
+        params: [limit, page, period]
 
       - function: top_albums
         method: getTopAlbums
