@@ -71,6 +71,8 @@
     <span class="s1">&#39;cache_enabled&#39;</span>
 <span class="p">])</span>
 
+<span class="n">RESPONSE_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
+
 <span class="n">CFG</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">ready</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">lastrequesttime</span> <span class="o">=</span> <span class="kc">None</span>
@@ -132,7 +134,7 @@
         <span class="k">raise</span> <span class="n">NotConfiguredError</span>
 
     <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CFG</span><span class="o">.</span><span class="n">api_key</span>
-    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
+    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">RESPONSE_FORMAT</span>
 
     <span class="n">__rate_limiter</span><span class="p">()</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
@@ -320,7 +322,7 @@
         <span class="k">raise</span> <span class="n">NotConfiguredError</span>
 
     <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CFG</span><span class="o">.</span><span class="n">api_key</span>
-    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
+    <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">RESPONSE_FORMAT</span>
 
     <span class="n">__rate_limiter</span><span class="p">()</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>

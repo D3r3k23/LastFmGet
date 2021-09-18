@@ -1,10 +1,12 @@
 @echo off
 
-call scripts\test.bat
-set retcode=%errorlevel%
-if %retcode% neq 0 (
-    echo Error: tests failed
-    exit /b %retcode%
+if NOT "%1" == "-notest" (
+    call scripts\test.bat
+    set ret_code=%errorlevel%
+    if %ret_code% neq 0 (
+        echo Error: tests failed
+        exit /b %ret_code%
+    )
 )
 
 call scripts\gen_docs.bat

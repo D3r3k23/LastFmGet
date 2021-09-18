@@ -8,7 +8,7 @@
 **NOTE: This package is still in early development and is not fully tested. I made this just to use in a few of my own projects, so the interface may change according to my needs. If anyone wants to use the package, please let me know in the Discussions page.**
 
 **TO-DO:**
-* Verift the period parameter
+* Verify the period parameter
 * Increase test coverage (include exception tests)
 * Verify error checking and exception throwing in __get_response
 
@@ -18,6 +18,7 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 * Provides functions for calling specific Last.fm API methods
 * Must use a cfg YAML file and call lastfmget.init() before any API calls
 * Gets a response from the API in JSON and returns a Python dictionary
+* Examples of the response for each method shown in [test/dump](https://github.com/D3r3k23/LastFmGet/blob/master/test/dump/)
 * Use _raw method verions for more direct access to the Last.fm API
 
 
