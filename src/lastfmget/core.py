@@ -1,3 +1,16 @@
+"""
+Core functions for lastfmget
+
+Example api_cfg.yaml file:
+'''
+api_url: http://ws.audioscrobbler.com/2.0/
+api_key: <API KEY>
+user_agent: <USER AGENT>
+call_rate: 5 # Calls per second
+cache:
+  enable: true
+'''
+"""
 from .errors import *
 
 import requests

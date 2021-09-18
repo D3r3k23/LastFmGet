@@ -115,29 +115,29 @@
     "playcount": 254
   },
   {
-    "name": "Beach House",
+    "name": "Monty",
     "rank": 24,
+    "playcount": 254
+  },
+  {
+    "name": "Beach House",
+    "rank": 25,
     "playcount": 253
   },
   {
     "name": "Deftones",
-    "rank": 25,
+    "rank": 26,
     "playcount": 251
   },
   {
     "name": "Chelsea Wolfe",
-    "rank": 26,
+    "rank": 27,
     "playcount": 250
   },
   {
     "name": "DIIV",
-    "rank": 27,
-    "playcount": 248
-  },
-  {
-    "name": "Monty",
     "rank": 28,
-    "playcount": 247
+    "playcount": 248
   },
   {
     "name": "Bonobo",
@@ -147,7 +147,7 @@
   {
     "name": "Spiritualized",
     "rank": 30,
-    "playcount": 245
+    "playcount": 234
   },
   {
     "name": "DJ Metatron",
@@ -405,29 +405,29 @@
     "playcount": 99
   },
   {
-    "name": "Big Red Machine",
+    "name": "Visages",
     "rank": 82,
-    "playcount": 98
+    "playcount": 99
   },
   {
-    "name": "The Field",
+    "name": "Big Red Machine",
     "rank": 83,
     "playcount": 98
   },
   {
-    "name": "Nails",
+    "name": "The Field",
     "rank": 84,
+    "playcount": 98
+  },
+  {
+    "name": "Nails",
+    "rank": 85,
     "playcount": 96
   },
   {
     "name": "The Avalanches",
-    "rank": 85,
-    "playcount": 94
-  },
-  {
-    "name": "Visages",
     "rank": 86,
-    "playcount": 93
+    "playcount": 94
   },
   {
     "name": "Ringo Deathstarr",

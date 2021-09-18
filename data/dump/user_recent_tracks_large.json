@@ -1,50 +1,128 @@
 [
   {
+    "name": "Amaryllis",
+    "artist": "Visages",
+    "album": "About You EP",
+    "date": 1631952954
+  },
+  {
+    "name": "About You",
+    "artist": "Visages",
+    "album": "About You EP",
+    "date": 1631952675
+  },
+  {
+    "name": "Hurting Me",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631952335
+  },
+  {
+    "name": "The Moment",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631952040
+  },
+  {
+    "name": "Acid Heart",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631951722
+  },
+  {
+    "name": "Anecdote",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631951407
+  },
+  {
+    "name": "Polar Wind",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631951089
+  },
+  {
+    "name": "Whatever You Need",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950779
+  },
+  {
+    "name": "SVP",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950465
+  },
+  {
+    "name": "Righteous",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950090
+  },
+  {
+    "name": "F4DE",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631949781
+  },
+  {
+    "name": "Quest",
+    "artist": "Monty",
+    "album": "Blinded",
+    "date": 1631949463
+  },
+  {
+    "name": "Blinded",
+    "artist": "Monty",
+    "album": "Blinded",
+    "date": 1631949149
+  },
+  {
     "name": "Cursive",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948926
   },
   {
     "name": "Black Shield",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948611
   },
   {
     "name": "STK",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948301
   },
   {
     "name": "One Shot",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947985
   },
   {
     "name": "Intoxication",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947672
   },
   {
     "name": "Legion",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947358
   },
   {
     "name": "Limbo",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947044
   },
   {
     "name": "Hello",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631946753
   },
   {
@@ -2322,82 +2400,82 @@
     "date": 1631667633
   },
   {
-    "name": "'84 Pontiac Dream",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631667403
+    "name": "Aeon",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631839780
   },
   {
-    "name": "A Moment of Clarity",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631667352
+    "name": "Become the Ocean",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631839694
   },
   {
-    "name": "Dayvan Cowboy",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631666914
+    "name": "Strength of Fates",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631814090
   },
   {
-    "name": "Peacock Tail",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631666589
+    "name": "Locust Star",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631783347
   },
   {
-    "name": "Satellite Anthem Icarus",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631657664
+    "name": "Purify",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631782609
   },
   {
-    "name": "Chromakey Dreamcoat",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631657224
+    "name": "Eye",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631782291
   },
   {
-    "name": "Into the Rainbow Vein",
-    "artist": "Boards of Canada",
-    "album": "The Campfire Headphase",
-    "date": 1631657180
+    "name": "Rehumanize",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631782184
   },
   {
-    "name": "Under Your Spell",
-    "artist": "Desire",
-    "album": "Desire",
-    "date": 1631656883
+    "name": "Through Silver in Blood",
+    "artist": "Neurosis",
+    "album": "Through Silver in Blood",
+    "date": 1631781452
   },
   {
-    "name": "Whispers In The Hall",
-    "artist": "Chromatics",
-    "album": "Closer to Grey",
-    "date": 1631656678
+    "name": "Come to Daddy",
+    "artist": "The Dillinger Escape Plan",
+    "album": "Irony Is a Dead Scene",
+    "date": 1631781189
   },
   {
-    "name": "Closer to Grey",
-    "artist": "Chromatics",
-    "album": "Closer to Grey",
-    "date": 1631656513
+    "name": "When Good Dogs Do Bad Things",
+    "artist": "The Dillinger Escape Plan",
+    "album": "Irony Is a Dead Scene",
+    "date": 1631780828
   },
   {
-    "name": "Cherry",
-    "artist": "Chromatics",
-    "album": "Cherry",
-    "date": 1631655923
+    "name": "Pig Latin",
+    "artist": "The Dillinger Escape Plan",
+    "album": "Irony Is a Dead Scene",
+    "date": 1631780617
   },
   {
-    "name": "Running Up That Hill",
-    "artist": "Chromatics",
-    "album": "Night Drive",
-    "date": 1631655555
+    "name": "Hollywood Squares",
+    "artist": "The Dillinger Escape Plan",
+    "album": "Irony Is a Dead Scene",
+    "date": 1631780368
   },
   {
-    "name": "I Want Your Love",
-    "artist": "Chromatics",
-    "album": "Night Drive",
-    "date": 1631655056
+    "name": "The Perfect Design",
+    "artist": "The Dillinger Escape Plan",
+    "album": "Miss Machine",
+    "date": 1631780138
   },
   {
     "name": "Unretrofied",
@@ -2920,83 +2998,5 @@
     "artist": "Big Red Machine",
     "album": "How Long Do You Think It's Gonna Last?",
     "date": 1631730391
-  },
-  {
-    "name": "8:22am (feat. La Force)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631730127
-  },
-  {
-    "name": "Hutch (feat. Sharon Van Etten, Lisa Hannigan & Shara Nova)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631729903
-  },
-  {
-    "name": "Easy to Sabotage (feat. Naeem)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631727759
-  },
-  {
-    "name": "Mimi (feat. Ilsey)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631727579
-  },
-  {
-    "name": "Hoping Then",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631727342
-  },
-  {
-    "name": "Renegade (feat. Taylor Swift)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631727125
-  },
-  {
-    "name": "The Ghost of Cincinnati",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631727125
-  },
-  {
-    "name": "Renegade (feat. Taylor Swift)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631726870
-  },
-  {
-    "name": "Birch (Feat. Taylor Swift)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631726540
-  },
-  {
-    "name": "Phoenix (feat. Fleet Foxes & Ana\u00efs Mitchell)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631726285
-  },
-  {
-    "name": "Reese",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631725864
-  },
-  {
-    "name": "Latter Days (feat. Ana\u00efs Mitchell)",
-    "artist": "Big Red Machine",
-    "album": "How Long Do You Think It's Gonna Last?",
-    "date": 1631725646
-  },
-  {
-    "name": "Shadow (Maceo Plex Remix)",
-    "artist": "Chromatics",
-    "album": "Shadow (Remixes)",
-    "date": 1631701079
   }
 ]

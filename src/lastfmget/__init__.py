@@ -1,5 +1,6 @@
 """
-Python package for accessing Last.fm scrobble data using the public API.
+## LastFmGet
+A Python package for accessing Last.fm scrobble data using the public API.
 
 ### PyPi
 `pypi.org/project/lastfmget`

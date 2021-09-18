@@ -20,17 +20,17 @@
     "playcount": 74
   },
   {
-    "name": "Daft Punk",
+    "name": "Monty",
     "rank": 5,
+    "playcount": 69
+  },
+  {
+    "name": "Daft Punk",
+    "rank": 6,
     "playcount": 66
   },
   {
     "name": "Alix Perez",
-    "rank": 6,
-    "playcount": 62
-  },
-  {
-    "name": "Monty",
     "rank": 7,
     "playcount": 62
   },
@@ -145,74 +145,74 @@
     "playcount": 25
   },
   {
-    "name": "Loathe",
-    "rank": 30,
-    "playcount": 24
-  },
-  {
     "name": "Gojira",
-    "rank": 31,
+    "rank": 30,
     "playcount": 21
   },
   {
     "name": "Pola & Bryson",
-    "rank": 32,
+    "rank": 31,
     "playcount": 21
   },
   {
     "name": "Wire",
-    "rank": 33,
+    "rank": 32,
     "playcount": 21
   },
   {
     "name": "Devin Townsend",
-    "rank": 34,
+    "rank": 33,
     "playcount": 20
   },
   {
     "name": "Kiasmos",
-    "rank": 35,
+    "rank": 34,
     "playcount": 20
   },
   {
     "name": "Neurosis",
-    "rank": 36,
+    "rank": 35,
     "playcount": 20
   },
   {
     "name": "The Future Sound of London",
-    "rank": 37,
+    "rank": 36,
     "playcount": 19
   },
   {
     "name": "Ivy Lab",
-    "rank": 38,
+    "rank": 37,
     "playcount": 18
   },
   {
     "name": "The Beatles",
-    "rank": 39,
+    "rank": 38,
     "playcount": 18
   },
   {
     "name": "Max Cooper",
-    "rank": 40,
+    "rank": 39,
     "playcount": 16
   },
   {
     "name": "The Dillinger Escape Plan",
-    "rank": 41,
+    "rank": 40,
     "playcount": 15
   },
   {
     "name": "Mastodon",
-    "rank": 42,
+    "rank": 41,
     "playcount": 14
   },
   {
     "name": "Skeptical",
-    "rank": 43,
+    "rank": 42,
     "playcount": 14
+  },
+  {
+    "name": "Loathe",
+    "rank": 43,
+    "playcount": 13
   },
   {
     "name": "Monrroe",
@@ -220,32 +220,32 @@
     "playcount": 13
   },
   {
-    "name": "Chelsea Wolfe",
+    "name": "Visages",
     "rank": 45,
-    "playcount": 12
+    "playcount": 13
   },
   {
-    "name": "Chromatics",
+    "name": "Chelsea Wolfe",
     "rank": 46,
     "playcount": 12
   },
   {
-    "name": "Electric Wizard",
+    "name": "Chromatics",
     "rank": 47,
     "playcount": 12
   },
   {
-    "name": "Rival Consoles",
+    "name": "Electric Wizard",
     "rank": 48,
     "playcount": 12
   },
   {
-    "name": "Beach House",
+    "name": "Rival Consoles",
     "rank": 49,
-    "playcount": 11
+    "playcount": 12
   },
   {
-    "name": "The Glitch Mob",
+    "name": "Beach House",
     "rank": 50,
     "playcount": 11
   }

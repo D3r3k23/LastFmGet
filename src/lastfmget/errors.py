@@ -1,3 +1,6 @@
+"""
+Custom Exception subclasses for lastfmget
+"""
 from enum import Enum
 
 class __LastFmErrorCodes(Enum):

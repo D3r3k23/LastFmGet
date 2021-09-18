@@ -13,8 +13,7 @@ class DUMP:
     args: dict = field(default_factory=dict)
 
 def main():
-    lastfmget.init('cfg/api_cfg_with_cache.yaml')
-
+    lastfmget.init('test/cfg/api_cfg_with_cache.yaml')
     dumps = [
         DUMP(name=meth.__name__, meth=meth) for meth in [
             lastfmget.user_info,
@@ -50,14 +49,12 @@ def main():
              args={'count': 100, 'period': '12month'}
         )
     ]
-
     for d in dumps:
         dump(d)
 
 def dump(d):
-    fn = f'dump/{d.name}.json'
+    fn   = f'data/dump/{d.name}.json'
     data = d.meth(USER, **d.args)
-
     with open(fn, 'w') as f:
         json.dump(data, f, indent=2)
 

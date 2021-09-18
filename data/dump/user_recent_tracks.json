@@ -1,50 +1,128 @@
 [
   {
+    "name": "Amaryllis",
+    "artist": "Visages",
+    "album": "About You EP",
+    "date": 1631952954
+  },
+  {
+    "name": "About You",
+    "artist": "Visages",
+    "album": "About You EP",
+    "date": 1631952675
+  },
+  {
+    "name": "Hurting Me",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631952335
+  },
+  {
+    "name": "The Moment",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631952040
+  },
+  {
+    "name": "Acid Heart",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631951722
+  },
+  {
+    "name": "Anecdote",
+    "artist": "Visages",
+    "album": "Anecdotes",
+    "date": 1631951407
+  },
+  {
+    "name": "Polar Wind",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631951089
+  },
+  {
+    "name": "Whatever You Need",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950779
+  },
+  {
+    "name": "SVP",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950465
+  },
+  {
+    "name": "Righteous",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631950090
+  },
+  {
+    "name": "F4DE",
+    "artist": "Monty",
+    "album": "F4DE",
+    "date": 1631949781
+  },
+  {
+    "name": "Quest",
+    "artist": "Monty",
+    "album": "Blinded",
+    "date": 1631949463
+  },
+  {
+    "name": "Blinded",
+    "artist": "Monty",
+    "album": "Blinded",
+    "date": 1631949149
+  },
+  {
     "name": "Cursive",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948926
   },
   {
     "name": "Black Shield",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948611
   },
   {
     "name": "STK",
     "artist": "Monty",
-    "album": "Blinded EP",
+    "album": "Blinded",
     "date": 1631948301
   },
   {
     "name": "One Shot",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947985
   },
   {
     "name": "Intoxication",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947672
   },
   {
     "name": "Legion",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947358
   },
   {
     "name": "Limbo",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631947044
   },
   {
     "name": "Hello",
     "artist": "Monty",
-    "album": "Hello: EP",
+    "album": "Hello",
     "date": 1631946753
   },
   {
@@ -220,83 +298,5 @@
     "artist": "Gojira",
     "album": "From Mars to Sirius",
     "date": 1631937292
-  },
-  {
-    "name": "Where Dragons Dwell",
-    "artist": "Gojira",
-    "album": "From Mars to Sirius",
-    "date": 1631936890
-  },
-  {
-    "name": "Backbone",
-    "artist": "Gojira",
-    "album": "From Mars to Sirius",
-    "date": 1631936632
-  },
-  {
-    "name": "The Way of All Flesh",
-    "artist": "Gojira",
-    "album": "The Way of All Flesh",
-    "date": 1631936186
-  },
-  {
-    "name": "The Art of Dying",
-    "artist": "Gojira",
-    "album": "The Way of All Flesh",
-    "date": 1631935661
-  },
-  {
-    "name": "Toxic Garbage Island",
-    "artist": "Gojira",
-    "album": "The Way of All Flesh",
-    "date": 1631935413
-  },
-  {
-    "name": "Oroborus",
-    "artist": "Gojira",
-    "album": "The Way of All Flesh",
-    "date": 1631935092
-  },
-  {
-    "name": "Born in Winter",
-    "artist": "Gojira",
-    "album": "L'Enfant Sauvage",
-    "date": 1631934860
-  },
-  {
-    "name": "L'Enfant Sauvage",
-    "artist": "Gojira",
-    "album": "L'Enfant Sauvage",
-    "date": 1631934603
-  },
-  {
-    "name": "Explosia",
-    "artist": "Gojira",
-    "album": "L'Enfant Sauvage",
-    "date": 1631934209
-  },
-  {
-    "name": "Silvera",
-    "artist": "Gojira",
-    "album": "Magma",
-    "date": 1631933996
-  },
-  {
-    "name": "The Shooting Star",
-    "artist": "Gojira",
-    "album": "Magma",
-    "date": 1631933655
-  },
-  {
-    "name": "Grind",
-    "artist": "Gojira",
-    "album": "Fortitude",
-    "date": 1631933327
-  },
-  {
-    "name": "New Found",
-    "artist": "Gojira",
-    "album": "Fortitude",
-    "date": 1631931236
   }
 ]
