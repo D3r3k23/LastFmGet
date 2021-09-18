@@ -163,11 +163,9 @@ class MethodTests(unittest.TestCase):
         recenttracks = lastfmget.user_recent_tracks(USER, count=10)
         nowplaying   = lastfmget.user_now_playing(USER)
 
-        if nowplaying is None:
-            self.assertEqual(2 + 2, 5)
-
-        for track in recenttracks:
-            self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
+        if nowplaying is not None:
+            for track in recenttracks:
+                self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
 
     def test_user_recent_tracks_count(self):
         countvals = [ 1, 50, 199, 200, 201, 300 ] + random.choices(range(100, 501), k=3)
