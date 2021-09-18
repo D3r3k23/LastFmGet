@@ -1,5 +1,65 @@
 [
   {
+    "name": "Bufo",
+    "artist": "Scepticz",
+    "album": "Bufo EP",
+    "date": 1632003305
+  },
+  {
+    "name": "No One",
+    "artist": "Scepticz",
+    "album": "Bufo EP",
+    "date": 1632003000
+  },
+  {
+    "name": "Tough Luck",
+    "artist": "Styke",
+    "album": "Lunar",
+    "date": 1632002706
+  },
+  {
+    "name": "So Many Things",
+    "artist": "Styke",
+    "album": "Lunar",
+    "date": 1632002431
+  },
+  {
+    "name": "Retrospect",
+    "artist": "Styke",
+    "album": "Lunar",
+    "date": 1632002139
+  },
+  {
+    "name": "Lunar",
+    "artist": "Styke",
+    "album": "Lunar",
+    "date": 1632001824
+  },
+  {
+    "name": "Hedgehog",
+    "artist": "Bredren",
+    "album": "Foundations",
+    "date": 1632001466
+  },
+  {
+    "name": "Fallen Leaves",
+    "artist": "Bredren",
+    "album": "Foundations",
+    "date": 1632001191
+  },
+  {
+    "name": "Unidentified",
+    "artist": "Bredren",
+    "album": "Foundations",
+    "date": 1632000915
+  },
+  {
+    "name": "Foundations",
+    "artist": "Bredren",
+    "album": "Foundations",
+    "date": 1632000638
+  },
+  {
     "name": "Undress",
     "artist": "Bredren",
     "album": "Inferno",
@@ -238,65 +298,5 @@
     "artist": "Sustance",
     "album": "Temperance",
     "date": 1631956460
-  },
-  {
-    "name": "One Away",
-    "artist": "Sustance",
-    "album": "Temperance",
-    "date": 1631956087
-  },
-  {
-    "name": "Squirt",
-    "artist": "Sustance",
-    "album": "Temperance",
-    "date": 1631955686
-  },
-  {
-    "name": "Temperance",
-    "artist": "Sustance",
-    "album": "Temperance",
-    "date": 1631955415
-  },
-  {
-    "name": "Bristol Gang",
-    "artist": "Sustance",
-    "album": "Temperance",
-    "date": 1631955046
-  },
-  {
-    "name": "Yalda",
-    "artist": "Visages",
-    "album": "Dark Guru",
-    "date": 1631954689
-  },
-  {
-    "name": "Gymnop\u00e9dies",
-    "artist": "Visages",
-    "album": "Dark Guru",
-    "date": 1631954397
-  },
-  {
-    "name": "Egotrip",
-    "artist": "Visages",
-    "album": "Dark Guru",
-    "date": 1631954123
-  },
-  {
-    "name": "Dark Guru",
-    "artist": "Visages",
-    "album": "Dark Guru",
-    "date": 1631953885
-  },
-  {
-    "name": "Empire",
-    "artist": "Visages",
-    "album": "About You",
-    "date": 1631953592
-  },
-  {
-    "name": "Early Morning",
-    "artist": "Visages",
-    "album": "About You",
-    "date": 1631953290
   }
 ]
