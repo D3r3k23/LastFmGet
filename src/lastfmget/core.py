@@ -14,6 +14,8 @@ Config = namedtuple('Config', [
     'cache_enabled'
 ])
 
+RESPONSE_FORMAT = 'json'
+
 CFG = None
 ready = False
 lastrequesttime = None
@@ -75,7 +77,7 @@ def __get_response(payload):
         raise NotConfiguredError
 
     payload['api_key'] = CFG.api_key
-    payload['format']  = 'json'
+    payload['format']  = RESPONSE_FORMAT
 
     __rate_limiter()
     response = requests.get(CFG.api_url, headers=CFG.headers, params=payload)

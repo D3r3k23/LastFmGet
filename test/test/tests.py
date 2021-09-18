@@ -20,7 +20,7 @@ def run(cfg_fn):
     results = []
     for testcase in testcases:
         print(f'Running TestCase: {testcase.__name__}')
-        suite = unittest.defaultTestLoader.loadTestsFromTestCase(testcase)
+        suite  = unittest.defaultTestLoader.loadTestsFromTestCase(testcase)
         result = unittest.TextTestRunner().run(suite)
         results.append(result)
 
@@ -65,36 +65,31 @@ class RawMethodTests(unittest.TestCase):
 
 class MethodTests(unittest.TestCase):
     def test_user_info_compare_to_raw(self):
-        userinforaw = lastfmget.user_info_raw(USER)
-        userinfo    = lastfmget.user_info(USER)
-        self.assertEqual(userinfo['name'], userinforaw['user']['name'])
+        userinfo     = lastfmget.user_info(USER)
+        userinfo_raw = lastfmget.user_info_raw(USER)
 
-    def test_user_currently_playing(self):
-        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
-        nowplaying       = lastfmget.user_now_playing(USER)
-        firsttrack = recenttracks_raw['recenttracks']['track'][0]
-        if nowplaying is None:
-            self.assertFalse('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
-        else:
-            self.assertTrue('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
-            self.assertEqual(nowplaying['name'],   firsttrack['name'])
-            self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
-            self.assertEqual(nowplaying['album'],  firsttrack['album']['#text'])
+        self.assertEqual(userinfo['name'],           userinfo_raw['user']['name'])
+        self.assertEqual(userinfo['registered'], int(userinfo_raw['user']['registered']['unixtime']))
 
-    def test_user_recent_tracks_count(self):
-        countvals = [ 1, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
-        for count in countvals:
-            recenttracks = lastfmget.user_recent_tracks(USER, count=count)
-            self.assertEqual(len(recenttracks), count)
+    def test_user_recent_tracks_compare_to_raw(self):
+        recenttracks     = lastfmget.user_recent_tracks(USER, 25)
+        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER, limit=25)
+        recenttracks_raw_filtered = [
+            track for track in recenttracks_raw['recenttracks']['track']
+            if not ('@attr' in track and track['@attr']['nowplaying'] == 'true')
+        ]
 
-    # def test_user_recent_tracks_basic(self):
-    #     recenttracksraw = lastfmget.user_recent_tracks_raw(user)
-    #     recenttracks    = lastfmget.user_recent_tracks(user)
-    #     self.assertEqual(recenttracks['recenttracks']['@attr']['user'], user)
+        for track, track_raw in zip(recenttracks, recenttracks_raw_filtered):
+            self.assertEqual(track['name'],   track_raw['name'])
+            self.assertEqual(track['artist'], track_raw['artist']['#text'])
 
-    # def test_user_top_artists_basic(self):
-    #     topartists = lastfmget.user_top_artists(user)
-    #     self.assertEqual(topartists['topartists']['@attr']['user'], user)
+    def test_user_top_artists_compare_to_raw(self):
+        topartists     = lastfmget.user_top_artists(USER, 25)
+        topartists_raw = lastfmget.user_top_artists_raw(USER, limit=25)
+
+        for artist, artist_raw in zip(topartists, topartists_raw['topartists']['artist']):
+            self.assertEqual(artist['name'],          artist_raw['name'])
+            self.assertEqual(artist['playcount'], int(artist_raw['playcount']))
 
     # def test_user_top_albums_basic(self):
     #     topalbums = lastfmget.user_top_albums(user)
@@ -119,3 +114,21 @@ class MethodTests(unittest.TestCase):
     # def test_user_weekly_track_chart_basic(self):
     #     trackchart = lastfmget.user_weekly_track_chart(user)
     #     self.assertEqual(trackchart['weeklytrackchart']['@attr']['user'], user)
+
+    def test_user_currently_playing_basic(self):
+        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
+        nowplaying       = lastfmget.user_now_playing(USER)
+        firsttrack = recenttracks_raw['recenttracks']['track'][0]
+
+        if nowplaying is None:
+            self.assertFalse('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+        else:
+            self.assertTrue('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+            self.assertEqual(nowplaying['name'],   firsttrack['name'])
+            self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
+
+    def test_user_recent_tracks_count(self):
+        countvals = [ 1, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
+        for count in countvals:
+            recenttracks = lastfmget.user_recent_tracks(USER, count=count)
+            self.assertEqual(len(recenttracks), count)

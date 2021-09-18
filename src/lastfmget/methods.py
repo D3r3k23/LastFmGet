@@ -49,6 +49,7 @@ def user_now_playing(user):
     """
     recenttracks_raw = user_recent_tracks_raw(user, limit=10)
     firsttrack = recenttracks_raw['recenttracks']['track'][0]
+
     if __is_now_playing(firsttrack):
         return {
             'name'   : str(firsttrack['name']),
@@ -86,7 +87,7 @@ def user_recent_tracks(user, count=50):
 
     tracks = []
     for pagenum in range(1, numpages + 1):
-        numtracksinpage = (MAX_PER_PAGE if pagenum < numpages else numtracksinlastpage)
+        numtracksinpage = MAX_PER_PAGE if pagenum < numpages else numtracksinlastpage
         raw = user_recent_tracks_raw(user, limit=numtracksinpage, page=pagenum)
         page = raw['recenttracks']['track']
 

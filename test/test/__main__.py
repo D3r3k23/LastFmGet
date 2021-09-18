@@ -13,12 +13,14 @@ def main():
         # Otherwise lastfmget should be installed with pip
         add_src_to_path()
 
+    # Import after potentially adding src dir to path
+    import tests
+
     if args.use_cache:
         cfg_fn = 'cfg/api_cfg_with_cache.yaml'
     else:
         cfg_fn = 'cfg/api_cfg_no_cache.yaml'
 
-    import tests # Import after potentially adding src dir to path
     success = tests.run(cfg_fn)
     return 0 if success else 1
 
