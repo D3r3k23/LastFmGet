@@ -10,20 +10,20 @@ fi
 cd test
 
 echo Running tests without cache
-python3 test $use_src
-ret_code=$?
+python3 test --failfast
+if [ $? -ne 0 ]; then
+    echo Tests failed without cache
+    cd ..
+    exit 1
+fi
 
-if [ $ret_code -eq 0 ]; then
-    echo Running tests with cache
-    python3 test $use_src --use_cache
-    ret_code=$?
+echo Running tests with cache
+python3 test --failtest --use_cache
+if [ $? -ne 0 ]; then
+    echo Tests failed with cache
+    cd ..
+    exit 1
 fi
 
 cd ..
-
-if [ $ret_code -eq 0 ]; then
-    echo Tests passed
-else
-    echo Tests failed
-fi
-exit $ret_code
+echo Tests passed

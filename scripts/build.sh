@@ -1,10 +1,6 @@
 if [ "$1" != "-notest" ]; then
-    scripts/test.sh
-    ret_code=$?
-    if [ $ret_code -ne 0 ]; then
-        echo Error: tests failed
-        exit $ret_code
-    fi
+    scripts/test.sh --failfast
+    if [ $? -ne 0 ]; then exit 1 fi
 fi
 
 scripts/gen_docs.sh
