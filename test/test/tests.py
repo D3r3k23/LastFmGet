@@ -4,7 +4,6 @@ import inspect
 import sys
 
 import lastfmget
-from lastfmget.raw_methods import user_recent_tracks_raw
 
 random.seed()
 
@@ -164,6 +163,9 @@ class MethodTests(unittest.TestCase):
         recenttracks = lastfmget.user_recent_tracks(USER, count=10)
         nowplaying   = lastfmget.user_now_playing(USER)
 
+        if nowplaying is None:
+            self.assertTrue(True)
+
         for track in recenttracks:
             self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
 
@@ -192,8 +194,8 @@ class MethodTests(unittest.TestCase):
             self.assertEqual(len(toptracks), count)
 
     def test_weekly_artist_chart_from_previous_week(self):
-        chartlist = lastfmget.user_weekly_chart_list(USER)
-        randchart = random.choice(chartlist[-10:-1])
+        chartlist  = lastfmget.user_weekly_chart_list(USER)
+        randchart  = random.choice(chartlist[-10:-1])
         firstchart = chartlist[-1]
 
         randartistchart  = lastfmget.user_weekly_artist_chart(USER, randchart['start'],  randchart['end'])
@@ -203,8 +205,8 @@ class MethodTests(unittest.TestCase):
         self.assertNotEqual(randartistchart['end'],   firstartistchart['end'])
 
     def test_weekly_album_chart_from_previous_week(self):
-        chartlist = lastfmget.user_weekly_chart_list(USER)
-        randchart = random.choice(chartlist[-10:-1])
+        chartlist  = lastfmget.user_weekly_chart_list(USER)
+        randchart  = random.choice(chartlist[-10:-1])
         firstchart = chartlist[-1]
 
         randalbumchart  = lastfmget.user_weekly_album_chart(USER, randchart['start'],  randchart['end'])
@@ -214,8 +216,8 @@ class MethodTests(unittest.TestCase):
         self.assertNotEqual(randalbumchart['end'],   firstalbumchart['end'])
 
     def test_weekly_track_chart_from_previous_week(self):
-        chartlist = lastfmget.user_weekly_chart_list(USER)
-        randchart = random.choice(chartlist[-10:-1])
+        chartlist  = lastfmget.user_weekly_chart_list(USER)
+        randchart  = random.choice(chartlist[-10:-1])
         firstchart = chartlist[-1]
 
         randtrackchart  = lastfmget.user_weekly_track_chart(USER, randchart['start'],  randchart['end'])
@@ -223,3 +225,18 @@ class MethodTests(unittest.TestCase):
 
         self.assertNotEqual(randtrackchart['start'], firsttrackchart['start'])
         self.assertNotEqual(randtrackchart['end'],   firsttrackchart['end'])
+
+class ErrorTests(unittest.TestCase):
+    def test_not_configured(self):
+        lastfmget.core.ready = False
+        with self.assertRaises(lastfmget.NotConfiguredError):
+            lastfmget.user_info(USER)
+        lastfmget.core.ready = True
+
+    def test_user_not_found(self):
+        with self.assertRaises(lastfmget.ParamError):
+            lastfmget.user_info('ua26y7bv1gre2a4u9y54ob3vu3ab7vor9eav0o5ye')
+
+    def test_invalid_params(self):
+        with self.assertRaises(lastfmget.ParamError):
+            lastfmget.user_recent_tracks_raw(USER, 2000)

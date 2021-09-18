@@ -134,8 +134,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span>   <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span>       <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span>     <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
+    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span>      <span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
+    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span>    <span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">LastFmGetError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
@@ -143,49 +143,50 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic lastfmget error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls Exception(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmGetError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">NotConfiguredError</span><span class="p">(</span><span class="n">LastFmGetError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;lastfmget not configured - must call lastfmget.init() first.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;lastfmget not configured&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;NotConfiguredError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">LastFmError</span><span class="p">(</span><span class="n">LastFmGetError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generic Last.fm response error.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic Last.fm response error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ParamError</span><span class="p">(</span><span class="n">LastFmError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Invalid parameters provideded - example: user not found.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Invalid parameters provided - example: user not found.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ParamError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ApiKeyError</span><span class="p">(</span><span class="n">LastFmError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Last.fm API key is invalid.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid API key provided&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ApiKeyError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">OfflineError</span><span class="p">(</span><span class="n">LastFmError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Last.fm offline.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm is offline&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;OfflineError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">RateLimitError</span><span class="p">(</span><span class="n">LastFmError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Last.fm API rate limit exceeded - decrease api_cfg.call_rate.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm API rate limit exceeded&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RateLimitError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -211,8 +212,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span>   <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span>       <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span>     <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
+    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span>      <span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
+    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span>    <span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
 
@@ -246,7 +247,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic lastfmget error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls Exception(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmGetError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -266,7 +267,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic lastfmget error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls Exception(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmGetError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -293,7 +294,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;lastfmget not configured&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;NotConfiguredError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -313,7 +314,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;lastfmget not configured&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;NotConfiguredError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -340,7 +341,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic Last.fm response error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -360,7 +361,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Generic Last.fm response error&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmGetError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LastFmError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -383,16 +384,16 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">ParamError</span><span class="p">(</span><span class="n">LastFmError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Invalid parameters provideded - example: user not found.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Invalid parameters provided - example: user not found.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ParamError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Invalid parameters provideded - example: user not found.</p>
+            <div class="docstring"><p>Invalid parameters provided - example: user not found.</p>
 </div>
 
 
@@ -407,7 +408,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ParamError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -434,7 +435,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid API key provided&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ApiKeyError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -454,7 +455,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid API key provided&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ApiKeyError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -481,7 +482,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm is offline&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;OfflineError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -501,7 +502,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm is offline&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;OfflineError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -528,7 +529,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm API rate limit exceeded&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RateLimitError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -548,7 +549,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Last.fm API rate limit exceeded&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calls LastFmError(msg)&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RateLimitError: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>

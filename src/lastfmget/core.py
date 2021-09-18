@@ -1,10 +1,10 @@
 from .errors import *
 
 import requests
+import yaml
+
 import time
 from collections import namedtuple
-
-import yaml
 
 Config = namedtuple('Config', [
     'api_url',
@@ -37,6 +37,8 @@ def init(cfg_fn):
     global ready
 
     api_cfg_yaml = __load_yaml(cfg_fn)
+    if not api_cfg_yaml:
+        raise LastFmGetError(f'api_cfg YAML: ({cfg_fn}) not found')
 
     headers = { 'user_agent': api_cfg_yaml['user_agent'] }
     callinterval = 1 / api_cfg_yaml['call_rate']
@@ -104,9 +106,15 @@ def __load_yaml(yaml_fn):
 
     Arguments:
       * yaml_fn (str) -- YAML filename
+
+    Returns:
+        Loaded YAML file, None if not found
     """
-    with open(yaml_fn, 'r') as f:
-        return yaml.safe_load(f)
+    try:
+        with open(yaml_fn, 'r') as f:
+            return yaml.safe_load(f)
+    except (OSError, IOError):
+        return None
 
 def __setup_cache(options):
     """
