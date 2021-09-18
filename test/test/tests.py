@@ -160,8 +160,66 @@ class MethodTests(unittest.TestCase):
             self.assertEqual(nowplaying['name'],   firsttrack['name'])
             self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
 
+    def test_user_recent_tracks_for_now_playing(self):
+        recenttracks = lastfmget.user_recent_tracks(USER, count=10)
+        nowplaying   = lastfmget.user_now_playing(USER)
+
+        for track in recenttracks:
+            self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
+
     def test_user_recent_tracks_count(self):
-        countvals = [ 1, 50, 200, 300 ] + random.choices(range(100, 501), k=3)
+        countvals = [ 1, 50, 199, 200, 201, 300 ] + random.choices(range(100, 501), k=3)
         for count in countvals:
             recenttracks = lastfmget.user_recent_tracks(USER, count=count)
             self.assertEqual(len(recenttracks), count)
+
+    def test_user_top_artists_count(self):
+        countvals = [ 1, 200, 499, 500, 501, 600 ] + random.choices(range(100, 1001), k=5)
+        for count in countvals:
+            topartists = lastfmget.user_top_artists(USER, count=count)
+            self.assertEqual(len(topartists), count)
+
+    def test_user_top_albums_count(self):
+        countvals = [ 1, 200, 499, 500, 501, 600 ] + random.choices(range(100, 1001), k=5)
+        for count in countvals:
+            topalbums = lastfmget.user_top_albums(USER, count=count)
+            self.assertEqual(len(topalbums), count)
+
+    def test_user_top_tracks_count(self):
+        countvals = [ 1, 200, 499, 500, 501, 600 ] + random.choices(range(100, 1001), k=5)
+        for count in countvals:
+            toptracks = lastfmget.user_top_tracks(USER, count=count)
+            self.assertEqual(len(toptracks), count)
+
+    def test_weekly_artist_chart_from_previous_week(self):
+        chartlist = lastfmget.user_weekly_chart_list(USER)
+        randchart = random.choice(chartlist[-10:-1])
+        firstchart = chartlist[-1]
+
+        randartistchart  = lastfmget.user_weekly_artist_chart(USER, randchart['start'],  randchart['end'])
+        firstartistchart = lastfmget.user_weekly_artist_chart(USER, firstchart['start'], firstchart['end'])
+
+        self.assertNotEqual(randartistchart['start'], firstartistchart['start'])
+        self.assertNotEqual(randartistchart['end'],   firstartistchart['end'])
+
+    def test_weekly_album_chart_from_previous_week(self):
+        chartlist = lastfmget.user_weekly_chart_list(USER)
+        randchart = random.choice(chartlist[-10:-1])
+        firstchart = chartlist[-1]
+
+        randalbumchart  = lastfmget.user_weekly_album_chart(USER, randchart['start'],  randchart['end'])
+        firstalbumchart = lastfmget.user_weekly_album_chart(USER, firstchart['start'], firstchart['end'])
+
+        self.assertNotEqual(randalbumchart['start'], firstalbumchart['start'])
+        self.assertNotEqual(randalbumchart['end'],   firstalbumchart['end'])
+
+    def test_weekly_track_chart_from_previous_week(self):
+        chartlist = lastfmget.user_weekly_chart_list(USER)
+        randchart = random.choice(chartlist[-10:-1])
+        firstchart = chartlist[-1]
+
+        randtrackchart  = lastfmget.user_weekly_track_chart(USER, randchart['start'],  randchart['end'])
+        firsttrackchart = lastfmget.user_weekly_track_chart(USER, firstchart['start'], firstchart['end'])
+
+        self.assertNotEqual(randtrackchart['start'], firsttrackchart['start'])
+        self.assertNotEqual(randtrackchart['end'],   firsttrackchart['end'])

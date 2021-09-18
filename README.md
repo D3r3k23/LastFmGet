@@ -8,8 +8,9 @@
 **NOTE: This package is still in early development and is not fully tested. I made this just to use in a few of my own projects, so the interface may change according to my needs. If anyone wants to use the package, please let me know in the Discussions page.**
 
 **TO-DO:**
-* Increase test coverage
-* Verify error checking and exception throwing
+* Verift the period parameter
+* Increase test coverage (include exception tests)
+* Verify error checking and exception throwing in __get_response
 
 
 LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
