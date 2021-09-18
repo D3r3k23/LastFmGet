@@ -24,4 +24,4 @@ jobs:
         run: scripts/actions/test_source/setup_env.sh
 
       - name: Run Tests
-        run: scripts/actions/test_source/test.sh
+        run: scripts/actions/test.sh -src

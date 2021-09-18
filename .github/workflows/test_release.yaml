@@ -26,4 +26,4 @@ jobs:
         run: scripts/actions/test_release/setup_env.sh
 
       - name: Run Tests
-        run: scripts/actions/test_release/test.sh
+        run: scripts/actions/test.sh -release
