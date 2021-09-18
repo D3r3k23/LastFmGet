@@ -91,33 +91,66 @@ class MethodTests(unittest.TestCase):
             self.assertEqual(artist['name'],          artist_raw['name'])
             self.assertEqual(artist['playcount'], int(artist_raw['playcount']))
 
-    # def test_user_top_albums_basic(self):
-    #     topalbums = lastfmget.user_top_albums(user)
-    #     self.assertEqual(topalbums['topalbums']['@attr']['user'], user)
+    def test_user_top_albums_compare_to_raw(self):
+        topalbums     = lastfmget.user_top_albums(USER, 25)
+        topalbums_raw = lastfmget.user_top_albums_raw(USER, limit=25)
 
-    # def test_user_top_tracks_basic(self):
-    #     toptracks = lastfmget.user_top_tracks(user)
-    #     self.assertEqual(toptracks['toptracks']['@attr']['user'], user)
+        for album, album_raw in zip(topalbums, topalbums_raw['topalbums']['album']):
+            self.assertEqual(album['name'],          album_raw['name'])
+            self.assertEqual(album['playcount'], int(album_raw['playcount']))
 
-    # def test_user_weekly_chart_list_basic(self):
-    #     chartlist = lastfmget.user_weekly_chart_list(user)
-    #     self.assertEqual(chartlist['weeklychartlist']['@attr']['user'], user)
+    def test_user_top_tracks_compare_to_raw(self):
+        toptracks     = lastfmget.user_top_tracks(USER, 25)
+        toptracks_raw = lastfmget.user_top_tracks_raw(USER, limit=25)
 
-    # def test_user_weekly_artist_chart_basic(self):
-    #     artistchart = lastfmget.user_weekly_artist_chart(user)
-    #     self.assertEqual(artistchart['weeklyartistchart']['@attr']['user'], user)
+        for track, track_raw in zip(toptracks, toptracks_raw['toptracks']['track']):
+            self.assertEqual(track['name'],          track_raw['name'])
+            self.assertEqual(track['playcount'], int(track_raw['playcount']))
 
-    # def test_user_weekly_album_chart_basic(self):
-    #     albumchart = lastfmget.user_weekly_album_chart(user)
-    #     self.assertEqual(albumchart['weeklyalbumchart']['@attr']['user'], user)
+    def test_user_weekly_chart_list_compare_to_raw(self):
+        chartlist     = lastfmget.user_weekly_chart_list(USER)
+        chartlist_raw = lastfmget.user_weekly_chart_list_raw(USER)
 
-    # def test_user_weekly_track_chart_basic(self):
-    #     trackchart = lastfmget.user_weekly_track_chart(user)
-    #     self.assertEqual(trackchart['weeklytrackchart']['@attr']['user'], user)
+        for chart, chart_raw in list(zip(chartlist, chartlist_raw['weeklychartlist']['chart']))[-1:-11:-1]:
+            self.assertEqual(chart['start'], int(chart_raw['from']))
+            self.assertEqual(chart['end'],   int(chart_raw['to']))
+
+    def test_user_weekly_artist_chart_compare_to_raw(self):
+        artistchart     = lastfmget.user_weekly_artist_chart(USER, None, None)
+        artistchart_raw = lastfmget.user_weekly_artist_chart_raw(USER, start=None, end=None)
+
+        self.assertEqual(artistchart['start'], int(artistchart_raw['weeklyartistchart']['@attr']['from']))
+        self.assertEqual(artistchart['end'],   int(artistchart_raw['weeklyartistchart']['@attr']['to']))
+
+        for artist, artist_raw in list(zip(artistchart['chart'], artistchart_raw['weeklyartistchart']['artist']))[:10]:
+            self.assertEqual(artist['name'],          artist_raw['name'])
+            self.assertEqual(artist['playcount'], int(artist_raw['playcount']))
+
+    def test_user_weekly_album_chart_compare_to_raw(self):
+        albumchart     = lastfmget.user_weekly_album_chart(USER, None, None)
+        albumchart_raw = lastfmget.user_weekly_album_chart_raw(USER, start=None, end=None)
+
+        self.assertEqual(albumchart['start'], int(albumchart_raw['weeklyalbumchart']['@attr']['from']))
+        self.assertEqual(albumchart['end'],   int(albumchart_raw['weeklyalbumchart']['@attr']['to']))
+
+        for album, album_raw in list(zip(albumchart['chart'], albumchart_raw['weeklyalbumchart']['album']))[:10]:
+            self.assertEqual(album['name'],          album_raw['name'])
+            self.assertEqual(album['playcount'], int(album_raw['playcount']))
+
+    def test_user_weekly_track_chart_compare_to_raw(self):
+        trackchart     = lastfmget.user_weekly_track_chart(USER, None, None)
+        trackchart_raw = lastfmget.user_weekly_track_chart_raw(USER, start=None, end=None)
+
+        self.assertEqual(trackchart['start'], int(trackchart_raw['weeklytrackchart']['@attr']['from']))
+        self.assertEqual(trackchart['end'],   int(trackchart_raw['weeklytrackchart']['@attr']['to']))
+
+        for track, track_raw in list(zip(trackchart['chart'], trackchart_raw['weeklytrackchart']['track']))[:10]:
+            self.assertEqual(track['name'],          track_raw['name'])
+            self.assertEqual(track['playcount'], int(track_raw['playcount']))
 
     def test_user_currently_playing_basic(self):
-        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
         nowplaying       = lastfmget.user_now_playing(USER)
+        recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
         firsttrack = recenttracks_raw['recenttracks']['track'][0]
 
         if nowplaying is None:

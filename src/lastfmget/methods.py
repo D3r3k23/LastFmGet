@@ -379,8 +379,8 @@ def user_weekly_track_chart(user, start=None, end=None):
     ```
     """
     raw = user_weekly_track_chart_raw(user, start=start, end=end)
-    start      = raw['weeklyalbumchart']['@attr']['from']
-    end        = raw['weeklyalbumchart']['@attr']['to']
+    start      = raw['weeklytrackchart']['@attr']['from']
+    end        = raw['weeklytrackchart']['@attr']['to']
     trackchart = raw['weeklytrackchart']['track']
 
     return {
