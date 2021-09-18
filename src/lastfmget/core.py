@@ -1,5 +1,5 @@
 """
-Core functions for lastfmget
+Core functions for lastfmget.
 
 Example api_cfg.yaml file:
 '''

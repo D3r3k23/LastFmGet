@@ -1,5 +1,5 @@
 """
-Custom Exception subclasses for lastfmget
+Custom Exception subclasses for lastfmget.
 """
 from enum import Enum
 
