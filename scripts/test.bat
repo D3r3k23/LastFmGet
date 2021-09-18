@@ -15,4 +15,10 @@ if %ret_code% EQU 0 (
 )
 
 cd ..
+if %ret_code% EQU 0 (
+    echo Tests passed
+) else (
+    echo Tests failed
+)
+
 exit /b %ret_code%
