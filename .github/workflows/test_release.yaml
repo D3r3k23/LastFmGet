@@ -21,6 +21,8 @@ jobs:
 
       - name: Set Up Python
         uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
       - name: Set Up Environment
         run: scripts/actions/setup_env.sh -release
