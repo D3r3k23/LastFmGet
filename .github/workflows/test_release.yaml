@@ -16,16 +16,16 @@ jobs:
       TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set Up Python
+      - name: Set up Python3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Set Up Environment
+      - name: Set up environment
         run: scripts/actions/setup_env.sh -release
 
-      - name: Run Tests
+      - name: Run tests
         run: scripts/actions/test.sh -release
