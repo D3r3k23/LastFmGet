@@ -1,6 +1,6 @@
 @echo off
 
-if NOT "%1" == "-notest" (
+if NOT "%1" == "--notest" (
     call scripts\test.bat --failfast
     if NOT %errorlevel% == 0 exit /b 1
 )
