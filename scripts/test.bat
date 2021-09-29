@@ -8,7 +8,7 @@ if "%1" == "--failfast" (
 if not exist test\venv\ call scripts\setuptest.bat
 
 cd test
-
+f
 echo Running tests without cache
 venv\Scripts\python test --use_src %failfast%
 if NOT %errorlevel% == 0 (
