@@ -153,9 +153,10 @@ class MethodTests(unittest.TestCase):
         firsttrack = recenttracks_raw['recenttracks']['track'][0]
 
         if nowplaying is None:
-            self.assertFalse('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+            if '@attr' in firsttrack:
+                self.assertNotEqual(firsttrack['@attr']['nowplaying'], 'true')
         else:
-            self.assertTrue('@attr' in firsttrack and firsttrack['@attr']['nowplaying'] == 'true')
+            self.assertEqual(firsttrack['@attr']['nowplaying'], 'true')
             self.assertEqual(nowplaying['name'],   firsttrack['name'])
             self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
 
