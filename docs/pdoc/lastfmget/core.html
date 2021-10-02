@@ -139,7 +139,7 @@ cache:
 
     <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">firstattempt</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets a response from requests.</span>
 
@@ -164,7 +164,10 @@ cache:
     <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">RESPONSE_FORMAT</span>
 
     <span class="n">__rate_limiter</span><span class="p">()</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">LastFmGetError</span><span class="p">(</span><span class="s1">&#39;No internet connection found&#39;</span><span class="p">)</span>
     <span class="n">responsejson</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">__response_from_cache</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
@@ -172,7 +175,15 @@ cache:
 
     <span class="c1"># Check for Last.fm errors</span>
     <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">responsejson</span><span class="p">:</span>
-        <span class="n">raise_lastfm_error</span><span class="p">(</span><span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">],</span> <span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">raise_lastfm_error</span><span class="p">(</span><span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">],</span> <span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="n">LastFmError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">firstattempt</span><span class="p">:</span>
+                <span class="c1"># Try again one time for a response error. Necessary due to occasional random errors</span>
+                <span class="c1"># e.g. &quot;Operation failed: Most likely the backend service failed. Please try again.&quot;</span>
+                <span class="k">return</span> <span class="n">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">firstattempt</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
 
     <span class="c1"># Check for requests errors</span>
     <span class="k">elif</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
@@ -330,12 +341,12 @@ cache:
 
         
             <span class="def">def</span>
-            <span class="name">__get_response</span><span class="signature">(payload)</span>:
+            <span class="name">__get_response</span><span class="signature">(payload, firstattempt=True)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">firstattempt</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gets a response from requests.</span>
 
@@ -360,7 +371,10 @@ cache:
     <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">RESPONSE_FORMAT</span>
 
     <span class="n">__rate_limiter</span><span class="p">()</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CFG</span><span class="o">.</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">CFG</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">LastFmGetError</span><span class="p">(</span><span class="s1">&#39;No internet connection found&#39;</span><span class="p">)</span>
     <span class="n">responsejson</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">__response_from_cache</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
@@ -368,7 +382,15 @@ cache:
 
     <span class="c1"># Check for Last.fm errors</span>
     <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">responsejson</span><span class="p">:</span>
-        <span class="n">raise_lastfm_error</span><span class="p">(</span><span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">],</span> <span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">raise_lastfm_error</span><span class="p">(</span><span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">],</span> <span class="n">responsejson</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="n">LastFmError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">firstattempt</span><span class="p">:</span>
+                <span class="c1"># Try again one time for a response error. Necessary due to occasional random errors</span>
+                <span class="c1"># e.g. &quot;Operation failed: Most likely the backend service failed. Please try again.&quot;</span>
+                <span class="k">return</span> <span class="n">__get_response</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">firstattempt</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
 
     <span class="c1"># Check for requests errors</span>
     <span class="k">elif</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
