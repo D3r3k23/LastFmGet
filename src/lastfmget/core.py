@@ -70,7 +70,7 @@ def init(cfg_fn):
 
     ready = True
 
-def __get_response(payload):
+def __get_response(payload, firstattempt=True):
     """
     Gets a response from requests.
 
@@ -95,7 +95,10 @@ def __get_response(payload):
     payload['format']  = RESPONSE_FORMAT
 
     __rate_limiter()
-    response = requests.get(CFG.api_url, headers=CFG.headers, params=payload)
+    try:
+        response = requests.get(CFG.api_url, headers=CFG.headers, params=payload)
+    except requests.exceptions.ConnectionError:
+        raise LastFmGetError('No internet connection found')
     responsejson = response.json()
 
     if not __response_from_cache(response):
@@ -103,7 +106,15 @@ def __get_response(payload):
 
     # Check for Last.fm errors
     if 'error' in responsejson:
-        raise_lastfm_error(responsejson['error'], responsejson['message'])
+        try:
+            raise_lastfm_error(responsejson['error'], responsejson['message'])
+        except LastFmError:
+            if firstattempt:
+                # Try again one time for a response error. Necessary due to occasional random errors
+                # e.g. "Operation failed: Most likely the backend service failed. Please try again."
+                return __get_response(payload, firstattempt=False)
+            else:
+                raise
 
     # Check for requests errors
     elif not response.ok:
