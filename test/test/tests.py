@@ -147,7 +147,7 @@ class MethodTests(unittest.TestCase):
             self.assertEqual(track['name'],          track_raw['name'])
             self.assertEqual(track['playcount'], int(track_raw['playcount']))
 
-    def test_user_currently_playing_basic(self):
+    def test_user_now_playing_basic(self):
         nowplaying       = lastfmget.user_now_playing(USER)
         recenttracks_raw = lastfmget.user_recent_tracks_raw(USER)
         firsttrack = recenttracks_raw['recenttracks']['track'][0]
@@ -159,14 +159,6 @@ class MethodTests(unittest.TestCase):
             self.assertEqual(firsttrack['@attr']['nowplaying'], 'true')
             self.assertEqual(nowplaying['name'],   firsttrack['name'])
             self.assertEqual(nowplaying['artist'], firsttrack['artist']['#text'])
-
-    def test_user_recent_tracks_for_now_playing(self):
-        recenttracks = lastfmget.user_recent_tracks(USER, count=10)
-        nowplaying   = lastfmget.user_now_playing(USER)
-
-        if nowplaying is not None:
-            for track in recenttracks:
-                self.assertFalse(track['name'] == nowplaying['name'] and track['artist'] == nowplaying['artist'])
 
     def test_user_recent_tracks_count(self):
         countvals = [ 1, 50, 199, 200, 201, 300 ] + random.choices(range(100, 501), k=3)
