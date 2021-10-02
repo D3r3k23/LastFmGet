@@ -20,9 +20,9 @@ def raise_lastfm_error(code, msg):
     """
     if   code == __LastFmErrorCodes.InvalidParams.value : raise ParamError(msg)
     elif code == __LastFmErrorCodes.InvalidApiKey.value : raise ApiKeyError
-    elif code == __LastFmErrorCodes.Offline      .value : raise OfflineError
-    elif code == __LastFmErrorCodes.RateLimit    .value : raise RateLimitError
-    else: raise LastFmError(msg)
+    elif code == __LastFmErrorCodes.Offline.value       : raise OfflineError
+    elif code == __LastFmErrorCodes.RateLimit.value     : raise RateLimitError
+    else: raise LastFmError(code, msg)
 
 class LastFmGetError(Exception):
     """Generic lastfmget error."""
@@ -42,9 +42,10 @@ class NotConfiguredError(LastFmGetError):
 class LastFmError(LastFmGetError):
     """Generic Last.fm response error."""
 
-    def __init__(self, msg='Generic Last.fm response error'):
+    def __init__(self, msg='Generic Last.fm response error', code=None):
         """Calls LastFmGetError(msg)"""
-        super().__init__(f'LastFmError: {msg}')
+        codestr = f'[{code}]' if code else ''
+        super().__init__(f'LastFmError{codestr}: {msg}')
 
 class ParamError(LastFmError):
     """Invalid parameters provided - example: user not found."""
