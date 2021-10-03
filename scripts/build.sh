@@ -8,5 +8,4 @@ if [ $? -ne 0 ]; then exit 1 fi
 
 if [ -d dist ]; then rm -rf dist; fi
 
-pip install --upgrade --disable-pip-version-check -qqq build
 python3 -m build
