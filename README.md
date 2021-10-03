@@ -78,7 +78,7 @@ cache:
 ```
 >>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
 >>> [ artist['name'] for artist in topartists ]
-['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Thee Oh Sees', 'Bon Iver', 'Tame Impala', 'Arcade Fire', 'Beach House', 'Mastodon']
+['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Beach House', 'Mastodon']
 ```
 
 ### Example Projects
