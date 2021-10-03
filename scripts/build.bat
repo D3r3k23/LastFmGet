@@ -10,5 +10,4 @@ if NOT %errorlevel% == 0 exit /b 1
 
 if exist dist\ rmdir /s /q dist\
 
-pip install --upgrade --disable-pip-version-check -qqq build
 python -m build
