@@ -56,7 +56,7 @@ def get_methods_list(methodsyaml):
             methods.append(Method(functionname, methodname, params))
 
     return methods
-            
+
 def get_methods_module_str(methods, src_fn):
     lines = []
 
@@ -69,10 +69,10 @@ def get_methods_module_str(methods, src_fn):
     lines.append('')
 
     for method in methods:
-        methodstr = get_method_str(method)
-        lines.append(methodstr)
+        methodtext = get_method_str(method)
+        lines.append(methodtext)
         lines.append('')
-    
+
     return '\n'.join(lines)
 
 def get_method_str(method):

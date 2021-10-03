@@ -4,6 +4,8 @@ import json
 from dataclasses import dataclass, field
 from typing import Callable
 
+dumpdir = 'data/dump'
+
 USER = 'D3r3k523'
 
 @dataclass
@@ -53,7 +55,7 @@ def main():
         dump(d)
 
 def dump(d):
-    fn   = f'data/dump/{d.name}.json'
+    fn   = f'{dumpdir}/{d.name}.json'
     data = d.meth(USER, **d.args)
     with open(fn, 'w') as f:
         json.dump(data, f, indent=2)

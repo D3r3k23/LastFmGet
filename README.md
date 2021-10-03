@@ -18,7 +18,7 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 `pip install lastfmget`
 
 ### Dependencies
-* **Python3**
+* **python3**
 * requests
 * requests_cache (used only if configured in api_cfg.yaml)
 * pyyaml
