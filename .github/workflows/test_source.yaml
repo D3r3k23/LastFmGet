@@ -4,7 +4,7 @@ name: Current Source
 on:
   push:
     tags-ignore:
-      - *
+      - '*'
 
 jobs:
   Test:
