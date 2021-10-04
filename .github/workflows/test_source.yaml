@@ -1,16 +1,16 @@
 name: Current Source
 # Test the local lastfmget source code
-# Triggered on pushes
+# Triggered on pushes (but not releases)
 on:
   push:
     paths:
-      - src/lastfmget
-      - test/test
-      - scripts
-      - .github/workflows
-    branches:
+      - src/lastfmget/**
+      - test/test/**
+      - scripts/**
+      - .github/workflows/**
+    branches: # Any branch
       - '**'
-    tags-ignore:
+    tags-ignore: # Ignore releases
       - '**'
 
 jobs:
