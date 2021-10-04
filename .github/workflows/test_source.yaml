@@ -8,9 +8,9 @@ on:
     #   - test/test
     #   - scripts
     branches:
-      -'*'
+      -'**'
     tags-ignore:
-      - '*'
+      - '**'
 
 jobs:
   Test:
