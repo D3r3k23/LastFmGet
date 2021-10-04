@@ -3,10 +3,12 @@ name: Current Source
 # Triggered on pushes
 on:
   push:
-    paths:
-      - src/lastfmget
-      - test/test
-      - scripts
+    # paths:
+    #   - src/lastfmget
+    #   - test/test
+    #   - scripts
+    branches:
+      -'*'
     tags-ignore:
       - '*'
 
