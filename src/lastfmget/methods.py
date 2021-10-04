@@ -14,12 +14,12 @@ def user_info(user):
 
     Returns:
     ```
-      {
-        'name' (str) -- username
-        'playcount' (int) -- number of scrobbles
-        'registered' (int) -- registration date Unix timestamp
-        'url' (str) -- user's Last.fm URL
-      }
+    {
+      'name' (str) -- username
+      'playcount' (int) -- number of scrobbles
+      'registered' (int) -- registration date Unix timestamp
+      'url' (str) -- user's Last.fm URL
+    }
     ```
     """
     raw = user_info_raw(user)
@@ -41,12 +41,12 @@ def user_now_playing(user):
 
     Returns:
     ```
-      None if no track playing, else:
-      {
-        'name' (str) -- track name
-        'artist' (str) -- artist name
-        'album' (str) -- album name
-      }
+    None if no track playing, else:
+    {
+      'name' (str) -- track name
+      'artist' (str) -- artist name
+      'album' (str) -- album name
+    }
     ```
     """
     recenttracks_raw = user_recent_tracks_raw(user, limit=10)
@@ -73,14 +73,14 @@ def user_recent_tracks(user, count=50):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- track name
-          'artist' (str) -- artist name
-          'album' (str) -- album name
-          'date' (int or None) -- date Unix timestamp - None if track is now playing
-        }
-      ]
+    [
+      {
+        'name' (str) -- track name
+        'artist' (str) -- artist name
+        'album' (str) -- album name
+        'date' (int or None) -- date Unix timestamp - None if track is now playing
+      }
+    ]
     ```
     """
     MAX_PER_PAGE = 200
@@ -114,13 +114,13 @@ def user_top_artists(user, count=50, period=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- artist name
-          'rank' (int) -- ranking
-          'playcount' (int) -- number of scrobbles
-        }
-      ]
+    [
+      {
+        'name' (str) -- artist name
+        'rank' (int) -- ranking
+        'playcount' (int) -- number of scrobbles
+      }
+    ]
     ```
     """
     MAX_PER_PAGE = 500
@@ -152,14 +152,14 @@ def user_top_albums(user, count=50, period=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- album name
-          'artist' (str) -- artist name
-          'rank' (int) -- ranking
-          'playcount' (int) -- number of scrobbles
-        }
-      ]
+    [
+      {
+        'name' (str) -- album name
+        'artist' (str) -- artist name
+        'rank' (int) -- ranking
+        'playcount' (int) -- number of scrobbles
+      }
+    ]
     ```
     """
     MAX_PER_PAGE = 500
@@ -192,15 +192,15 @@ def user_top_tracks(user, count=50, period=None):
 
     Returns:
     ```
-      [
-        {
-          'name' (str) -- track name
-          'artist' (str) -- artist name
-          'rank' (int) -- ranking
-          'playcount' (int) -- number of scrobbles
-          'duration' (int) -- track duration (seconds)
-        }
-      ]
+    [
+      {
+        'name' (str) -- track name
+        'artist' (str) -- artist name
+        'rank' (int) -- ranking
+        'playcount' (int) -- number of scrobbles
+        'duration' (int) -- track duration (seconds)
+      }
+    ]
     ```
     """
     MAX_PER_PAGE = 500
@@ -235,12 +235,12 @@ def user_weekly_chart_list(user):
 
     Returns:
     ```
-      [
-        {
-          'start' (int) -- chart start Unix timestamp
-          'end' (int) -- chart end Unix timestamp
-        }
-      ]
+    [
+      {
+        'start' (int) -- chart start Unix timestamp
+        'end' (int) -- chart end Unix timestamp
+      }
+    ]
     ```
     """
     raw = user_weekly_chart_list_raw(user)
@@ -270,17 +270,17 @@ def user_weekly_artist_chart(user, start=None, end=None):
 
     Returns:
     ```
-      {
-        'start' (int) -- chart start Unix timestamp
-        'end' (int) -- chart end Unix timestamp
-        'chart': [
-          {
-            'name' (str) -- artist name
-            'rank' (int) -- chart rank
-            'playcount' (int) -- number of scrobbles in chart
-          }
-        ]
-      }
+    {
+      'start' (int) -- chart start Unix timestamp
+      'end' (int) -- chart end Unix timestamp
+      'chart': [
+        {
+          'name' (str) -- artist name
+          'rank' (int) -- chart rank
+          'playcount' (int) -- number of scrobbles in chart
+        }
+      ]
+    }
     ```
     """
     raw = user_weekly_artist_chart_raw(user, start=start, end=end)
@@ -317,18 +317,18 @@ def user_weekly_album_chart(user, start=None, end=None):
 
     Returns:
     ```
-      {
-        'start' (int) -- chart start Unix timestamp
-        'end' (int) -- chart end Unix timestamp
-        'chart': [
-          {
-            'name' (str) -- album name
-            'artist' (str) -- artist name
-            'rank' (int) -- chart rank
-            'playcount' (int) -- number of scrobbles in chart
-          }
-        ]
-      }
+    {
+      'start' (int) -- chart start Unix timestamp
+      'end' (int) -- chart end Unix timestamp
+      'chart': [
+        {
+          'name' (str) -- album name
+          'artist' (str) -- artist name
+          'rank' (int) -- chart rank
+          'playcount' (int) -- number of scrobbles in chart
+        }
+      ]
+    }
     ```
     """
     raw = user_weekly_album_chart_raw(user, start=start, end=end)
@@ -366,18 +366,18 @@ def user_weekly_track_chart(user, start=None, end=None):
 
     Returns:
     ```
-      {
-        'start' (int) -- chart start Unix timestamp
-        'end' (int) -- chart end Unix timestamp
-        'chart': [
-          {
-            'name' (str) -- track name
-            'artist' (str) -- artist name
-            'rank' (int) -- chart rank
-            'playcount' (int) -- number of scrobbles in chart
-          }
-        ]
-      }
+    {
+      'start' (int) -- chart start Unix timestamp
+      'end' (int) -- chart end Unix timestamp
+      'chart': [
+        {
+          'name' (str) -- track name
+          'artist' (str) -- artist name
+          'rank' (int) -- chart rank
+          'playcount' (int) -- number of scrobbles in chart
+        }
+      ]
+    }
     ```
     """
     raw = user_weekly_track_chart_raw(user, start=start, end=end)

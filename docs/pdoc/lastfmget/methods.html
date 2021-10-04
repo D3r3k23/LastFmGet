@@ -101,12 +101,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;name&#39; (str) -- username</span>
-<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        &#39;registered&#39; (int) -- registration date Unix timestamp</span>
-<span class="sd">        &#39;url&#39; (str) -- user&#39;s Last.fm URL</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;name&#39; (str) -- username</span>
+<span class="sd">      &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      &#39;registered&#39; (int) -- registration date Unix timestamp</span>
+<span class="sd">      &#39;url&#39; (str) -- user&#39;s Last.fm URL</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_info_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -128,12 +128,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      None if no track playing, else:</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;name&#39; (str) -- track name</span>
-<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">        &#39;album&#39; (str) -- album name</span>
-<span class="sd">      }</span>
+<span class="sd">    None if no track playing, else:</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;name&#39; (str) -- track name</span>
+<span class="sd">      &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">      &#39;album&#39; (str) -- album name</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">recenttracks_raw</span> <span class="o">=</span> <span class="n">user_recent_tracks_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -160,14 +160,14 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;album&#39; (str) -- album name</span>
-<span class="sd">          &#39;date&#39; (int or None) -- date Unix timestamp - None if track is now playing</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- track name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;album&#39; (str) -- album name</span>
+<span class="sd">        &#39;date&#39; (int or None) -- date Unix timestamp - None if track is now playing</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">200</span>
@@ -201,13 +201,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -239,14 +239,14 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- album name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- album name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -279,15 +279,15 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">          &#39;duration&#39; (int) -- track duration (seconds)</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- track name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">        &#39;duration&#39; (int) -- track duration (seconds)</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -322,12 +322,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">          &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_chart_list_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -357,17 +357,17 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_artist_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -404,18 +404,18 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- album name</span>
-<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- album name</span>
+<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_album_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -453,18 +453,18 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- track name</span>
-<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- track name</span>
+<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_track_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -515,12 +515,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;name&#39; (str) -- username</span>
-<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        &#39;registered&#39; (int) -- registration date Unix timestamp</span>
-<span class="sd">        &#39;url&#39; (str) -- user&#39;s Last.fm URL</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;name&#39; (str) -- username</span>
+<span class="sd">      &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      &#39;registered&#39; (int) -- registration date Unix timestamp</span>
+<span class="sd">      &#39;url&#39; (str) -- user&#39;s Last.fm URL</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_info_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -546,12 +546,12 @@
 
 <p>Returns:</p>
 
-<pre><code>  {
-    'name' (str) -- username
-    'playcount' (int) -- number of scrobbles
-    'registered' (int) -- registration date Unix timestamp
-    'url' (str) -- user's Last.fm URL
-  }
+<pre><code>{
+  'name' (str) -- username
+  'playcount' (int) -- number of scrobbles
+  'registered' (int) -- registration date Unix timestamp
+  'url' (str) -- user's Last.fm URL
+}
 </code></pre>
 </div>
 
@@ -576,12 +576,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      None if no track playing, else:</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;name&#39; (str) -- track name</span>
-<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">        &#39;album&#39; (str) -- album name</span>
-<span class="sd">      }</span>
+<span class="sd">    None if no track playing, else:</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;name&#39; (str) -- track name</span>
+<span class="sd">      &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">      &#39;album&#39; (str) -- album name</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">recenttracks_raw</span> <span class="o">=</span> <span class="n">user_recent_tracks_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -609,12 +609,12 @@
 
 <p>Returns:</p>
 
-<pre><code>  None if no track playing, else:
-  {
-    'name' (str) -- track name
-    'artist' (str) -- artist name
-    'album' (str) -- album name
-  }
+<pre><code>None if no track playing, else:
+{
+  'name' (str) -- track name
+  'artist' (str) -- artist name
+  'album' (str) -- album name
+}
 </code></pre>
 </div>
 
@@ -642,14 +642,14 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;album&#39; (str) -- album name</span>
-<span class="sd">          &#39;date&#39; (int or None) -- date Unix timestamp - None if track is now playing</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- track name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;album&#39; (str) -- album name</span>
+<span class="sd">        &#39;date&#39; (int or None) -- date Unix timestamp - None if track is now playing</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">200</span>
@@ -690,14 +690,14 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- track name
-      'artist' (str) -- artist name
-      'album' (str) -- album name
-      'date' (int or None) -- date Unix timestamp - None if track is now playing
-    }
-  ]
+<pre><code>[
+  {
+    'name' (str) -- track name
+    'artist' (str) -- artist name
+    'album' (str) -- album name
+    'date' (int or None) -- date Unix timestamp - None if track is now playing
+  }
+]
 </code></pre>
 </div>
 
@@ -724,13 +724,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -766,13 +766,13 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- artist name
-      'rank' (int) -- ranking
-      'playcount' (int) -- number of scrobbles
-    }
-  ]
+<pre><code>[
+  {
+    'name' (str) -- artist name
+    'rank' (int) -- ranking
+    'playcount' (int) -- number of scrobbles
+  }
+]
 </code></pre>
 </div>
 
@@ -799,14 +799,14 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- album name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- album name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -843,14 +843,14 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- album name
-      'artist' (str) -- artist name
-      'rank' (int) -- ranking
-      'playcount' (int) -- number of scrobbles
-    }
-  ]
+<pre><code>[
+  {
+    'name' (str) -- album name
+    'artist' (str) -- artist name
+    'rank' (int) -- ranking
+    'playcount' (int) -- number of scrobbles
+  }
+]
 </code></pre>
 </div>
 
@@ -877,15 +877,15 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;name&#39; (str) -- track name</span>
-<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">          &#39;rank&#39; (int) -- ranking</span>
-<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles</span>
-<span class="sd">          &#39;duration&#39; (int) -- track duration (seconds)</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;name&#39; (str) -- track name</span>
+<span class="sd">        &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">        &#39;rank&#39; (int) -- ranking</span>
+<span class="sd">        &#39;playcount&#39; (int) -- number of scrobbles</span>
+<span class="sd">        &#39;duration&#39; (int) -- track duration (seconds)</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">MAX_PER_PAGE</span> <span class="o">=</span> <span class="mi">500</span>
@@ -923,15 +923,15 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'name' (str) -- track name
-      'artist' (str) -- artist name
-      'rank' (int) -- ranking
-      'playcount' (int) -- number of scrobbles
-      'duration' (int) -- track duration (seconds)
-    }
-  ]
+<pre><code>[
+  {
+    'name' (str) -- track name
+    'artist' (str) -- artist name
+    'rank' (int) -- ranking
+    'playcount' (int) -- number of scrobbles
+    'duration' (int) -- track duration (seconds)
+  }
+]
 </code></pre>
 </div>
 
@@ -959,12 +959,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      [</span>
-<span class="sd">        {</span>
-<span class="sd">          &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">          &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        }</span>
-<span class="sd">      ]</span>
+<span class="sd">    [</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      }</span>
+<span class="sd">    ]</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_chart_list_raw</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
@@ -996,12 +996,12 @@
 
 <p>Returns:</p>
 
-<pre><code>  [
-    {
-      'start' (int) -- chart start Unix timestamp
-      'end' (int) -- chart end Unix timestamp
-    }
-  ]
+<pre><code>[
+  {
+    'start' (int) -- chart start Unix timestamp
+    'end' (int) -- chart end Unix timestamp
+  }
+]
 </code></pre>
 </div>
 
@@ -1033,17 +1033,17 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_artist_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -1086,17 +1086,17 @@
 
 <p>Returns:</p>
 
-<pre><code>  {
-    'start' (int) -- chart start Unix timestamp
-    'end' (int) -- chart end Unix timestamp
-    'chart': [
-      {
-        'name' (str) -- artist name
-        'rank' (int) -- chart rank
-        'playcount' (int) -- number of scrobbles in chart
-      }
-    ]
-  }
+<pre><code>{
+  'start' (int) -- chart start Unix timestamp
+  'end' (int) -- chart end Unix timestamp
+  'chart': [
+    {
+      'name' (str) -- artist name
+      'rank' (int) -- chart rank
+      'playcount' (int) -- number of scrobbles in chart
+    }
+  ]
+}
 </code></pre>
 </div>
 
@@ -1128,18 +1128,18 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- album name</span>
-<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- album name</span>
+<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_album_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -1183,18 +1183,18 @@
 
 <p>Returns:</p>
 
-<pre><code>  {
-    'start' (int) -- chart start Unix timestamp
-    'end' (int) -- chart end Unix timestamp
-    'chart': [
-      {
-        'name' (str) -- album name
-        'artist' (str) -- artist name
-        'rank' (int) -- chart rank
-        'playcount' (int) -- number of scrobbles in chart
-      }
-    ]
-  }
+<pre><code>{
+  'start' (int) -- chart start Unix timestamp
+  'end' (int) -- chart end Unix timestamp
+  'chart': [
+    {
+      'name' (str) -- album name
+      'artist' (str) -- artist name
+      'rank' (int) -- chart rank
+      'playcount' (int) -- number of scrobbles in chart
+    }
+  ]
+}
 </code></pre>
 </div>
 
@@ -1226,18 +1226,18 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">    ```</span>
-<span class="sd">      {</span>
-<span class="sd">        &#39;start&#39; (int) -- chart start Unix timestamp</span>
-<span class="sd">        &#39;end&#39; (int) -- chart end Unix timestamp</span>
-<span class="sd">        &#39;chart&#39;: [</span>
-<span class="sd">          {</span>
-<span class="sd">            &#39;name&#39; (str) -- track name</span>
-<span class="sd">            &#39;artist&#39; (str) -- artist name</span>
-<span class="sd">            &#39;rank&#39; (int) -- chart rank</span>
-<span class="sd">            &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
-<span class="sd">          }</span>
-<span class="sd">        ]</span>
-<span class="sd">      }</span>
+<span class="sd">    {</span>
+<span class="sd">      &#39;start&#39; (int) -- chart start Unix timestamp</span>
+<span class="sd">      &#39;end&#39; (int) -- chart end Unix timestamp</span>
+<span class="sd">      &#39;chart&#39;: [</span>
+<span class="sd">        {</span>
+<span class="sd">          &#39;name&#39; (str) -- track name</span>
+<span class="sd">          &#39;artist&#39; (str) -- artist name</span>
+<span class="sd">          &#39;rank&#39; (int) -- chart rank</span>
+<span class="sd">          &#39;playcount&#39; (int) -- number of scrobbles in chart</span>
+<span class="sd">        }</span>
+<span class="sd">      ]</span>
+<span class="sd">    }</span>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">user_weekly_track_chart_raw</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
@@ -1281,18 +1281,18 @@
 
 <p>Returns:</p>
 
-<pre><code>  {
-    'start' (int) -- chart start Unix timestamp
-    'end' (int) -- chart end Unix timestamp
-    'chart': [
-      {
-        'name' (str) -- track name
-        'artist' (str) -- artist name
-        'rank' (int) -- chart rank
-        'playcount' (int) -- number of scrobbles in chart
-      }
-    ]
-  }
+<pre><code>{
+  'start' (int) -- chart start Unix timestamp
+  'end' (int) -- chart end Unix timestamp
+  'chart': [
+    {
+      'name' (str) -- track name
+      'artist' (str) -- artist name
+      'rank' (int) -- chart rank
+      'playcount' (int) -- number of scrobbles in chart
+    }
+  ]
+}
 </code></pre>
 </div>
 
