@@ -81,9 +81,11 @@ def __get_response(payload, firstattempt=True):
     * Raises exceptions for known Last.fm errors and requests exceptions otherwise
 
     Arguments:
-      * payload (dict) -- Data for specific request
-        * method (str) -- Last.fm API method name
-        * params -- Last.fm API method params
+      payload:
+      {
+        'method' (str) -- Last.fm API method name
+        'params' -- Last.fm API method params
+      }
 
     Returns:
       Dict with response data

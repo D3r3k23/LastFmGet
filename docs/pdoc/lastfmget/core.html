@@ -150,9 +150,11 @@ cache:
 <span class="sd">    * Raises exceptions for known Last.fm errors and requests exceptions otherwise</span>
 
 <span class="sd">    Arguments:</span>
-<span class="sd">      * payload (dict) -- Data for specific request</span>
-<span class="sd">        * method (str) -- Last.fm API method name</span>
-<span class="sd">        * params -- Last.fm API method params</span>
+<span class="sd">      payload:</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;method&#39; (str) -- Last.fm API method name</span>
+<span class="sd">        &#39;params&#39; -- Last.fm API method params</span>
+<span class="sd">      }</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      Dict with response data</span>
@@ -357,9 +359,11 @@ cache:
 <span class="sd">    * Raises exceptions for known Last.fm errors and requests exceptions otherwise</span>
 
 <span class="sd">    Arguments:</span>
-<span class="sd">      * payload (dict) -- Data for specific request</span>
-<span class="sd">        * method (str) -- Last.fm API method name</span>
-<span class="sd">        * params -- Last.fm API method params</span>
+<span class="sd">      payload:</span>
+<span class="sd">      {</span>
+<span class="sd">        &#39;method&#39; (str) -- Last.fm API method name</span>
+<span class="sd">        &#39;params&#39; -- Last.fm API method params</span>
+<span class="sd">      }</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      Dict with response data</span>
@@ -413,15 +417,12 @@ cache:
 <li>Raises exceptions for known Last.fm errors and requests exceptions otherwise</li>
 </ul>
 
-<p>Arguments:</p>
-
-<ul>
-<li>payload (dict) -- Data for specific request
-<ul>
-<li>method (str) -- Last.fm API method name</li>
-<li>params -- Last.fm API method params</li>
-</ul></li>
-</ul>
+<p>Arguments:
+  payload:
+  {
+    'method' (str) -- Last.fm API method name
+    'params' -- Last.fm API method params
+  }</p>
 
 <p>Returns:
   Dict with response data</p>
