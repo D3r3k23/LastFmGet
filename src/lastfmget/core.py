@@ -84,7 +84,7 @@ def __get_response(payload, firstattempt=True):
       payload:
       {
         'method' (str) -- Last.fm API method name
-        'params' -- Last.fm API method params
+        params -- Last.fm API method params
       }
 
     Returns:
