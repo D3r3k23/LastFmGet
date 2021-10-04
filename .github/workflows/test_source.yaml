@@ -2,7 +2,6 @@ name: Current Source
 # Test the local lastfmget source code
 # Triggered on pushes (but not releases) or manually
 on:
-  workflow_dispatch
   push:
     paths:
       - src/lastfmget/**
@@ -13,6 +12,7 @@ on:
       - '**'
     tags-ignore: # Ignore releases
       - '**'
+  workflow_dispatch: # Manual trigger
 
 jobs:
   Test:
