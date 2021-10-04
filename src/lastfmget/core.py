@@ -79,6 +79,7 @@ def __get_response(payload, firstattempt=True):
     * Formats response with JSON
     * Called by raw_methods
     * Raises exceptions for known Last.fm errors and requests exceptions otherwise
+    * If LastFmGet error detected then one mroe attempt will be made
 
     Arguments:
       * payload:
@@ -87,6 +88,7 @@ def __get_response(payload, firstattempt=True):
         'method' (str) -- Last.fm API method name
         params -- Last.fm API method params
       }
+      * firstattempt (bool) -- If this call if the first attempt to get a response
       ```
 
     Returns:

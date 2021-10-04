@@ -148,14 +148,16 @@ cache:
 <span class="sd">    * Formats response with JSON</span>
 <span class="sd">    * Called by raw_methods</span>
 <span class="sd">    * Raises exceptions for known Last.fm errors and requests exceptions otherwise</span>
+<span class="sd">    * If LastFmGet error detected then one mroe attempt will be made</span>
 
 <span class="sd">    Arguments:</span>
-<span class="sd">      payload:</span>
+<span class="sd">      * payload:</span>
 <span class="sd">      ```</span>
 <span class="sd">      {</span>
 <span class="sd">        &#39;method&#39; (str) -- Last.fm API method name</span>
 <span class="sd">        params -- Last.fm API method params</span>
 <span class="sd">      }</span>
+<span class="sd">      * firstattempt (bool) -- If this call if the first attempt to get a response</span>
 <span class="sd">      ```</span>
 
 <span class="sd">    Returns:</span>
@@ -359,14 +361,16 @@ cache:
 <span class="sd">    * Formats response with JSON</span>
 <span class="sd">    * Called by raw_methods</span>
 <span class="sd">    * Raises exceptions for known Last.fm errors and requests exceptions otherwise</span>
+<span class="sd">    * If LastFmGet error detected then one mroe attempt will be made</span>
 
 <span class="sd">    Arguments:</span>
-<span class="sd">      payload:</span>
+<span class="sd">      * payload:</span>
 <span class="sd">      ```</span>
 <span class="sd">      {</span>
 <span class="sd">        &#39;method&#39; (str) -- Last.fm API method name</span>
 <span class="sd">        params -- Last.fm API method params</span>
 <span class="sd">      }</span>
+<span class="sd">      * firstattempt (bool) -- If this call if the first attempt to get a response</span>
 <span class="sd">      ```</span>
 
 <span class="sd">    Returns:</span>
@@ -419,16 +423,21 @@ cache:
 <li>Formats response with JSON</li>
 <li>Called by raw_methods</li>
 <li>Raises exceptions for known Last.fm errors and requests exceptions otherwise</li>
+<li>If LastFmGet error detected then one mroe attempt will be made</li>
 </ul>
 
-<p>Arguments:
-  payload:
-  <code>
-  {
-    'method' (str) -- Last.fm API method name
-    params -- Last.fm API method params
-  }
-</code></p>
+<p>Arguments:</p>
+
+<ul>
+<li>payload:
+```
+{
+'method' (str) -- Last.fm API method name
+params -- Last.fm API method params
+}</li>
+<li>firstattempt (bool) -- If this call if the first attempt to get a response
+```</li>
+</ul>
 
 <p>Returns:
   Dict with response data</p>
