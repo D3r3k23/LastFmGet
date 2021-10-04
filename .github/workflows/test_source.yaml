@@ -2,7 +2,9 @@ name: Current Source
 # Test the local lastfmget source code
 # Triggered on pushes
 on:
-  - push
+  push:
+    tags-ignore:
+      - *
 
 jobs:
   Test:
