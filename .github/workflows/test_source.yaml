@@ -1,7 +1,8 @@
 name: Current Source
 # Test the local lastfmget source code
-# Triggered on pushes (but not releases)
+# Triggered on pushes (but not releases) or manually
 on:
+  workflow_dispatch
   push:
     paths:
       - src/lastfmget/**

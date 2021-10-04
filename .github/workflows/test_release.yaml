@@ -1,7 +1,8 @@
 name: Latest Release
 # Test the latest version of lastfmget from pip
-# Triggered on Github releases
+# Triggered on Github releases (or manually)
 on:
+  workflow_dispatch
   release:
     types:
       - published
