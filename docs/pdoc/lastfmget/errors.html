@@ -129,7 +129,7 @@
     <span class="n">Offline</span>       <span class="o">=</span> <span class="mi">11</span>
     <span class="n">RateLimit</span>     <span class="o">=</span> <span class="mi">29</span>
 
-<span class="k">def</span> <span class="nf">raise_lastfm_error</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">raise_lastfm_error</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Raises a LastFmError exception.</span>
 
@@ -137,11 +137,12 @@
 <span class="sd">      * code (int) -- Error code</span>
 <span class="sd">      * msg (str) -- Error message</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span>   <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span>       <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span>     <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
-    <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="n">match</span> <span class="n">code</span><span class="p">:</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>       <span class="k">raise</span> <span class="n">OfflineError</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>     <span class="k">raise</span> <span class="n">RateLimitError</span>
+        <span class="n">case</span> <span class="n">_</span><span class="p">:</span>                                      <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">LastFmGetError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generic lastfmget error.&quot;&quot;&quot;</span>
@@ -203,12 +204,12 @@
 
         
             <span class="def">def</span>
-            <span class="name">raise_lastfm_error</span><span class="signature">(code, msg)</span>:
+            <span class="name">raise_lastfm_error</span><span class="signature">(code, msg=&#39;&#39;)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">raise_lastfm_error</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">raise_lastfm_error</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Raises a LastFmError exception.</span>
 
@@ -216,11 +217,12 @@
 <span class="sd">      * code (int) -- Error code</span>
 <span class="sd">      * msg (str) -- Error message</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span>   <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span>       <span class="p">:</span> <span class="k">raise</span> <span class="n">OfflineError</span>
-    <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span>     <span class="p">:</span> <span class="k">raise</span> <span class="n">RateLimitError</span>
-    <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="n">match</span> <span class="n">code</span><span class="p">:</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidParams</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ParamError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">InvalidApiKey</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ApiKeyError</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">Offline</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>       <span class="k">raise</span> <span class="n">OfflineError</span>
+        <span class="n">case</span> <span class="n">__LastFmErrorCodes</span><span class="o">.</span><span class="n">RateLimit</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>     <span class="k">raise</span> <span class="n">RateLimitError</span>
+        <span class="n">case</span> <span class="n">_</span><span class="p">:</span>                                      <span class="k">raise</span> <span class="n">LastFmError</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
 </pre></div>
 
         </details>

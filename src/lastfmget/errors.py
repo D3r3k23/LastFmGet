@@ -10,7 +10,7 @@ class __LastFmErrorCodes(Enum):
     Offline       = 11
     RateLimit     = 29
 
-def raise_lastfm_error(code, msg):
+def raise_lastfm_error(code, msg=''):
     """
     Raises a LastFmError exception.
 
@@ -18,11 +18,12 @@ def raise_lastfm_error(code, msg):
       * code (int) -- Error code
       * msg (str) -- Error message
     """
-    if   code == __LastFmErrorCodes.InvalidParams.value : raise ParamError(msg)
-    elif code == __LastFmErrorCodes.InvalidApiKey.value : raise ApiKeyError
-    elif code == __LastFmErrorCodes.Offline.value       : raise OfflineError
-    elif code == __LastFmErrorCodes.RateLimit.value     : raise RateLimitError
-    else: raise LastFmError(code, msg)
+    match code:
+        case __LastFmErrorCodes.InvalidParams.value: raise ParamError(msg)
+        case __LastFmErrorCodes.InvalidApiKey.value: raise ApiKeyError
+        case __LastFmErrorCodes.Offline.value:       raise OfflineError
+        case __LastFmErrorCodes.RateLimit.value:     raise RateLimitError
+        case _:                                      raise LastFmError(code, msg)
 
 class LastFmGetError(Exception):
     """Generic lastfmget error."""
