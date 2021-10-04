@@ -82,14 +82,16 @@ def __get_response(payload, firstattempt=True):
     * If LastFmGet error detected then one mroe attempt will be made
 
     Arguments:
-      * payload:
-      ```
+    * payload:
+
+    ```
       {
         'method' (str) -- Last.fm API method name
         params -- Last.fm API method params
       }
-      * firstattempt (bool) -- If this call if the first attempt to get a response
-      ```
+    ```
+
+    * firstattempt (bool) -- If this call if the first attempt to get a response
 
     Returns:
       Dict with response data
