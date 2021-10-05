@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python3
         uses: actions/setup-python@v2
         with:
-          python-version: '>= 3.10'
+          python-version: '3.10.x'
 
       - name: Set up environment
         run: scripts/actions/setup_env.sh -src
