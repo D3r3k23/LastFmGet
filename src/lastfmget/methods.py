@@ -250,8 +250,7 @@ def user_weekly_chart_list(user):
         {
             'start' : int(chart['from']),
             'end'   : int(chart['to'])
-        }
-        for chart in charts
+        } for chart in charts
     ]
 
 def user_weekly_artist_chart(user, start=None, end=None):
@@ -296,8 +295,7 @@ def user_weekly_artist_chart(user, start=None, end=None):
                 'name'      : str(artist['name']),
                 'rank'      : int(artist['@attr']['rank']),
                 'playcount' : int(artist['playcount'])
-            }
-            for artist in artistchart
+            } for artist in artistchart
         ]
     }
 
@@ -345,8 +343,7 @@ def user_weekly_album_chart(user, start=None, end=None):
                 'artist'    : str(album['artist']['#text']),
                 'rank'      : int(album['@attr']['rank']),
                 'playcount' : int(album['playcount'])
-            }
-            for album in albumchart
+            } for album in albumchart
         ]
     }
 
@@ -390,12 +387,11 @@ def user_weekly_track_chart(user, start=None, end=None):
         'end'   : int(end),
         'chart' : [
             {
-                'name'      : str(trackchart['name']),
-                'artist'    : str(trackchart['artist']['#text']),
-                'rank'      : int(trackchart['@attr']['rank']),
-                'playcount' : int(trackchart['playcount'])
-            }
-            for trackchart in trackchart
+                'name'      : str(track['name']),
+                'artist'    : str(track['artist']['#text']),
+                'rank'      : int(track['@attr']['rank']),
+                'playcount' : int(track['playcount'])
+            } for track in trackchart
         ]
     }
 
