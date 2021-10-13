@@ -8,8 +8,9 @@
 LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
 * Provides functions for calling specific Last.fm API methods
-* Must use a cfg YAML file and call lastfmget.init() before use
-* Gets a response from the API in JSON and returns a Python dictionary
+* Methods request data from the Last.fm API and return the response in a Python dictionary
+* Must use a cfg YAML file and call lastfmget.init() before use (this allows you to place your
+    private key in an untracked file)
 * Examples of the response for each method shown in [data/dump](https://github.com/D3r3k23/LastFmGet/blob/master/data/dump/)
 * Use _raw method verions for more direct access to the Last.fm API
 
@@ -78,7 +79,7 @@ cache:
 ```
 >>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
 >>> [ artist['name'] for artist in topartists ]
-['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Tame Impala', 'Arcade Fire', 'Beach House', 'Mastodon']
+['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Bon Iver', 'Thee Oh Sees', 'Mastodon', 'Tame Impala', 'Arcade Fire', 'Beach House']
 ```
 
 ### Example Projects
