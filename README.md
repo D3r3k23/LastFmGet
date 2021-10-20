@@ -36,7 +36,7 @@
 ### Config
 `lastfmget.init('api_cfg.yaml')`
 
-#### `api_cfg.yaml` ([example](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml))
+#### `api_cfg.yaml` [example](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml)
 ```
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
