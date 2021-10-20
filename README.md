@@ -20,7 +20,7 @@
 ### Dependencies
 * **`python3.10`**
 * `requests`
-* `requests_cache` (used only if configured in api_cfg.yaml)
+* `requests_cache` (used only if configured in `api_cfg.yaml`)
 * `pyyaml`
 
 
@@ -88,17 +88,17 @@ cache:
 
 
 ## Last.fm API Methods Available
-| Function                           | Last.fm API method        |
-|------------------------------------|---------------------------|
-| lastfmget.user_info                | user.getInfo              |
-| lastfmget.user_recent_tracks       | user.getRecentTracks      |
-| lastfmget.user_top_artists         | user.getTopArtists        |
-| lastfmget.user_top_albums          | user.getTopAlbums         |
-| lastfmget.user_top_tracks          | user.getTopTracks         |
-| lastfmget.user_weekly_chart_list   | user.getWeeklyChartList   |
-| lastfmget.user_weekly_artist_chart | user.getWeeklyArtistChart |
-| lastfmget.user_weekly_album_chart  | user.getWeeklyAlbumChart  |
-| lastfmget.user_weekly_track_chart  | user.getWeeklyTrackChart  |
+| Function                             | Last.fm API method          |
+|--------------------------------------|-----------------------------|
+| `lastfmget.user_info`                | `user.getInfo`              |
+| `lastfmget.user_recent_tracks`       | `user.getRecentTracks`      |
+| `lastfmget.user_top_artists`         | `user.getTopArtists`        |
+| `lastfmget.user_top_albums`          | `user.getTopAlbums`         |
+| `lastfmget.user_top_tracks`          | `user.getTopTracks`         |
+| `lastfmget.user_weekly_chart_list`   | `user.getWeeklyChartList`   |
+| `lastfmget.user_weekly_artist_chart` | `user.getWeeklyArtistChart` |
+| `lastfmget.user_weekly_album_chart`  | `user.getWeeklyAlbumChart`  |
+| `lastfmget.user_weekly_track_chart`  | `user.getWeeklyTrackChart`  |
 
 
 ## Last.fm API Reference
