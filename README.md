@@ -11,7 +11,7 @@
 * Methods request data from the Last.fm API and return the response in a Python dictionary
 * Must use a cfg YAML file and call `lastfmget.init()` before use (this allows you to store your private key in an untracked file)
 * Examples of the response for each method shown in [`data/dump`](https://github.com/D3r3k23/LastFmGet/blob/master/data/dump/)
-* Use _raw method verions for more direct access to the Last.fm API
+* Use `_raw` method verions for more direct access to the Last.fm API
 
 
 ## Installation
