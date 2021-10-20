@@ -61,7 +61,7 @@ cache:
 | api_key    | Your private API key. See [here](https://www.last.fm/api)   |
 | user_agent | Identifiable user agent for requests                        |
 | call_rate  | Max API requests per second                                 |
-| cache      | enable: use requests_cache<br>dir: (optional) cache location<br>backend: (optional) sqlite recommended<br>lifetime: (optional) expire_after time in seconds |
+| cache      | enable: use `requests_cache`<br>dir: (optional) cache location<br>backend: (optional) sqlite recommended<br>lifetime: (optional) `expire_after` time in seconds |
 
 ### Code Examples
 
