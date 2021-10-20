@@ -5,12 +5,12 @@
 [![Current Source Tests](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml/badge.svg)](https://github.com/D3r3k23/LastFmGet/actions/workflows/test_source.yaml)
 
 
-LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
+`LastFmGet` is a Python package for accessing [Last.fm](https://www.last.fm) scrobble data using the public API.
 
 * Provides functions for calling specific Last.fm API methods
 * Methods request data from the Last.fm API and return the response in a Python dictionary
-* Must use a cfg YAML file and call lastfmget.init() before use (this allows you to store your private key in an untracked file)
-* Examples of the response for each method shown in [data/dump](https://github.com/D3r3k23/LastFmGet/blob/master/data/dump/)
+* Must use a cfg YAML file and call `lastfmget.init()` before use (this allows you to store your private key in an untracked file)
+* Examples of the response for each method shown in [`data/dump`](https://github.com/D3r3k23/LastFmGet/blob/master/data/dump/)
 * Use _raw method verions for more direct access to the Last.fm API
 
 
@@ -18,10 +18,10 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 `pip install lastfmget`
 
 ### Dependencies
-* **python3.10**
-* requests
-* requests_cache (used only if configured in api_cfg.yaml)
-* pyyaml
+* **`python3.10`**
+* `requests`
+* `requests_cache` (used only if configured in api_cfg.yaml)
+* `pyyaml`
 
 
 ## Documentation
@@ -36,7 +36,7 @@ LastFmGet is a Python package for accessing [Last.fm](https://www.last.fm) scrob
 ### Config
 `lastfmget.init('api_cfg.yaml')`
 
-#### api_cfg.yaml example ([data/example_api_cfg.yaml](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml))
+#### api_cfg.yaml example ([`data/example_api_cfg.yaml`](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml))
 ```
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
