@@ -9,10 +9,9 @@ def main():
     parser.add_argument('user_agent')
     parser.add_argument('call_rate', type=int)
     parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
-    # Must provide all or none of these arguments
-    parser.add_argument('cache_dir',      nargs='?', default=None)
-    parser.add_argument('cache_backend',  nargs='?', default=None)
-    parser.add_argument('cache_lifetime', nargs='?', default=None, type=int)
+    parser.add_argument('--cache_dir',      default=None)
+    parser.add_argument('--cache_backend',  default=None)
+    parser.add_argument('--cache_lifetime', default=None, type=int)
     args = parser.parse_args()
 
     cfg = {
