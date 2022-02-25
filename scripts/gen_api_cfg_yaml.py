@@ -11,7 +11,7 @@ def main():
     parser.add_argument('enable_cache', type=lambda s: s.lower() == 'true')
     parser.add_argument('cache_dir',      nargs='?', default=None)
     parser.add_argument('cache_backend',  nargs='?', default=None)
-    parser.add_argument('cache_lifetime', nargs='?', default=None, type=int)
+    parser.add_argument('cache_lifetime', nargs='?', default=None, type=int) # These optional arguments might not work
     args = parser.parse_args()
 
     cfg = {
