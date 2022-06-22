@@ -37,7 +37,7 @@
 `lastfmget.init('api_cfg.yaml')`
 
 #### `api_cfg.yaml` [example](https://github.com/D3r3k23/LastFmGet/blob/master/data/example_api_cfg.yaml)
-```
+```yaml
 api_url: http://ws.audioscrobbler.com/2.0/
 api_key: <API KEY>
 user_agent: <USER AGENT>
@@ -66,7 +66,7 @@ cache:
 ### Code Examples
 
 #### Getting user information using the user.getInfo method
-```
+```python
 >>> info = lastfmget.user_info('D3r3k523')
 >>> info['playcount']
 161602
@@ -75,7 +75,7 @@ cache:
 ```
 
 #### Getting a user's top 10 artists using the user.getTopArtists method
-```
+```python
 >>> topartists = lastfmget.user_top_artists('D3r3k523', 10)
 >>> [ artist['name'] for artist in topartists ]
 ['Radiohead', 'Converge', 'Pink Floyd', 'Queens of the Stone Age', 'Beach House', 'Bon Iver', 'Thee Oh Sees', 'Mastodon', 'King Gizzard & The Lizard Wizard', 'Swans']
