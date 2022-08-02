@@ -3,6 +3,7 @@ import lastfmget
 import json
 from dataclasses import dataclass, field
 from typing import Callable
+from pathlib import Path
 
 dumpdir = 'data/dump'
 
@@ -55,7 +56,7 @@ def main():
         dump(d)
 
 def dump(d):
-    fn   = f'{dumpdir}/{d.name}.json'
+    fn   = Path(dumpdir, d.name).with_suffix('.json')
     data = d.meth(USER, **d.args)
     with open(fn, 'w') as f:
         json.dump(data, f, indent=2)
